@@ -30,7 +30,7 @@ for t1 in np.linspace(0,1,5):
                         data.append(r.json()['results'][k]['elevation'] )
                     locations=''
                     n=0
-                    #print((str)(n_sum)+'/'+(str)(size**2))
+                    print((str)(n_sum)+'/'+(str)(size**2))
                 else: locations+='|'
         if n!=0:
             locations=locations[:-1]

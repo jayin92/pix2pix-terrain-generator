@@ -16,7 +16,7 @@ for t1 in np.linspace(0,1,34):
         p=(p1*t1+p2*(1.0-t1))*t2+(p3*t1+p4*(1.0-t1))*(1.0-t2)
         lat=p[0]
         lon=p[1]
-        size=100
+        size=1000
         n=0
         n_sum=0;
         for i in range(-size//2,size-size//2):
@@ -30,7 +30,7 @@ for t1 in np.linspace(0,1,34):
                         data.append(r.json()['results'][k]['elevation'] )
                     locations=''
                     n=0
-                    #print((str)(n_sum)+'/'+(str)(size**2))
+                    print((str)(n_sum)+'/'+(str)(size**2))
                 else: locations+='|'
         if n!=0:
             locations=locations[:-1]
@@ -43,4 +43,4 @@ for t1 in np.linspace(0,1,34):
         data=[(data[i]-min_)/(float(max_-min_)/255.0) for i in range(len(data))]
         data=np.array(data,dtype='uint8')
         data=data.reshape(size,size)
-        Image.fromarray(data).save('Heightmap/China_southeast/'+"{:.3f}".format(lat) +','+"{:.3f}".format(lon)+'.bmp','bmp')
+        Image.fromarray(data).save('Heightmap/china-southeast/'+"{:.3f}".format(lat) +','+"{:.3f}".format(lon)+'.bmp','bmp')
