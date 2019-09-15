@@ -4,12 +4,14 @@ import numpy as np
 import matplotlib.pyplot as plt
 import cv2
 from PIL import Image
+from tqdm import tqdm
 url = "https://maps.googleapis.com/maps/api/elevation/json"
 p1=np.array([24.663513, 121.182540])
 p2=np.array([24.534208, 121.655832])
 p3=np.array([23.188591, 120.532673])
 p4=np.array([23.012812, 121.095572])
 
+ppbar= tqdm(total=100)
 for t1 in np.linspace(0,1,5):
     for t2 in np.linspace(0,1,20):
         data=[]
@@ -20,6 +22,7 @@ for t1 in np.linspace(0,1,5):
         size=100
         n=0
         n_sum=0;
+        ppbar.set_description_str("{},{}".format(lat,lon))
         for i in range(-size//2,size-size//2):
             for j in range(-size//2,size-size//2):
                 locations+="{:.3f}".format(lat-i*0.001)+","+"{:.3f}".format(lon+j*0.001)
@@ -31,7 +34,6 @@ for t1 in np.linspace(0,1,5):
                         data.append(r.json()['results'][k]['elevation'] )
                     locations=''
                     n=0
-                    print((str)(n_sum)+'/'+(str)(size**2))
                 else: locations+='|'
         if n!=0:
             locations=locations[:-1]
@@ -60,7 +62,6 @@ for t1 in np.linspace(0,1,5):
             value[i] = num
             for k in range(3):
                 output[j][k] = value[k]
-        print(output)                    
         output.resize(size,size,3)
         cv2.imwrite('Heightmap/Taiwan/'+"{:.3f}".format(lat) +','+"{:.3f}".format(lon)+'.png', output)
-        
+        ppbar.update(1)

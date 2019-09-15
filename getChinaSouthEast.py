@@ -11,7 +11,7 @@ p2=np.array([27.494665, 113.754346])
 p3=np.array([24.952233, 117.819288])
 p4=np.array([24.772807, 113.820264])
 
-ppbar = tqdm(total=100)
+ppbar = tqdm(total=34*30)
 for t1 in np.linspace(0,1,34):
     for t2 in np.linspace(0,1,30):
         data=[]
@@ -63,4 +63,4 @@ for t1 in np.linspace(0,1,34):
                 output[j][k] = value[k]
         output.resize(size,size,3)
         cv2.imwrite('Heightmap/china-southeast/'+"{:.3f}".format(lat) +','+"{:.3f}".format(lon)+'.png', output)
-        ppbar.update(1/(34*30)*100)
+        ppbar.update(1)
