@@ -12,7 +12,7 @@ ppbar = tqdm(total=2000*2000)
 
         
 data=[]
-locations=''
+locations=''    
 lat = 26.9
 lon = 100
 size = 2500
@@ -31,7 +31,7 @@ for i in range(-size//2,size-size//2):
             locations=''
             n=0
         else: locations+='|'
-if n!=0:
+if n != 0:
     locations=locations[:-1]
     param = {"locations":locations,"key": "AIzaSyCgFZ_bPFLzrCOQQxRE9wwxqGDHCRNyM3Q" } 
     r = requests.get(url, param)
