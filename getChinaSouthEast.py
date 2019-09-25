@@ -17,6 +17,7 @@ lat = 26.9
 lon = 100
 size = 2500
 n = 0
+
 for i in range(-size//2,size-size//2):
     for j in range(-size//2,size-size//2):
         locations+="{:.3f}".format(lat-i*0.001)+","+"{:.3f}".format(lon+j*0.001)
@@ -39,8 +40,8 @@ if n != 0:
         data.append(r.json()['results'][i]['elevation'])
 
 total = float(255 ** 3)        
-min_=min(data)
-max_=max(data)
+min_ = min(data)
+max_ = max(data)
 data = [float(((num - min_) / ((max_ - min_)/total))) for num in data]
 data = np.array(data,dtype='int64')
 output = np.zeros([size*size, 3])
