@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Rain2 : MonoBehaviour {
-    public float KRain = 1, KCapacity = 1, A = 1, Kdmax = 1, KS = 1, KD = 1, RMin = 0.5f, KH = 1, KEvaporation = 0.1f,KMove=10,drag=0.1f,maxV=0.01f;
+    public float KRain = 1, KCapacity = 1, A = 1, Kdmax = 1, KS = 1;
+    public float KD = 1, RMin = 0.5f, KH = 1, KEvaporation = 0.1f,KMove=10,drag=0.1f,maxV=0.01f;
     public int deafultIters;
     public float deltaT;
 
@@ -98,7 +99,7 @@ public class Rain2 : MonoBehaviour {
                     + f[x, y, 2]
                     - f[x, y, 3], 0);
                     v[x, y] = v_;
-                    Vector3 g = new Vector3(x == 0||x==w-1 ? 0 :( b[x - 1, y] -b[x + 1, y])
+                    Vector3 g = new Vector3(x == 0|| x==w-1 ? 0 :(b[x - 1, y] - b[x + 1, y])
                     ,
                     y == 0|| y == h - 1? 0 :( b[x, y - 1]-b[x, y + 1]));
                     c[x, y] =Mathf.Max(0, KCapacity /** (-Vector3.Dot(v_,Vector3.Normalize( Vector3.Cross(new Vector3(0, 1, g.y), new Vector3(1, 0, g.x))))) */*Mathf.Min(maxV, v_.magnitude) * Mathf.Min(Kdmax, d1[x, y]));
