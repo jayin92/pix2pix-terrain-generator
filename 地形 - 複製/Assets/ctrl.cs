@@ -128,17 +128,29 @@ public class ctrl : MonoBehaviour {
             {
                 float[,] ChunkHeight = new float[Mathf.Min(chunkSize + 1, w - i * chunkSize), Mathf.Min(chunkSize + 1, h - j * chunkSize)];
                 Color[,] ChunkColor = new Color[Mathf.Min(chunkSize + 1, w - i * chunkSize), Mathf.Min(chunkSize + 1, h - j * chunkSize)];
-                for (int x = 0; x < ChunkHeight.GetLength(0); x++)
-                {
-                    for (int y = 0; y < ChunkHeight.GetLength(1); y++)
+                if(water)
+                    for (int x = 0; x < ChunkHeight.GetLength(0); x++)
                     {
-                        ChunkHeight[x, y] = heightMap[x + i * chunkSize, y + j * chunkSize]+ rain.d[x + i * chunkSize, y + j * chunkSize]*(water?1:0);
-                        ChunkColor[x, y] = colorMap[x + i * chunkSize, y + j * chunkSize];
+                        for (int y = 0; y < ChunkHeight.GetLength(1); y++)
+                        {
+                            ChunkHeight[x, y] = heightMap[x + i * chunkSize, y + j * chunkSize]+ rain.d[x + i * chunkSize, y + j * chunkSize]*(water?1:0);
+                            ChunkColor[x, y] = colorMap[x + i * chunkSize, y + j * chunkSize];
+                        }
                     }
-                }
-                GameObject newChunk = Instantiate(chunkPrefab, new Vector3(i * chunkSize, 0, j * chunkSize), new Quaternion(0, 0, 0, 1), chunkParent.transform);
-                newChunk.GetComponent<Display3d>().Display(ChunkHeight, ChunkColor);
+                 
+                else 
+                    for (int x = 0; x < ChunkHeight.GetLength(0); x++)
+                    {   
+                        for (int y = 0; y < ChunkHeight.GetLength(1); y++)
+                        {
+                            ChunkHeight[x, y] = heightMap[x + i * chunkSize, y + j * chunkSize];
+                            ChunkColor[x, y] = colorMap[x + i * chunkSize, y + j * chunkSize];
+                        }                
+                    }
+                    GameObject newChunk = Instantiate(chunkPrefab, new Vector3(i * chunkSize, 0, j * chunkSize), new Quaternion(0, 0, 0, 1), chunkParent.transform);
+                    newChunk.GetComponent<Display3d>().Display(ChunkHeight, ChunkColor);
             }
         }
     }
 }
+
