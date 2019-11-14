@@ -1,6 +1,4 @@
-import os
 import cv2
-import numpy
 
 im = cv2.imread("Heightmap/Unity_test.png")
 print(im)

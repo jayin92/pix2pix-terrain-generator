@@ -4,10 +4,12 @@ url = "https://pypi.org/simple"
 verify_ssl = true
 
 [dev-packages]
-pylint = "*"
 
 [packages]
-jupyter = "*"
+opencv-python = "*"
+numpy = "*"
+matplotlib = "*"
+pylint = "*"
 
 [requires]
 python_version = "3.7"
