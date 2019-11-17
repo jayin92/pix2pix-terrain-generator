@@ -1,0 +1,65 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEditor;
+
+[CustomEditor(typeof(ctrl))]
+public class Editor1 : Editor {
+    public override void OnInspectorGUI()
+    {
+        
+        ctrl controller = (ctrl)target;
+        DrawDefaultInspector();
+        if (GUILayout.Button("2d"))
+        {
+            controller.display2d();
+        }
+        if (GUILayout.Button("load png"))
+        {
+            controller.ReadPng();
+        }
+        if (GUILayout.Button("generate Perlin noise"))
+        {
+            controller.GeneratePerlinNoise();
+        }
+        if (GUILayout.Button("rain"))
+        {
+            controller.RainErosion();
+        }
+        if (GUILayout.Button("rain at"))
+        {
+            controller.RainErosionAt();
+        }
+        if (GUILayout.Button("terrain"))
+        {
+            controller.Terrain();
+        }
+    }
+}
+
+[CustomEditor(typeof(Rain3))]
+public class Editor2 : Editor
+{
+    public override void OnInspectorGUI()
+    {
+        Rain3 rain3 = (Rain3)target;
+        DrawDefaultInspector();
+        if (GUILayout.Button("Int"))
+        {
+            rain3.Int();
+        }
+        if (GUILayout.Button("Rain"))
+        {
+            rain3.Rain();
+        }
+        if (GUILayout.Button("Set params"))
+        {
+            rain3.setParams();
+        }
+        if (GUILayout.Button("Release"))
+        {
+            rain3.Realease();
+        }
+    }
+}
+
