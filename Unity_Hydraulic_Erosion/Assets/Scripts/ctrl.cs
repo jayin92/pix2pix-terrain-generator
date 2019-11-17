@@ -164,7 +164,6 @@ public class ctrl : MonoBehaviour {
     }
     public void ToImage()
     {
-        // public Terrain terrain;
 		int w = terrain.terrainData.heightmapWidth;
 		int h = terrain.terrainData.heightmapHeight;
 		Texture2D heightMap = new Texture2D(w, h);
@@ -178,25 +177,19 @@ public class ctrl : MonoBehaviour {
 				if(hm[i, j] < min) min = hm[i, j];
 			}
 		}
-		// print(min);
-		// print(max);
+
 		for(int i=0;i<w;i++){
 			for(int j=0;j<h;j++){
 				img[i+j*h] = new Color(hm[i, j] / max, hm[i, j] / max, hm[i, j] / max);
-				// print(hm[i, j] * 255 / max);
 			}
 		}
 		heightMap.SetPixels(img);
         heightMap.Apply();
-
-		FileStream fs = new FileStream(@"/home/jayinnn/scifair/test.png", FileMode.CreateNew);
+        string name = terrain.name;
+		FileStream fs = new FileStream(@"/home/jayinnn/scifair/heightmap/unity/" + name + ".png", FileMode.Create);
 		fs.Write(heightMap.EncodeToPNG(), 0, heightMap.EncodeToPNG().Length);
-       
+        fs.Close();
 		
 	}
 	
-}
-    }
-
-
 }

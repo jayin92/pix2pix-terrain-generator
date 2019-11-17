@@ -34,6 +34,9 @@ public class Editor1 : Editor {
         {
             controller.Terrain();
         }
+        if(GUILayout.Button("to gray image")){
+            controller.ToImage();
+        }
     }
 }
 
