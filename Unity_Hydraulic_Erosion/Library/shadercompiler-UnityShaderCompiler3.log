@@ -1,0 +1,23 @@
+Base path: '/home/jayinnn/2019.2.10f1/Editor/Data', plugins path '/home/jayinnn/2019.2.10f1/Editor/Data/PlaybackEngines'
+Cmd: initializeCompiler
+Cmd: compileComputeKernel
+  error: 1 plat 15 at Rain3.compute(88): signed/unsigned mismatch, unsigned assumed
+  error: 1 plat 15 at Rain3.compute(92): signed/unsigned mismatch, unsigned assumed
+  error: 1 plat 15 at Rain3.compute(108): signed/unsigned mismatch, unsigned assumed
+  api=15 insize=3861 outsize=4268 ok=1
+Cmd: compileComputeKernel
+  error: 1 plat 18 at Rain3.compute(88): signed/unsigned mismatch, unsigned assumed
+  error: 1 plat 18 at Rain3.compute(92): signed/unsigned mismatch, unsigned assumed
+  error: 1 plat 18 at Rain3.compute(108): signed/unsigned mismatch, unsigned assumed
+  api=18 insize=3861 outsize=10734 ok=1
+Cmd: compileComputeKernel
+  error: 1 plat 18 at Rain3.compute(88): signed/unsigned mismatch, unsigned assumed
+  error: 1 plat 18 at Rain3.compute(92): signed/unsigned mismatch, unsigned assumed
+  error: 1 plat 18 at Rain3.compute(108): signed/unsigned mismatch, unsigned assumed
+  api=18 insize=3861 outsize=4562 ok=1
+Cmd: compileSnippet
+  api=15 type=0 insize=8313 outsize=6899 kw=UNITY_PASS_SHADOWCASTER SHADOWS_DEPTH pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_USE_DITHER_MASK_FOR_ALPHABLENDED_SHADOWS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING UNITY_ENABLE_DETAIL_NORMALMAP SHADER_API_DESKTOP UNITY_COLORSPACE_GAMMA UNITY_LIGHT_PROBE_PROXY_VOLUME UNITY_LIGHTMAP_FULL_HDR ok=1
+Cmd: compileSnippet
+  api=15 type=1 insize=158683 outsize=0 kw=UNITY_PASS_FORWARDBASE DIRECTIONAL LIGHTPROBE_SH pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_USE_DITHER_MASK_FOR_ALPHABLENDED_SHADOWS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING UNITY_ENABLE_DETAIL_NORMALMAP SHADER_API_DESKTOP UNITY_COLORSPACE_GAMMA UNITY_LIGHT_PROBE_PROXY_VOLUME UNITY_LIGHTMAP_FULL_HDR ok=1
+Cmd: compileSnippet
+  api=15 type=1 insize=1693 outsize=0 kw= pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_USE_DITHER_MASK_FOR_ALPHABLENDED_SHADOWS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING UNITY_ENABLE_DETAIL_NORMALMAP SHADER_API_DESKTOP UNITY_COLORSPACE_GAMMA UNITY_LIGHT_PROBE_PROXY_VOLUME UNITY_LIGHTMAP_FULL_HDR ok=1
