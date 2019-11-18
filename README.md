@@ -11,7 +11,7 @@
 - `perlin_for_test`: 經合併之Perlin noise
 - `river`: 研究支流生成
 - `simple_poly`: 測試cycle_gan的簡單多邊形
-- `地形 - 複製`: Unity專案 (水流侵蝕, Unity Terrain轉灰階高度圖...)
+- `Unity_Hydraulic_Erosion`: Unity專案 (水流侵蝕, Unity Terrain轉灰階高度圖...)
 
 ## 進度
 [專題進度](https://github.com/jayin92/scifair/blob/master/docs/progress.md)
