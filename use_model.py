@@ -28,6 +28,8 @@ if __name__ == "__main__":
             cv2.imwrite(os.path.join("heightmap", "tmp", "test", "{}.png".format(file)), img)
         except AttributeError:
             print(file, "is not an image file")
-    print("---Complete---")
+    print("---Complete & Running test.py---")
     os.chdir("../pytorch-CycleGAN-and-pix2pix")
     os.system("python test.py --dataroot ../scifair/heightmap/tmp --name {} --direction AtoB --model pix2pix".format(name))
+    print("---Copying results---")
+    os.system("cp results/{}/test_latest/ ../scifair/heightmap/tmp".format(name))
