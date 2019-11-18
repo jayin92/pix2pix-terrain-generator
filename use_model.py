@@ -29,5 +29,5 @@ if __name__ == "__main__":
         except AttributeError:
             print(file, "is not an image file")
     print("---Complete---")
-    os.system("cd ../pytorch-CycleGAN-and-pix2pix")
+    os.chdir("../pytorch-CycleGAN-and-pix2pix")
     os.system("python test.py --dataroot ../scifair/heightmap/tmp --name {} --direction AtoB --model pix2pix".format(name))
