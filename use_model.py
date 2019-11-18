@@ -32,4 +32,4 @@ if __name__ == "__main__":
     os.chdir("../pytorch-CycleGAN-and-pix2pix")
     os.system("python test.py --dataroot ../scifair/heightmap/tmp --name {} --direction AtoB --model pix2pix".format(name))
     print("---Copying results---")
-    os.system("cp results/{}/test_latest/ ../scifair/heightmap/tmp".format(name))
+    os.system("cp -r results/{}/test_latest/ ../scifair/heightmap/tmp".format(name))
