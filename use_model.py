@@ -1,7 +1,6 @@
 import os
 import cv2
 import numpy as np
-from matplotlib import pyplot as plt
 import argparse
 
 if __name__ == "__main__":
@@ -27,8 +26,7 @@ if __name__ == "__main__":
             img_com = np.array(img_com)
             img = np.concatenate((img, img_com), axis=1)
             cv2.imwrite(os.path.join("heightmap", "tmp", "test", "{}.png".format(file)), img)
-            plt.imshow(img)
         except AttributeError:
             print(file, "is not an image file")
     print("---Complete---")
-    os.system("python ../pytorch-CycleGAN-and-pix2pix/test.py --dataroot {} --name {} --direction AtoB --model pix2pix".format(os.path.join("heightmap", "tmp", "test"), name))
+    os.system("python ../pytorch-CycleGAN-and-pix2pix/test.py --dataroot {} --name {} --direction AtoB --model pix2pix".format(os.path.join("heightmap", "tmp"), name))
