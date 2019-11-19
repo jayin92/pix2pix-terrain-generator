@@ -1,52 +1,214 @@
-Base path: 'C:/Program Files/Unity/Hub/Editor/2019.2.10f1/Editor/Data', plugins path 'C:/Program Files/Unity/Hub/Editor/2019.2.10f1/Editor/Data/PlaybackEngines'
+Base path: 'C:/Program Files/Unity/Hub/Editor/2019.2.11f1/Editor/Data', plugins path 'C:/Program Files/Unity/Hub/Editor/2019.2.11f1/Editor/Data/PlaybackEngines'
 Cmd: initializeCompiler
-Cmd: preprocess
-  insize=1701 outsize=1226 ok=1
-Cmd: compileSnippet
-  api=4 type=0 insize=17531 outsize=1218 kw=UNITY_PASS_FORWARDBASE DIRECTIONAL pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_USE_DITHER_MASK_FOR_ALPHABLENDED_SHADOWS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING UNITY_ENABLE_DETAIL_NORMALMAP SHADER_API_DESKTOP UNITY_COLORSPACE_GAMMA UNITY_LIGHT_PROBE_PROXY_VOLUME UNITY_LIGHTMAP_FULL_HDR ok=1
-Cmd: compileSnippet
-  api=4 type=1 insize=17531 outsize=1214 kw=UNITY_PASS_FORWARDBASE DIRECTIONAL pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_USE_DITHER_MASK_FOR_ALPHABLENDED_SHADOWS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING UNITY_ENABLE_DETAIL_NORMALMAP SHADER_API_DESKTOP UNITY_COLORSPACE_GAMMA UNITY_LIGHT_PROBE_PROXY_VOLUME UNITY_LIGHTMAP_FULL_HDR ok=1
-Cmd: compileSnippet
-  api=4 type=0 insize=2459 outsize=902 kw= pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_USE_DITHER_MASK_FOR_ALPHABLENDED_SHADOWS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING UNITY_ENABLE_DETAIL_NORMALMAP SHADER_API_DESKTOP UNITY_COLORSPACE_GAMMA UNITY_LIGHT_PROBE_PROXY_VOLUME UNITY_LIGHTMAP_FULL_HDR ok=1
-Cmd: compileSnippet
-  api=4 type=1 insize=2459 outsize=526 kw= pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_USE_DITHER_MASK_FOR_ALPHABLENDED_SHADOWS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING UNITY_ENABLE_DETAIL_NORMALMAP SHADER_API_DESKTOP UNITY_COLORSPACE_GAMMA UNITY_LIGHT_PROBE_PROXY_VOLUME UNITY_LIGHTMAP_FULL_HDR ok=1
-Cmd: compileSnippet
-  api=4 type=0 insize=19986 outsize=1286 kw=UNITY_PASS_FORWARDBASE DIRECTIONAL pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_USE_DITHER_MASK_FOR_ALPHABLENDED_SHADOWS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING UNITY_ENABLE_DETAIL_NORMALMAP SHADER_API_DESKTOP UNITY_COLORSPACE_GAMMA UNITY_LIGHT_PROBE_PROXY_VOLUME UNITY_LIGHTMAP_FULL_HDR ok=1
-Cmd: compileSnippet
-  api=4 type=1 insize=19986 outsize=5178 kw=UNITY_PASS_FORWARDBASE DIRECTIONAL pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_USE_DITHER_MASK_FOR_ALPHABLENDED_SHADOWS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING UNITY_ENABLE_DETAIL_NORMALMAP SHADER_API_DESKTOP UNITY_COLORSPACE_GAMMA UNITY_LIGHT_PROBE_PROXY_VOLUME UNITY_LIGHTMAP_FULL_HDR ok=1
-Cmd: compileSnippet
-  api=4 type=0 insize=4349 outsize=1446 kw=UNITY_PASS_FORWARDADD POINT pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_USE_DITHER_MASK_FOR_ALPHABLENDED_SHADOWS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING UNITY_ENABLE_DETAIL_NORMALMAP SHADER_API_DESKTOP UNITY_COLORSPACE_GAMMA UNITY_LIGHT_PROBE_PROXY_VOLUME UNITY_LIGHTMAP_FULL_HDR ok=1
-Cmd: compileSnippet
-  api=4 type=1 insize=4349 outsize=1610 kw=UNITY_PASS_FORWARDADD POINT pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_USE_DITHER_MASK_FOR_ALPHABLENDED_SHADOWS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING UNITY_ENABLE_DETAIL_NORMALMAP SHADER_API_DESKTOP UNITY_COLORSPACE_GAMMA UNITY_LIGHT_PROBE_PROXY_VOLUME UNITY_LIGHTMAP_FULL_HDR ok=1
-Cmd: compileSnippet
-  api=4 type=0 insize=5558 outsize=1446 kw=UNITY_PASS_FORWARDADD POINT pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_USE_DITHER_MASK_FOR_ALPHABLENDED_SHADOWS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING UNITY_ENABLE_DETAIL_NORMALMAP SHADER_API_DESKTOP UNITY_COLORSPACE_GAMMA UNITY_LIGHT_PROBE_PROXY_VOLUME UNITY_LIGHTMAP_FULL_HDR ok=1
-Cmd: compileSnippet
-  api=4 type=1 insize=5558 outsize=3626 kw=UNITY_PASS_FORWARDADD POINT pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_USE_DITHER_MASK_FOR_ALPHABLENDED_SHADOWS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING UNITY_ENABLE_DETAIL_NORMALMAP SHADER_API_DESKTOP UNITY_COLORSPACE_GAMMA UNITY_LIGHT_PROBE_PROXY_VOLUME UNITY_LIGHTMAP_FULL_HDR ok=1
-Cmd: compileSnippet
-  api=4 type=0 insize=6649 outsize=1042 kw=UNITY_PASS_PREPASSBASE pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_USE_DITHER_MASK_FOR_ALPHABLENDED_SHADOWS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING UNITY_ENABLE_DETAIL_NORMALMAP SHADER_API_DESKTOP UNITY_COLORSPACE_GAMMA UNITY_LIGHT_PROBE_PROXY_VOLUME UNITY_LIGHTMAP_FULL_HDR ok=1
-Cmd: compileSnippet
-  api=4 type=1 insize=6649 outsize=338 kw=UNITY_PASS_PREPASSBASE pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_USE_DITHER_MASK_FOR_ALPHABLENDED_SHADOWS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING UNITY_ENABLE_DETAIL_NORMALMAP SHADER_API_DESKTOP UNITY_COLORSPACE_GAMMA UNITY_LIGHT_PROBE_PROXY_VOLUME UNITY_LIGHTMAP_FULL_HDR ok=1
-Cmd: compileSnippet
-  api=4 type=0 insize=15596 outsize=1218 kw=UNITY_PASS_DEFERRED pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_USE_DITHER_MASK_FOR_ALPHABLENDED_SHADOWS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING UNITY_ENABLE_DETAIL_NORMALMAP SHADER_API_DESKTOP UNITY_COLORSPACE_GAMMA UNITY_LIGHT_PROBE_PROXY_VOLUME UNITY_LIGHTMAP_FULL_HDR ok=1
-Cmd: compileSnippet
-  api=4 type=1 insize=15596 outsize=878 kw=UNITY_PASS_DEFERRED pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_USE_DITHER_MASK_FOR_ALPHABLENDED_SHADOWS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING UNITY_ENABLE_DETAIL_NORMALMAP SHADER_API_DESKTOP UNITY_COLORSPACE_GAMMA UNITY_LIGHT_PROBE_PROXY_VOLUME UNITY_LIGHTMAP_FULL_HDR ok=1
-Cmd: compileSnippet
-  api=4 type=0 insize=5009 outsize=3294 kw= pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_USE_DITHER_MASK_FOR_ALPHABLENDED_SHADOWS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING UNITY_ENABLE_DETAIL_NORMALMAP SHADER_API_DESKTOP UNITY_COLORSPACE_GAMMA UNITY_LIGHT_PROBE_PROXY_VOLUME UNITY_LIGHTMAP_FULL_HDR ok=1
-Cmd: compileSnippet
-  api=4 type=1 insize=5009 outsize=478 kw= pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_USE_DITHER_MASK_FOR_ALPHABLENDED_SHADOWS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING UNITY_ENABLE_DETAIL_NORMALMAP SHADER_API_DESKTOP UNITY_COLORSPACE_GAMMA UNITY_LIGHT_PROBE_PROXY_VOLUME UNITY_LIGHTMAP_FULL_HDR ok=1
-Cmd: compileSnippet
-  api=4 type=0 insize=10692 outsize=1226 kw=UNITY_PASS_META pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_USE_DITHER_MASK_FOR_ALPHABLENDED_SHADOWS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING UNITY_ENABLE_DETAIL_NORMALMAP SHADER_API_DESKTOP UNITY_COLORSPACE_GAMMA UNITY_LIGHT_PROBE_PROXY_VOLUME UNITY_LIGHTMAP_FULL_HDR ok=1
-Cmd: compileSnippet
-  api=4 type=1 insize=10692 outsize=642 kw=UNITY_PASS_META pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_USE_DITHER_MASK_FOR_ALPHABLENDED_SHADOWS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING UNITY_ENABLE_DETAIL_NORMALMAP SHADER_API_DESKTOP UNITY_COLORSPACE_GAMMA UNITY_LIGHT_PROBE_PROXY_VOLUME UNITY_LIGHTMAP_FULL_HDR ok=1
-Cmd: compileSnippet
-  api=4 type=0 insize=12625 outsize=2022 kw=UNITY_PASS_PREPASSFINAL pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_USE_DITHER_MASK_FOR_ALPHABLENDED_SHADOWS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING UNITY_ENABLE_DETAIL_NORMALMAP SHADER_API_DESKTOP UNITY_COLORSPACE_GAMMA UNITY_LIGHT_PROBE_PROXY_VOLUME UNITY_LIGHTMAP_FULL_HDR ok=1
-Cmd: compileSnippet
-  api=4 type=1 insize=12625 outsize=666 kw=UNITY_PASS_PREPASSFINAL pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_USE_DITHER_MASK_FOR_ALPHABLENDED_SHADOWS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING UNITY_ENABLE_DETAIL_NORMALMAP SHADER_API_DESKTOP UNITY_COLORSPACE_GAMMA UNITY_LIGHT_PROBE_PROXY_VOLUME UNITY_LIGHTMAP_FULL_HDR ok=1
-Cmd: compileSnippet
-  api=4 type=0 insize=12767 outsize=1218 kw=UNITY_PASS_DEFERRED pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_USE_DITHER_MASK_FOR_ALPHABLENDED_SHADOWS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING UNITY_ENABLE_DETAIL_NORMALMAP SHADER_API_DESKTOP UNITY_COLORSPACE_GAMMA UNITY_LIGHT_PROBE_PROXY_VOLUME UNITY_LIGHTMAP_FULL_HDR ok=1
-Cmd: compileSnippet
-  api=4 type=1 insize=12767 outsize=710 kw=UNITY_PASS_DEFERRED pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_USE_DITHER_MASK_FOR_ALPHABLENDED_SHADOWS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING UNITY_ENABLE_DETAIL_NORMALMAP SHADER_API_DESKTOP UNITY_COLORSPACE_GAMMA UNITY_LIGHT_PROBE_PROXY_VOLUME UNITY_LIGHTMAP_FULL_HDR ok=1
-Cmd: compileSnippet
-  api=4 type=0 insize=8559 outsize=1226 kw=UNITY_PASS_META pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_USE_DITHER_MASK_FOR_ALPHABLENDED_SHADOWS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING UNITY_ENABLE_DETAIL_NORMALMAP SHADER_API_DESKTOP UNITY_COLORSPACE_GAMMA UNITY_LIGHT_PROBE_PROXY_VOLUME UNITY_LIGHTMAP_FULL_HDR ok=1
-Cmd: compileSnippet
-  api=4 type=1 insize=8559 outsize=642 kw=UNITY_PASS_META pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_USE_DITHER_MASK_FOR_ALPHABLENDED_SHADOWS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING UNITY_ENABLE_DETAIL_NORMALMAP SHADER_API_DESKTOP UNITY_COLORSPACE_GAMMA UNITY_LIGHT_PROBE_PROXY_VOLUME UNITY_LIGHTMAP_FULL_HDR ok=1
+Cmd: preprocessCompute
+  insize=4001 outsize=4010 ok=1
+Cmd: preprocessCompute
+  insize=4028 outsize=4037 ok=1
+Cmd: compileComputeKernel
+  error: 1 plat 4 at Rain3.compute(89): signed/unsigned mismatch, unsigned assumed
+  error: 1 plat 4 at Rain3.compute(93): signed/unsigned mismatch, unsigned assumed
+  error: 1 plat 4 at Rain3.compute(109): signed/unsigned mismatch, unsigned assumed
+  api=4 insize=4037 outsize=682 ok=1
+Cmd: preprocessCompute
+  insize=4006 outsize=4015 ok=1
+Cmd: compileComputeKernel
+  error: 1 plat 4 at Rain3.compute(72): signed/unsigned mismatch, unsigned assumed
+  error: 1 plat 4 at Rain3.compute(86): signed/unsigned mismatch, unsigned assumed
+  error: 1 plat 4 at Rain3.compute(112): signed/unsigned mismatch, unsigned assumed
+  api=4 insize=4015 outsize=682 ok=1
+Cmd: preprocessCompute
+  insize=4009 outsize=4018 ok=1
+Cmd: preprocessCompute
+  insize=4023 outsize=4032 ok=1
+Cmd: compileComputeKernel
+  error: 1 plat 4 at Rain3.compute(72): signed/unsigned mismatch, unsigned assumed
+  error: 1 plat 4 at Rain3.compute(86): signed/unsigned mismatch, unsigned assumed
+  error: 1 plat 4 at Rain3.compute(112): signed/unsigned mismatch, unsigned assumed
+  api=4 insize=4032 outsize=682 ok=1
+Cmd: preprocessCompute
+  insize=4075 outsize=4084 ok=1
+Cmd: compileComputeKernel
+  error: 1 plat 4 at Rain3.compute(72): signed/unsigned mismatch, unsigned assumed
+  error: 1 plat 4 at Rain3.compute(86): signed/unsigned mismatch, unsigned assumed
+  error: 1 plat 4 at Rain3.compute(112): signed/unsigned mismatch, unsigned assumed
+  api=4 insize=4084 outsize=682 ok=1
+Cmd: preprocessCompute
+  insize=4030 outsize=4039 ok=1
+Cmd: compileComputeKernel
+  error: 1 plat 4 at Rain3.compute(72): signed/unsigned mismatch, unsigned assumed
+  error: 1 plat 4 at Rain3.compute(86): signed/unsigned mismatch, unsigned assumed
+  error: 1 plat 4 at Rain3.compute(112): signed/unsigned mismatch, unsigned assumed
+  api=4 insize=4039 outsize=682 ok=1
+Cmd: preprocessCompute
+  insize=4011 outsize=4020 ok=1
+Cmd: compileComputeKernel
+  error: 1 plat 4 at Rain3.compute(72): signed/unsigned mismatch, unsigned assumed
+  error: 1 plat 4 at Rain3.compute(86): signed/unsigned mismatch, unsigned assumed
+  error: 1 plat 4 at Rain3.compute(111): signed/unsigned mismatch, unsigned assumed
+  api=4 insize=4020 outsize=682 ok=1
+Cmd: preprocessCompute
+  insize=4015 outsize=4024 ok=1
+Cmd: compileComputeKernel
+  error: 1 plat 4 at Rain3.compute(72): signed/unsigned mismatch, unsigned assumed
+  error: 1 plat 4 at Rain3.compute(86): signed/unsigned mismatch, unsigned assumed
+  api=4 insize=4024 outsize=682 ok=1
+Cmd: preprocessCompute
+  insize=4021 outsize=4030 ok=1
+Cmd: compileComputeKernel
+  error: 1 plat 4 at Rain3.compute(72): signed/unsigned mismatch, unsigned assumed
+  error: 1 plat 4 at Rain3.compute(86): signed/unsigned mismatch, unsigned assumed
+  error: 1 plat 4 at Rain3.compute(111): signed/unsigned mismatch, unsigned assumed
+  api=4 insize=4030 outsize=682 ok=1
+Cmd: preprocessCompute
+  insize=4027 outsize=4036 ok=1
+Cmd: compileComputeKernel
+  error: 1 plat 4 at Rain3.compute(72): signed/unsigned mismatch, unsigned assumed
+  error: 1 plat 4 at Rain3.compute(86): signed/unsigned mismatch, unsigned assumed
+  error: 1 plat 4 at Rain3.compute(111): signed/unsigned mismatch, unsigned assumed
+  api=4 insize=4036 outsize=682 ok=1
+Cmd: preprocessCompute
+  insize=4023 outsize=4032 ok=1
+Cmd: compileComputeKernel
+  error: 1 plat 4 at Rain3.compute(72): signed/unsigned mismatch, unsigned assumed
+  error: 1 plat 4 at Rain3.compute(86): signed/unsigned mismatch, unsigned assumed
+  error: 1 plat 4 at Rain3.compute(111): signed/unsigned mismatch, unsigned assumed
+  api=4 insize=4032 outsize=682 ok=1
+Cmd: preprocessCompute
+  insize=4000 outsize=4009 ok=1
+Cmd: compileComputeKernel
+  error: 1 plat 4 at Rain3.compute(72): signed/unsigned mismatch, unsigned assumed
+  error: 1 plat 4 at Rain3.compute(86): signed/unsigned mismatch, unsigned assumed
+  error: 1 plat 4 at Rain3.compute(111): signed/unsigned mismatch, unsigned assumed
+  api=4 insize=4009 outsize=682 ok=1
+Cmd: preprocessCompute
+  insize=4004 outsize=4013 ok=1
+Cmd: compileComputeKernel
+  error: 1 plat 4 at Rain3.compute(72): signed/unsigned mismatch, unsigned assumed
+  error: 1 plat 4 at Rain3.compute(86): signed/unsigned mismatch, unsigned assumed
+  error: 1 plat 4 at Rain3.compute(111): signed/unsigned mismatch, unsigned assumed
+  api=4 insize=4013 outsize=682 ok=1
+Cmd: preprocessCompute
+  insize=4004 outsize=4013 ok=1
+Cmd: compileComputeKernel
+  error: 1 plat 4 at Rain3.compute(111): signed/unsigned mismatch, unsigned assumed
+  api=4 insize=4013 outsize=682 ok=1
+Cmd: preprocessCompute
+  insize=4000 outsize=4009 ok=1
+Cmd: preprocessCompute
+  insize=4010 outsize=4019 ok=1
+Cmd: compileComputeKernel
+  error: 1 plat 4 at Rain3.compute(112): signed/unsigned mismatch, unsigned assumed
+  api=4 insize=4019 outsize=682 ok=1
+Cmd: preprocessCompute
+  insize=4010 outsize=4019 ok=1
+Cmd: compileComputeKernel
+  error: 1 plat 4 at Rain3.compute(87): signed/unsigned mismatch, unsigned assumed
+  error: 1 plat 4 at Rain3.compute(112): signed/unsigned mismatch, unsigned assumed
+  api=4 insize=4019 outsize=682 ok=1
+Cmd: preprocessCompute
+  insize=4010 outsize=4019 ok=1
+Cmd: compileComputeKernel
+  error: 1 plat 4 at Rain3.compute(73): signed/unsigned mismatch, unsigned assumed
+  error: 1 plat 4 at Rain3.compute(87): signed/unsigned mismatch, unsigned assumed
+  error: 1 plat 4 at Rain3.compute(112): signed/unsigned mismatch, unsigned assumed
+  api=4 insize=4019 outsize=682 ok=1
+Cmd: preprocessCompute
+  insize=4010 outsize=4019 ok=1
+Cmd: compileComputeKernel
+  error: 1 plat 4 at Rain3.compute(73): signed/unsigned mismatch, unsigned assumed
+  error: 1 plat 4 at Rain3.compute(112): signed/unsigned mismatch, unsigned assumed
+  api=4 insize=4019 outsize=682 ok=1
+Cmd: preprocessCompute
+  insize=4010 outsize=4019 ok=1
+Cmd: compileComputeKernel
+  error: 1 plat 4 at Rain3.compute(112): signed/unsigned mismatch, unsigned assumed
+  api=4 insize=4019 outsize=682 ok=1
+Cmd: preprocessCompute
+  insize=4006 outsize=4015 ok=1
+Cmd: compileComputeKernel
+  error: 1 plat 4 at Rain3.compute(73): signed/unsigned mismatch, unsigned assumed
+  error: 1 plat 4 at Rain3.compute(87): signed/unsigned mismatch, unsigned assumed
+  error: 1 plat 4 at Rain3.compute(112): signed/unsigned mismatch, unsigned assumed
+  api=4 insize=4015 outsize=682 ok=1
+Cmd: preprocessCompute
+  insize=4009 outsize=4018 ok=1
+Cmd: compileComputeKernel
+  error: 1 plat 4 at Rain3.compute(73): signed/unsigned mismatch, unsigned assumed
+  error: 1 plat 4 at Rain3.compute(87): signed/unsigned mismatch, unsigned assumed
+  error: 1 plat 4 at Rain3.compute(112): signed/unsigned mismatch, unsigned assumed
+  api=4 insize=4018 outsize=682 ok=1
+Cmd: preprocessCompute
+  insize=4015 outsize=4024 ok=1
+Cmd: compileComputeKernel
+  error: 2 plat 4 at Rain3.compute(22): syntax error: unexpected token ';'
+  error: 2 plat 4 at Rain3.compute(25): syntax error: unexpected token ']'
+  error: 2 plat 4 at Rain3.compute(30): undeclared identifier 'i'
+  api=4 insize=4024 outsize=0 ok=0
+Cmd: preprocessCompute
+  insize=4009 outsize=4018 ok=1
+Cmd: preprocessCompute
+  insize=4009 outsize=4018 ok=1
+Cmd: compileComputeKernel
+  error: 1 plat 4 at Rain3.compute(73): signed/unsigned mismatch, unsigned assumed
+  error: 1 plat 4 at Rain3.compute(87): signed/unsigned mismatch, unsigned assumed
+  error: 1 plat 4 at Rain3.compute(112): signed/unsigned mismatch, unsigned assumed
+  error: 2 plat 4 at Rain3.compute(117): syntax error: unexpected token '/'
+  error: 2 plat 4 at Rain3.compute(119): undeclared identifier 'i2'
+  api=4 insize=4018 outsize=0 ok=0
+Cmd: preprocessCompute
+  insize=4009 outsize=4018 ok=1
+Cmd: compileComputeKernel
+  error: 1 plat 4 at Rain3.compute(73): signed/unsigned mismatch, unsigned assumed
+  error: 1 plat 4 at Rain3.compute(87): signed/unsigned mismatch, unsigned assumed
+  error: 1 plat 4 at Rain3.compute(112): signed/unsigned mismatch, unsigned assumed
+  api=4 insize=4018 outsize=682 ok=1
+Cmd: preprocessCompute
+  insize=4009 outsize=4018 ok=1
+Cmd: compileComputeKernel
+  error: 1 plat 4 at Rain3.compute(73): signed/unsigned mismatch, unsigned assumed
+  error: 1 plat 4 at Rain3.compute(87): signed/unsigned mismatch, unsigned assumed
+  error: 1 plat 4 at Rain3.compute(112): signed/unsigned mismatch, unsigned assumed
+  api=4 insize=4018 outsize=682 ok=1
+Cmd: preprocessCompute
+  insize=3963 outsize=3972 ok=1
+Cmd: compileComputeKernel
+  error: 1 plat 4 at Rain3.compute(73): signed/unsigned mismatch, unsigned assumed
+  error: 1 plat 4 at Rain3.compute(87): signed/unsigned mismatch, unsigned assumed
+  error: 1 plat 4 at Rain3.compute(112): signed/unsigned mismatch, unsigned assumed
+  api=4 insize=3972 outsize=682 ok=1
+Cmd: preprocessCompute
+  insize=3906 outsize=3915 ok=1
+Cmd: compileComputeKernel
+  error: 1 plat 4 at Rain3.compute(73): signed/unsigned mismatch, unsigned assumed
+  error: 1 plat 4 at Rain3.compute(87): signed/unsigned mismatch, unsigned assumed
+  error: 1 plat 4 at Rain3.compute(112): signed/unsigned mismatch, unsigned assumed
+  api=4 insize=3915 outsize=682 ok=1
+Cmd: preprocessCompute
+  insize=4013 outsize=4022 ok=1
+Cmd: compileComputeKernel
+  error: 1 plat 4 at Rain3.compute(73): signed/unsigned mismatch, unsigned assumed
+  error: 1 plat 4 at Rain3.compute(87): signed/unsigned mismatch, unsigned assumed
+  error: 1 plat 4 at Rain3.compute(112): signed/unsigned mismatch, unsigned assumed
+  api=4 insize=4022 outsize=682 ok=1
+Cmd: preprocessCompute
+  insize=4011 outsize=4020 ok=1
+Cmd: compileComputeKernel
+  error: 1 plat 4 at Rain3.compute(73): signed/unsigned mismatch, unsigned assumed
+  error: 1 plat 4 at Rain3.compute(87): signed/unsigned mismatch, unsigned assumed
+  error: 1 plat 4 at Rain3.compute(112): signed/unsigned mismatch, unsigned assumed
+  api=4 insize=4020 outsize=682 ok=1
+Cmd: preprocessCompute
+  insize=4015 outsize=4024 ok=1
+Cmd: compileComputeKernel
+  error: 1 plat 4 at Rain3.compute(73): signed/unsigned mismatch, unsigned assumed
+  error: 1 plat 4 at Rain3.compute(87): signed/unsigned mismatch, unsigned assumed
+  error: 1 plat 4 at Rain3.compute(112): signed/unsigned mismatch, unsigned assumed
+  error: 2 plat 4 at Rain3.compute(145): undeclared identifier 'dis'
+  api=4 insize=4024 outsize=0 ok=0
+Cmd: preprocessCompute
+  insize=4019 outsize=4028 ok=1
+Cmd: compileComputeKernel
+  error: 1 plat 4 at Rain3.compute(73): signed/unsigned mismatch, unsigned assumed
+  error: 1 plat 4 at Rain3.compute(87): signed/unsigned mismatch, unsigned assumed
+  error: 1 plat 4 at Rain3.compute(112): signed/unsigned mismatch, unsigned assumed
+  api=4 insize=4028 outsize=682 ok=1

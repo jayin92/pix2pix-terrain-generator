@@ -56,8 +56,8 @@ public class Rain3 : MonoBehaviour
 
         kernelId[0] = shader.FindKernel("Rain");
         kernelId[1] = shader.FindKernel("CalculateFlux");
-        kernelId[2] = shader.FindKernel("Transport");
-        kernelId[3] = shader.FindKernel("Flow");
+        kernelId[2] = shader.FindKernel("Flow");
+        kernelId[3] = shader.FindKernel("d1_d");
         kernelId[4] = shader.FindKernel("Erode");
         kernelId[5] = shader.FindKernel("Deposit");
 
