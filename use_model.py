@@ -11,6 +11,7 @@ if __name__ == "__main__":
 
     name = args.name
     dataroot = args.dataroot
+    count = 0
     print("---Remove all images in /tmp/test---")
     os.system("rm -rf {}".format(os.path.join("heightmap", "tmp", "test")))
     os.system("mkdir {}".format(os.path.join("heightmap", "tmp", "test")))
@@ -26,10 +27,11 @@ if __name__ == "__main__":
             img_com = np.array(img_com)
             img = np.concatenate((img, img_com), axis=1)
             cv2.imwrite(os.path.join("heightmap", "tmp", "test", "{}.png".format(file)), img)
+            count += 1
         except AttributeError:
             print(file, "is not an image file")
     print("---Complete & Running test.py---")
     os.chdir("../pytorch-CycleGAN-and-pix2pix")
-    os.system("python test.py --dataroot ../scifair/heightmap/tmp --name {} --direction AtoB --model pix2pix".format(name))
+    os.system("python test.py --dataroot ../scifair/heightmap/tmp --name {} --num_test {} --direction AtoB --model pix2pix".format(name, count))
     print("---Copying results---")
     os.system("cp -r results/{}/test_latest/ ../scifair/heightmap/tmp".format(name))
