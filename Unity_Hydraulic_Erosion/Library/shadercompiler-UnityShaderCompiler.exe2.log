@@ -1,122 +1,15 @@
-Base path: 'C:/Program Files/Unity/Hub/Editor/2019.2.11f1/Editor/Data', plugins path 'C:/Program Files/Unity/Hub/Editor/2019.2.11f1/Editor/Data/PlaybackEngines'
+Base path: 'C:/Program Files/Unity/Hub/Editor/2019.2.10f1/Editor/Data', plugins path 'C:/Program Files/Unity/Hub/Editor/2019.2.10f1/Editor/Data/PlaybackEngines'
 Cmd: initializeCompiler
-Cmd: compileComputeKernel
-  error: 1 plat 4 at Rain3.compute(89): signed/unsigned mismatch, unsigned assumed
-  error: 1 plat 4 at Rain3.compute(93): signed/unsigned mismatch, unsigned assumed
-  error: 1 plat 4 at Rain3.compute(109): signed/unsigned mismatch, unsigned assumed
-  api=4 insize=4037 outsize=1170 ok=1
-Cmd: compileComputeKernel
-  error: 1 plat 4 at Rain3.compute(72): signed/unsigned mismatch, unsigned assumed
-  error: 1 plat 4 at Rain3.compute(86): signed/unsigned mismatch, unsigned assumed
-  error: 1 plat 4 at Rain3.compute(112): signed/unsigned mismatch, unsigned assumed
-  api=4 insize=4015 outsize=2826 ok=1
-Cmd: compileComputeKernel
-  error: 1 plat 4 at Rain3.compute(72): signed/unsigned mismatch, unsigned assumed
-  error: 1 plat 4 at Rain3.compute(79): signed/unsigned mismatch, unsigned assumed
-  error: 1 plat 4 at Rain3.compute(86): signed/unsigned mismatch, unsigned assumed
-  error: 1 plat 4 at Rain3.compute(112): signed/unsigned mismatch, unsigned assumed
-  api=4 insize=4018 outsize=2826 ok=1
-Cmd: compileComputeKernel
-  error: 1 plat 4 at Rain3.compute(72): signed/unsigned mismatch, unsigned assumed
-  error: 1 plat 4 at Rain3.compute(86): signed/unsigned mismatch, unsigned assumed
-  error: 1 plat 4 at Rain3.compute(112): signed/unsigned mismatch, unsigned assumed
-  api=4 insize=4084 outsize=517 ok=1
-Cmd: compileComputeKernel
-  error: 1 plat 4 at Rain3.compute(72): signed/unsigned mismatch, unsigned assumed
-  error: 1 plat 4 at Rain3.compute(86): signed/unsigned mismatch, unsigned assumed
-  error: 1 plat 4 at Rain3.compute(112): signed/unsigned mismatch, unsigned assumed
-  api=4 insize=4039 outsize=1170 ok=1
-Cmd: compileComputeKernel
-  error: 1 plat 4 at Rain3.compute(72): signed/unsigned mismatch, unsigned assumed
-  error: 1 plat 4 at Rain3.compute(86): signed/unsigned mismatch, unsigned assumed
-  error: 1 plat 4 at Rain3.compute(111): signed/unsigned mismatch, unsigned assumed
-  api=4 insize=4020 outsize=1170 ok=1
-Cmd: compileComputeKernel
-  error: 1 plat 4 at Rain3.compute(72): signed/unsigned mismatch, unsigned assumed
-  error: 1 plat 4 at Rain3.compute(86): signed/unsigned mismatch, unsigned assumed
-  api=4 insize=4024 outsize=222 ok=1
-Cmd: compileComputeKernel
-  error: 1 plat 4 at Rain3.compute(72): signed/unsigned mismatch, unsigned assumed
-  error: 1 plat 4 at Rain3.compute(86): signed/unsigned mismatch, unsigned assumed
-  error: 1 plat 4 at Rain3.compute(111): signed/unsigned mismatch, unsigned assumed
-  api=4 insize=4030 outsize=2841 ok=1
-Cmd: compileComputeKernel
-  error: 1 plat 4 at Rain3.compute(72): signed/unsigned mismatch, unsigned assumed
-  error: 1 plat 4 at Rain3.compute(86): signed/unsigned mismatch, unsigned assumed
-  error: 1 plat 4 at Rain3.compute(111): signed/unsigned mismatch, unsigned assumed
-  api=4 insize=4036 outsize=2826 ok=1
-Cmd: compileComputeKernel
-  error: 1 plat 4 at Rain3.compute(72): signed/unsigned mismatch, unsigned assumed
-  error: 1 plat 4 at Rain3.compute(86): signed/unsigned mismatch, unsigned assumed
-  error: 1 plat 4 at Rain3.compute(111): signed/unsigned mismatch, unsigned assumed
-  api=4 insize=4032 outsize=517 ok=1
-Cmd: compileComputeKernel
-  error: 1 plat 4 at Rain3.compute(72): signed/unsigned mismatch, unsigned assumed
-  error: 1 plat 4 at Rain3.compute(86): signed/unsigned mismatch, unsigned assumed
-  error: 1 plat 4 at Rain3.compute(111): signed/unsigned mismatch, unsigned assumed
-  api=4 insize=4009 outsize=2841 ok=1
-Cmd: compileComputeKernel
-  error: 1 plat 4 at Rain3.compute(72): signed/unsigned mismatch, unsigned assumed
-  error: 1 plat 4 at Rain3.compute(86): signed/unsigned mismatch, unsigned assumed
-  error: 1 plat 4 at Rain3.compute(111): signed/unsigned mismatch, unsigned assumed
-  api=4 insize=4013 outsize=894 ok=1
-Cmd: compileComputeKernel
-  error: 1 plat 4 at Rain3.compute(112): signed/unsigned mismatch, unsigned assumed
-  api=4 insize=4019 outsize=1282 ok=1
+Cmd: compileSnippet
+  api=4 type=1 insize=1596 outsize=5590 kw=UNITY_PASS_FORWARDBASE DIRECTIONAL pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_USE_DITHER_MASK_FOR_ALPHABLENDED_SHADOWS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING UNITY_ENABLE_DETAIL_NORMALMAP SHADER_API_DESKTOP UNITY_COLORSPACE_GAMMA UNITY_LIGHT_PROBE_PROXY_VOLUME UNITY_LIGHTMAP_FULL_HDR ok=1
+Cmd: compileSnippet
+  error: 2 plat 4 at (50): undeclared identifier '_Gradient'\nCompiling Fragment program with UNITY_PASS_FORWARDBASE
+Platform defines: UNITY_ENABLE_REFLECTION_BUFFERS UNITY_USE_DITHER_MASK_FOR_ALPHABLENDED_SHADOWS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING UNITY_ENABLE_DETAIL_NORMALMAP SHADER_API_DESKTOP UNITY_COLORSPACE_GAMMA UNITY_LIGHT_PROBE_PROXY_VOLUME UNITY_LIGHTMAP_FULL_HDR
+  api=4 type=1 insize=1834 outsize=0 kw=UNITY_PASS_FORWARDBASE pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_USE_DITHER_MASK_FOR_ALPHABLENDED_SHADOWS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING UNITY_ENABLE_DETAIL_NORMALMAP SHADER_API_DESKTOP UNITY_COLORSPACE_GAMMA UNITY_LIGHT_PROBE_PROXY_VOLUME UNITY_LIGHTMAP_FULL_HDR ok=0
+Cmd: compileSnippet
+  api=4 type=0 insize=20676 outsize=1294 kw=UNITY_PASS_FORWARDBASE DIRECTIONAL pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_USE_DITHER_MASK_FOR_ALPHABLENDED_SHADOWS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING UNITY_ENABLE_DETAIL_NORMALMAP SHADER_API_DESKTOP UNITY_COLORSPACE_GAMMA UNITY_LIGHT_PROBE_PROXY_VOLUME UNITY_LIGHTMAP_FULL_HDR ok=1
 Cmd: compileComputeKernel
   error: 1 plat 4 at Rain3.compute(73): signed/unsigned mismatch, unsigned assumed
   error: 1 plat 4 at Rain3.compute(87): signed/unsigned mismatch, unsigned assumed
   error: 1 plat 4 at Rain3.compute(112): signed/unsigned mismatch, unsigned assumed
-  api=4 insize=4019 outsize=1102 ok=1
-Cmd: compileComputeKernel
-  error: 1 plat 4 at Rain3.compute(73): signed/unsigned mismatch, unsigned assumed
-  error: 1 plat 4 at Rain3.compute(87): signed/unsigned mismatch, unsigned assumed
-  error: 1 plat 4 at Rain3.compute(112): signed/unsigned mismatch, unsigned assumed
-  api=4 insize=4018 outsize=3291 ok=1
-Cmd: compileComputeKernel
-  error: 2 plat 4 at Rain3.compute(22): syntax error: unexpected token ';'
-  error: 2 plat 4 at Rain3.compute(25): syntax error: unexpected token ']'
-  error: 2 plat 4 at Rain3.compute(30): undeclared identifier 'i'
-  api=4 insize=4024 outsize=0 ok=0
-Cmd: compileComputeKernel
-  error: 1 plat 4 at Rain3.compute(73): signed/unsigned mismatch, unsigned assumed
-  error: 1 plat 4 at Rain3.compute(87): signed/unsigned mismatch, unsigned assumed
-  error: 1 plat 4 at Rain3.compute(112): signed/unsigned mismatch, unsigned assumed
-  error: 2 plat 4 at Rain3.compute(117): syntax error: unexpected token '/'
-  error: 2 plat 4 at Rain3.compute(119): undeclared identifier 'i2'
-  api=4 insize=4018 outsize=0 ok=0
-Cmd: compileComputeKernel
-  error: 1 plat 4 at Rain3.compute(73): signed/unsigned mismatch, unsigned assumed
-  error: 1 plat 4 at Rain3.compute(87): signed/unsigned mismatch, unsigned assumed
-  error: 1 plat 4 at Rain3.compute(112): signed/unsigned mismatch, unsigned assumed
-  api=4 insize=4018 outsize=517 ok=1
-Cmd: compileComputeKernel
-  error: 1 plat 4 at Rain3.compute(73): signed/unsigned mismatch, unsigned assumed
-  error: 1 plat 4 at Rain3.compute(87): signed/unsigned mismatch, unsigned assumed
-  error: 1 plat 4 at Rain3.compute(112): signed/unsigned mismatch, unsigned assumed
-  api=4 insize=4018 outsize=517 ok=1
-Cmd: compileComputeKernel
-  error: 1 plat 4 at Rain3.compute(73): signed/unsigned mismatch, unsigned assumed
-  error: 1 plat 4 at Rain3.compute(87): signed/unsigned mismatch, unsigned assumed
-  error: 1 plat 4 at Rain3.compute(112): signed/unsigned mismatch, unsigned assumed
-  api=4 insize=3972 outsize=517 ok=1
-Cmd: compileComputeKernel
-  error: 1 plat 4 at Rain3.compute(73): signed/unsigned mismatch, unsigned assumed
-  error: 1 plat 4 at Rain3.compute(87): signed/unsigned mismatch, unsigned assumed
-  error: 1 plat 4 at Rain3.compute(112): signed/unsigned mismatch, unsigned assumed
-  api=4 insize=3915 outsize=2451 ok=1
-Cmd: compileComputeKernel
-  error: 1 plat 4 at Rain3.compute(73): signed/unsigned mismatch, unsigned assumed
-  error: 1 plat 4 at Rain3.compute(87): signed/unsigned mismatch, unsigned assumed
-  error: 1 plat 4 at Rain3.compute(112): signed/unsigned mismatch, unsigned assumed
-  api=4 insize=4022 outsize=517 ok=1
-Cmd: compileComputeKernel
-  error: 1 plat 4 at Rain3.compute(73): signed/unsigned mismatch, unsigned assumed
-  error: 1 plat 4 at Rain3.compute(87): signed/unsigned mismatch, unsigned assumed
-  error: 1 plat 4 at Rain3.compute(112): signed/unsigned mismatch, unsigned assumed
-  api=4 insize=4020 outsize=1238 ok=1
-Cmd: compileComputeKernel
-  error: 1 plat 4 at Rain3.compute(73): signed/unsigned mismatch, unsigned assumed
-  error: 1 plat 4 at Rain3.compute(87): signed/unsigned mismatch, unsigned assumed
-  error: 1 plat 4 at Rain3.compute(112): signed/unsigned mismatch, unsigned assumed
-  api=4 insize=4028 outsize=2563 ok=1
+  api=4 insize=4028 outsize=2826 ok=1

@@ -22,14 +22,6 @@ public class Editor1 : Editor {
         {
             controller.GeneratePerlinNoise();
         }
-        if (GUILayout.Button("rain"))
-        {
-            controller.RainErosion();
-        }
-        if (GUILayout.Button("rain at"))
-        {
-            controller.RainErosionAt();
-        }
         if (GUILayout.Button("terrain"))
         {
             controller.Terrain();
@@ -63,6 +55,21 @@ public class Editor2 : Editor
         {
             rain3.Realease();
         }
+    }
+}
+
+[CustomEditor(typeof(ColorDesign))]
+public class Editor3 : Editor
+{
+    public override void OnInspectorGUI()
+    {
+        ColorDesign colorDesign = (ColorDesign)target;
+        DrawDefaultInspector();
+        if (GUILayout.Button("Generate"))
+        {
+            colorDesign.generate();
+        }
+
     }
 }
 

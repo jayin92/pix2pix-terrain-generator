@@ -20,8 +20,8 @@ public class Rain3 : MonoBehaviour
             Realease();
         }
         
-        w = c.heightMap.GetLength(0);
-        h = c.heightMap.GetLength(1);
+        w = c.w;
+        h = c.h;
         HeightMap = new ComputeBuffer(w * h, sizeof(float));
         WaterMap= new ComputeBuffer(w * h, sizeof(float));
         f = new ComputeBuffer(w * h, sizeof(float) * 4);
@@ -78,7 +78,7 @@ public class Rain3 : MonoBehaviour
     }
     public void Rain()
     {
-        int gs = 16;
+        int gs = 32;
         for (int i = 0; i < numIterations; i++)
         {
             shader.Dispatch(kernelId[0], w /gs, h / gs, 1);
@@ -94,13 +94,6 @@ public class Rain3 : MonoBehaviour
             for (int y = 0; y < h; y++)
             {
                  c.heightMap[x, y] =Flat[x + y * w];
-            }
-        }
-        for (int x = 0; x < w; x++)
-        {
-            for (int y = 0; y < h; y++)
-            {
-                c.colorMap[x, y] = Color.Lerp(c.perlin.colorOfHeight.Evaluate(c.heightMap[x, y]), Color.cyan, c.rain.d[x, y] * 100.0f * (c.water ? 1 : 0));
             }
         }
         WaterMap.GetData(Flat);
