@@ -6,7 +6,7 @@ public class Rain3 : MonoBehaviour
 {
     public ctrl c;
     public ComputeShader shader;
-    ComputeBuffer HeightMap, b1; float[] Flat; ComputeBuffer WaterMap,d1,f,s,s1;
+    ComputeBuffer HeightMap, b1; float[] Flat; ComputeBuffer WaterMap,d1,f,s,s1,e;
     public int numIterations = 10;
     public float KRain = 1, KCapacity = 1, A = 1, Kdmax = 1, KS = 1, KD = 1, RMin = 0.5f, KH = 1, KEvaporation = 0.1f, KMove = 10, drag = 0.1f, maxV = 0.01f,deltaT=0.1f;
     public int w = 256, h = 256;
@@ -29,9 +29,11 @@ public class Rain3 : MonoBehaviour
         b1 = new ComputeBuffer(w * h, sizeof(float));
         d1 = new ComputeBuffer(w * h, sizeof(float));
         s1 = new ComputeBuffer(w * h, sizeof(float));
+        e = new ComputeBuffer(w * h, sizeof(float)*4);
         Flat = new float[w * h];
         s.SetData(Flat);
         s1.SetData(Flat);
+        
         for (int x = 0; x < w; x++)
         {
             for (int y = 0; y < h; y++)
@@ -53,6 +55,7 @@ public class Rain3 : MonoBehaviour
         f_data = new Vector4[w * h];
         for (int i = 0; i < w * h; i++) f_data[i] = new Vector4();
         f.SetData(f_data);
+        e.SetData(f_data);
 
         kernelId[0] = shader.FindKernel("Rain");
         kernelId[1] = shader.FindKernel("CalculateFlux");
@@ -69,6 +72,7 @@ public class Rain3 : MonoBehaviour
             shader.SetBuffer(kernelId[i], "d1", d1);
             shader.SetBuffer(kernelId[i], "s1", s1);
             shader.SetBuffer(kernelId[i], "d", WaterMap);
+            shader.SetBuffer(kernelId[i], "e", e);
         }
 
 
