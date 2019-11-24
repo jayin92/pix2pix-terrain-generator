@@ -1,51 +1,8 @@
-Base path: 'C:/Program Files/Unity/Hub/Editor/2019.2.11f1/Editor/Data', plugins path 'C:/Program Files/Unity/Hub/Editor/2019.2.11f1/Editor/Data/PlaybackEngines'
+Base path: 'C:/Program Files/Unity/Hub/Editor/2019.2.10f1/Editor/Data', plugins path 'C:/Program Files/Unity/Hub/Editor/2019.2.10f1/Editor/Data/PlaybackEngines'
 Cmd: initializeCompiler
-Cmd: compileComputeKernel
-  error: 1 plat 4 at Rain3.compute(73): signed/unsigned mismatch, unsigned assumed
-  error: 1 plat 4 at Rain3.compute(87): signed/unsigned mismatch, unsigned assumed
-  error: 1 plat 4 at Rain3.compute(112): signed/unsigned mismatch, unsigned assumed
-  api=4 insize=4027 outsize=2826 ok=1
-Cmd: compileComputeKernel
-  error: 1 plat 4 at Rain3.compute(73): signed/unsigned mismatch, unsigned assumed
-  error: 1 plat 4 at Rain3.compute(87): signed/unsigned mismatch, unsigned assumed
-  error: 1 plat 4 at Rain3.compute(112): signed/unsigned mismatch, unsigned assumed
-  error: 2 plat 4 at Rain3.compute(136): the product of the arguments of numthreads(64,64,1) must be less than or equal to 1024
-  api=4 insize=4028 outsize=0 ok=0
-Cmd: compileComputeKernel
-  error: 1 plat 4 at Rain3.compute(73): signed/unsigned mismatch, unsigned assumed
-  error: 1 plat 4 at Rain3.compute(87): signed/unsigned mismatch, unsigned assumed
-  error: 1 plat 4 at Rain3.compute(112): signed/unsigned mismatch, unsigned assumed
-  api=4 insize=4018 outsize=2563 ok=1
-Cmd: compileComputeKernel
-  error: 1 plat 4 at Rain3.compute(73): signed/unsigned mismatch, unsigned assumed
-  error: 1 plat 4 at Rain3.compute(87): signed/unsigned mismatch, unsigned assumed
-  error: 1 plat 4 at Rain3.compute(112): signed/unsigned mismatch, unsigned assumed
-  api=4 insize=4024 outsize=2826 ok=1
-Cmd: compileComputeKernel
-  error: 1 plat 4 at Rain3.compute(73): signed/unsigned mismatch, unsigned assumed
-  error: 1 plat 4 at Rain3.compute(87): signed/unsigned mismatch, unsigned assumed
-  error: 1 plat 4 at Rain3.compute(112): signed/unsigned mismatch, unsigned assumed
-  api=4 insize=4020 outsize=2563 ok=1
-Cmd: compileComputeKernel
-  error: 1 plat 4 at Rain3.compute(73): signed/unsigned mismatch, unsigned assumed
-  error: 1 plat 4 at Rain3.compute(87): signed/unsigned mismatch, unsigned assumed
-  error: 1 plat 4 at Rain3.compute(112): signed/unsigned mismatch, unsigned assumed
-  api=4 insize=4022 outsize=1234 ok=1
-Cmd: compileComputeKernel
-  error: 1 plat 4 at Rain3.compute(73): signed/unsigned mismatch, unsigned assumed
-  error: 1 plat 4 at Rain3.compute(87): signed/unsigned mismatch, unsigned assumed
-  error: 1 plat 4 at Rain3.compute(113): signed/unsigned mismatch, unsigned assumed
-  error: 1 plat 4 at Rain3.compute(138): implicit truncation of vector type
-  error: 1 plat 4 at Rain3.compute(139): implicit truncation of vector type
-  error: 1 plat 4 at Rain3.compute(140): implicit truncation of vector type
-  api=4 insize=4013 outsize=2826 ok=1
-Cmd: compileComputeKernel
-  error: 1 plat 4 at Rain3.compute(73): signed/unsigned mismatch, unsigned assumed
-  error: 1 plat 4 at Rain3.compute(87): signed/unsigned mismatch, unsigned assumed
-  error: 1 plat 4 at Rain3.compute(116): signed/unsigned mismatch, unsigned assumed
-  api=4 insize=4204 outsize=2025 ok=1
-Cmd: compileComputeKernel
-  error: 1 plat 4 at Rain3.compute(73): signed/unsigned mismatch, unsigned assumed
-  error: 1 plat 4 at Rain3.compute(87): signed/unsigned mismatch, unsigned assumed
-  error: 1 plat 4 at Rain3.compute(116): signed/unsigned mismatch, unsigned assumed
-  api=4 insize=4188 outsize=602 ok=1
+Cmd: compileSnippet
+  api=4 type=0 insize=1596 outsize=2002 kw=UNITY_PASS_FORWARDBASE DIRECTIONAL SHADOWS_SCREEN LIGHTPROBE_SH pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_USE_DITHER_MASK_FOR_ALPHABLENDED_SHADOWS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING UNITY_ENABLE_DETAIL_NORMALMAP SHADER_API_DESKTOP UNITY_COLORSPACE_GAMMA UNITY_LIGHT_PROBE_PROXY_VOLUME UNITY_LIGHTMAP_FULL_HDR ok=1
+Cmd: compileSnippet
+  error: 2 plat 4 at (65): undeclared identifier '_Gradient'\nCompiling Fragment program with UNITY_PASS_FORWARDBASE
+Platform defines: UNITY_ENABLE_REFLECTION_BUFFERS UNITY_USE_DITHER_MASK_FOR_ALPHABLENDED_SHADOWS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING UNITY_ENABLE_DETAIL_NORMALMAP SHADER_API_DESKTOP UNITY_COLORSPACE_GAMMA UNITY_LIGHT_PROBE_PROXY_VOLUME UNITY_LIGHTMAP_FULL_HDR
+  api=4 type=1 insize=1933 outsize=0 kw=UNITY_PASS_FORWARDBASE pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_USE_DITHER_MASK_FOR_ALPHABLENDED_SHADOWS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING UNITY_ENABLE_DETAIL_NORMALMAP SHADER_API_DESKTOP UNITY_COLORSPACE_GAMMA UNITY_LIGHT_PROBE_PROXY_VOLUME UNITY_LIGHTMAP_FULL_HDR ok=0

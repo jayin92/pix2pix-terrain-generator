@@ -1,107 +1,68 @@
-Base path: 'C:/Program Files/Unity/Hub/Editor/2019.2.11f1/Editor/Data', plugins path 'C:/Program Files/Unity/Hub/Editor/2019.2.11f1/Editor/Data/PlaybackEngines'
+Base path: 'C:/Program Files/Unity/Hub/Editor/2019.2.10f1/Editor/Data', plugins path 'C:/Program Files/Unity/Hub/Editor/2019.2.10f1/Editor/Data/PlaybackEngines'
 Cmd: initializeCompiler
 Cmd: preprocess
   insize=1902 outsize=376 ok=1
 Cmd: preprocess
-  insize=1757 outsize=368 ok=1
-Cmd: preprocessCompute
-  insize=4018 outsize=4027 ok=1
-Cmd: compileComputeKernel
-  error: 1 plat 4 at Rain3.compute(73): signed/unsigned mismatch, unsigned assumed
-  error: 1 plat 4 at Rain3.compute(87): signed/unsigned mismatch, unsigned assumed
-  error: 1 plat 4 at Rain3.compute(112): signed/unsigned mismatch, unsigned assumed
-  api=4 insize=4027 outsize=682 ok=1
-Cmd: preprocessCompute
-  insize=4019 outsize=4028 ok=1
-Cmd: preprocessCompute
-  insize=4019 outsize=4028 ok=1
-Cmd: compileComputeKernel
-  error: 2 plat 4 at Rain3.compute(19): the product of the arguments of numthreads(64,64,1) must be less than or equal to 1024
-  error: 1 plat 4 at Rain3.compute(73): signed/unsigned mismatch, unsigned assumed
-  error: 1 plat 4 at Rain3.compute(87): signed/unsigned mismatch, unsigned assumed
-  error: 1 plat 4 at Rain3.compute(112): signed/unsigned mismatch, unsigned assumed
-  api=4 insize=4028 outsize=0 ok=0
-Cmd: preprocessCompute
-  insize=4019 outsize=4028 ok=1
-Cmd: preprocessCompute
-  insize=4009 outsize=4018 ok=1
-Cmd: compileComputeKernel
-  error: 1 plat 4 at Rain3.compute(73): signed/unsigned mismatch, unsigned assumed
-  error: 1 plat 4 at Rain3.compute(87): signed/unsigned mismatch, unsigned assumed
-  error: 1 plat 4 at Rain3.compute(112): signed/unsigned mismatch, unsigned assumed
-  api=4 insize=4018 outsize=682 ok=1
-Cmd: preprocessCompute
-  insize=4015 outsize=4024 ok=1
-Cmd: compileComputeKernel
-  error: 1 plat 4 at Rain3.compute(73): signed/unsigned mismatch, unsigned assumed
-  error: 1 plat 4 at Rain3.compute(87): signed/unsigned mismatch, unsigned assumed
-  error: 1 plat 4 at Rain3.compute(112): signed/unsigned mismatch, unsigned assumed
-  api=4 insize=4024 outsize=682 ok=1
-Cmd: preprocessCompute
-  insize=4011 outsize=4020 ok=1
-Cmd: compileComputeKernel
-  error: 1 plat 4 at Rain3.compute(73): signed/unsigned mismatch, unsigned assumed
-  error: 1 plat 4 at Rain3.compute(87): signed/unsigned mismatch, unsigned assumed
-  error: 1 plat 4 at Rain3.compute(112): signed/unsigned mismatch, unsigned assumed
-  api=4 insize=4020 outsize=682 ok=1
-Cmd: preprocessCompute
-  insize=4011 outsize=4020 ok=1
-Cmd: compileComputeKernel
-  error: 1 plat 4 at Rain3.compute(73): signed/unsigned mismatch, unsigned assumed
-  error: 1 plat 4 at Rain3.compute(87): signed/unsigned mismatch, unsigned assumed
-  error: 1 plat 4 at Rain3.compute(112): signed/unsigned mismatch, unsigned assumed
-  api=4 insize=4020 outsize=682 ok=1
-Cmd: preprocessCompute
-  insize=4013 outsize=4022 ok=1
-Cmd: compileComputeKernel
-  error: 1 plat 4 at Rain3.compute(73): signed/unsigned mismatch, unsigned assumed
-  error: 1 plat 4 at Rain3.compute(87): signed/unsigned mismatch, unsigned assumed
-  error: 1 plat 4 at Rain3.compute(112): signed/unsigned mismatch, unsigned assumed
-  api=4 insize=4022 outsize=682 ok=1
-Cmd: preprocessCompute
-  insize=4004 outsize=4013 ok=1
-Cmd: compileComputeKernel
-  error: 1 plat 4 at Rain3.compute(73): signed/unsigned mismatch, unsigned assumed
-  error: 1 plat 4 at Rain3.compute(87): signed/unsigned mismatch, unsigned assumed
-  error: 1 plat 4 at Rain3.compute(113): signed/unsigned mismatch, unsigned assumed
-  api=4 insize=4013 outsize=682 ok=1
-Cmd: preprocessCompute
-  insize=4004 outsize=4013 ok=1
-Cmd: compileComputeKernel
-  error: 1 plat 4 at Rain3.compute(73): signed/unsigned mismatch, unsigned assumed
-  error: 1 plat 4 at Rain3.compute(87): signed/unsigned mismatch, unsigned assumed
-  error: 1 plat 4 at Rain3.compute(113): signed/unsigned mismatch, unsigned assumed
-  error: 1 plat 4 at Rain3.compute(138): implicit truncation of vector type
-  error: 1 plat 4 at Rain3.compute(139): implicit truncation of vector type
-  error: 1 plat 4 at Rain3.compute(140): implicit truncation of vector type
-  api=4 insize=4013 outsize=682 ok=1
-Cmd: preprocessCompute
-  insize=4195 outsize=4204 ok=1
-Cmd: compileComputeKernel
-  error: 1 plat 4 at Rain3.compute(73): signed/unsigned mismatch, unsigned assumed
-  error: 1 plat 4 at Rain3.compute(87): signed/unsigned mismatch, unsigned assumed
-  error: 1 plat 4 at Rain3.compute(116): signed/unsigned mismatch, unsigned assumed
-  api=4 insize=4204 outsize=682 ok=1
-Cmd: preprocessCompute
-  insize=4179 outsize=4188 ok=1
-Cmd: compileComputeKernel
-  error: 1 plat 4 at Rain3.compute(73): signed/unsigned mismatch, unsigned assumed
-  error: 1 plat 4 at Rain3.compute(87): signed/unsigned mismatch, unsigned assumed
-  error: 1 plat 4 at Rain3.compute(116): signed/unsigned mismatch, unsigned assumed
-  api=4 insize=4188 outsize=682 ok=1
-Cmd: preprocessCompute
-  insize=4181 outsize=4190 ok=1
-Cmd: compileComputeKernel
-  error: 1 plat 4 at Rain3.compute(73): signed/unsigned mismatch, unsigned assumed
-  error: 1 plat 4 at Rain3.compute(87): signed/unsigned mismatch, unsigned assumed
-  error: 1 plat 4 at Rain3.compute(116): signed/unsigned mismatch, unsigned assumed
-  api=4 insize=4190 outsize=682 ok=1
-Cmd: preprocessCompute
-  insize=4065 outsize=4074 ok=1
-Cmd: compileComputeKernel
-  error: 1 plat 4 at Rain3.compute(73): signed/unsigned mismatch, unsigned assumed
-  error: 1 plat 4 at Rain3.compute(87): signed/unsigned mismatch, unsigned assumed
-  error: 1 plat 4 at Rain3.compute(116): signed/unsigned mismatch, unsigned assumed
-  api=4 insize=4074 outsize=682 ok=1
-Cmd: preprocess
   insize=1403 outsize=283 ok=1
+Cmd: preprocess
+  insize=1757 outsize=368 ok=1
+Cmd: preprocess
+  insize=1165 outsize=283 ok=1
+Cmd: compileSnippet
+  api=4 type=0 insize=1320 outsize=690 kw= pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_USE_DITHER_MASK_FOR_ALPHABLENDED_SHADOWS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING UNITY_ENABLE_DETAIL_NORMALMAP SHADER_API_DESKTOP UNITY_COLORSPACE_GAMMA UNITY_LIGHT_PROBE_PROXY_VOLUME UNITY_LIGHTMAP_FULL_HDR ok=1
+Cmd: compileSnippet
+  api=4 type=1 insize=1320 outsize=298 kw= pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_USE_DITHER_MASK_FOR_ALPHABLENDED_SHADOWS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING UNITY_ENABLE_DETAIL_NORMALMAP SHADER_API_DESKTOP UNITY_COLORSPACE_GAMMA UNITY_LIGHT_PROBE_PROXY_VOLUME UNITY_LIGHTMAP_FULL_HDR ok=1
+Cmd: preprocess
+  insize=1899 outsize=373 ok=1
+Cmd: preprocess
+  insize=1899 outsize=373 ok=1
+Cmd: preprocess
+  insize=2029 outsize=534 ok=1
+Cmd: compileSnippet
+  error: 2 plat 4 at (65): undeclared identifier '_Gradient'\nCompiling Vertex program with UNITY_PASS_FORWARDBASE
+Platform defines: UNITY_ENABLE_REFLECTION_BUFFERS UNITY_USE_DITHER_MASK_FOR_ALPHABLENDED_SHADOWS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING UNITY_ENABLE_DETAIL_NORMALMAP SHADER_API_DESKTOP UNITY_COLORSPACE_GAMMA UNITY_LIGHT_PROBE_PROXY_VOLUME UNITY_LIGHTMAP_FULL_HDR
+  api=4 type=0 insize=1933 outsize=0 kw=UNITY_PASS_FORWARDBASE pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_USE_DITHER_MASK_FOR_ALPHABLENDED_SHADOWS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING UNITY_ENABLE_DETAIL_NORMALMAP SHADER_API_DESKTOP UNITY_COLORSPACE_GAMMA UNITY_LIGHT_PROBE_PROXY_VOLUME UNITY_LIGHTMAP_FULL_HDR ok=0
+Cmd: compileSnippet
+  error: 2 plat 4 at (65): undeclared identifier '_Gradient'\nCompiling Vertex program with UNITY_PASS_FORWARDBASE
+Platform defines: UNITY_ENABLE_REFLECTION_BUFFERS UNITY_USE_DITHER_MASK_FOR_ALPHABLENDED_SHADOWS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING UNITY_ENABLE_DETAIL_NORMALMAP SHADER_API_DESKTOP UNITY_COLORSPACE_GAMMA UNITY_LIGHT_PROBE_PROXY_VOLUME UNITY_LIGHTMAP_FULL_HDR
+  api=4 type=0 insize=1933 outsize=0 kw=UNITY_PASS_FORWARDBASE pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_USE_DITHER_MASK_FOR_ALPHABLENDED_SHADOWS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING UNITY_ENABLE_DETAIL_NORMALMAP SHADER_API_DESKTOP UNITY_COLORSPACE_GAMMA UNITY_LIGHT_PROBE_PROXY_VOLUME UNITY_LIGHTMAP_FULL_HDR ok=0
+Cmd: compileSnippet
+  error: 2 plat 4 at (65): undeclared identifier '_Gradient'\nCompiling Fragment program with UNITY_PASS_FORWARDBASE
+Platform defines: UNITY_ENABLE_REFLECTION_BUFFERS UNITY_USE_DITHER_MASK_FOR_ALPHABLENDED_SHADOWS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING UNITY_ENABLE_DETAIL_NORMALMAP SHADER_API_DESKTOP UNITY_COLORSPACE_GAMMA UNITY_LIGHT_PROBE_PROXY_VOLUME UNITY_LIGHTMAP_FULL_HDR
+  api=4 type=1 insize=1933 outsize=0 kw=UNITY_PASS_FORWARDBASE pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_USE_DITHER_MASK_FOR_ALPHABLENDED_SHADOWS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING UNITY_ENABLE_DETAIL_NORMALMAP SHADER_API_DESKTOP UNITY_COLORSPACE_GAMMA UNITY_LIGHT_PROBE_PROXY_VOLUME UNITY_LIGHTMAP_FULL_HDR ok=0
+Cmd: preprocess
+  insize=1958 outsize=534 ok=1
+Cmd: compileSnippet
+  error: 2 plat 4 at (65): 'pow': no matching 0 parameter intrinsic function; Possible intrinsic functions are: pow(float|half|min10float|min16float, float|half|min10float|min16float)\nCompiling Vertex program with UNITY_PASS_FORWARDBASE
+Platform defines: UNITY_ENABLE_REFLECTION_BUFFERS UNITY_USE_DITHER_MASK_FOR_ALPHABLENDED_SHADOWS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING UNITY_ENABLE_DETAIL_NORMALMAP SHADER_API_DESKTOP UNITY_COLORSPACE_GAMMA UNITY_LIGHT_PROBE_PROXY_VOLUME UNITY_LIGHTMAP_FULL_HDR
+  error: 2 plat 4 at (65): syntax error: unexpected token ';'\nCompiling Vertex program with UNITY_PASS_FORWARDBASE
+Platform defines: UNITY_ENABLE_REFLECTION_BUFFERS UNITY_USE_DITHER_MASK_FOR_ALPHABLENDED_SHADOWS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING UNITY_ENABLE_DETAIL_NORMALMAP SHADER_API_DESKTOP UNITY_COLORSPACE_GAMMA UNITY_LIGHT_PROBE_PROXY_VOLUME UNITY_LIGHTMAP_FULL_HDR
+  api=4 type=0 insize=1862 outsize=0 kw=UNITY_PASS_FORWARDBASE pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_USE_DITHER_MASK_FOR_ALPHABLENDED_SHADOWS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING UNITY_ENABLE_DETAIL_NORMALMAP SHADER_API_DESKTOP UNITY_COLORSPACE_GAMMA UNITY_LIGHT_PROBE_PROXY_VOLUME UNITY_LIGHTMAP_FULL_HDR ok=0
+Cmd: compileSnippet
+  error: 2 plat 4 at (65): 'pow': no matching 0 parameter intrinsic function; Possible intrinsic functions are: pow(float|half|min10float|min16float, float|half|min10float|min16float)\nCompiling Vertex program with UNITY_PASS_FORWARDBASE
+Platform defines: UNITY_ENABLE_REFLECTION_BUFFERS UNITY_USE_DITHER_MASK_FOR_ALPHABLENDED_SHADOWS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING UNITY_ENABLE_DETAIL_NORMALMAP SHADER_API_DESKTOP UNITY_COLORSPACE_GAMMA UNITY_LIGHT_PROBE_PROXY_VOLUME UNITY_LIGHTMAP_FULL_HDR
+  error: 2 plat 4 at (65): syntax error: unexpected token ';'\nCompiling Vertex program with UNITY_PASS_FORWARDBASE
+Platform defines: UNITY_ENABLE_REFLECTION_BUFFERS UNITY_USE_DITHER_MASK_FOR_ALPHABLENDED_SHADOWS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING UNITY_ENABLE_DETAIL_NORMALMAP SHADER_API_DESKTOP UNITY_COLORSPACE_GAMMA UNITY_LIGHT_PROBE_PROXY_VOLUME UNITY_LIGHTMAP_FULL_HDR
+  api=4 type=0 insize=1862 outsize=0 kw=UNITY_PASS_FORWARDBASE pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_USE_DITHER_MASK_FOR_ALPHABLENDED_SHADOWS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING UNITY_ENABLE_DETAIL_NORMALMAP SHADER_API_DESKTOP UNITY_COLORSPACE_GAMMA UNITY_LIGHT_PROBE_PROXY_VOLUME UNITY_LIGHTMAP_FULL_HDR ok=0
+Cmd: compileSnippet
+  error: 2 plat 4 at (65): 'pow': no matching 0 parameter intrinsic function; Possible intrinsic functions are: pow(float|half|min10float|min16float, float|half|min10float|min16float)\nCompiling Fragment program with UNITY_PASS_FORWARDBASE
+Platform defines: UNITY_ENABLE_REFLECTION_BUFFERS UNITY_USE_DITHER_MASK_FOR_ALPHABLENDED_SHADOWS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING UNITY_ENABLE_DETAIL_NORMALMAP SHADER_API_DESKTOP UNITY_COLORSPACE_GAMMA UNITY_LIGHT_PROBE_PROXY_VOLUME UNITY_LIGHTMAP_FULL_HDR
+  error: 2 plat 4 at (65): syntax error: unexpected token ';'\nCompiling Fragment program with UNITY_PASS_FORWARDBASE
+Platform defines: UNITY_ENABLE_REFLECTION_BUFFERS UNITY_USE_DITHER_MASK_FOR_ALPHABLENDED_SHADOWS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING UNITY_ENABLE_DETAIL_NORMALMAP SHADER_API_DESKTOP UNITY_COLORSPACE_GAMMA UNITY_LIGHT_PROBE_PROXY_VOLUME UNITY_LIGHTMAP_FULL_HDR
+  api=4 type=1 insize=1862 outsize=0 kw=UNITY_PASS_FORWARDBASE pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_USE_DITHER_MASK_FOR_ALPHABLENDED_SHADOWS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING UNITY_ENABLE_DETAIL_NORMALMAP SHADER_API_DESKTOP UNITY_COLORSPACE_GAMMA UNITY_LIGHT_PROBE_PROXY_VOLUME UNITY_LIGHTMAP_FULL_HDR ok=0
+Cmd: preprocess
+  insize=1959 outsize=534 ok=1
+Cmd: compileSnippet
+  api=4 type=0 insize=1863 outsize=798 kw=UNITY_PASS_FORWARDBASE pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_USE_DITHER_MASK_FOR_ALPHABLENDED_SHADOWS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING UNITY_ENABLE_DETAIL_NORMALMAP SHADER_API_DESKTOP UNITY_COLORSPACE_GAMMA UNITY_LIGHT_PROBE_PROXY_VOLUME UNITY_LIGHTMAP_FULL_HDR ok=1
+Cmd: compileSnippet
+  api=4 type=1 insize=1863 outsize=1174 kw=UNITY_PASS_FORWARDBASE pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_USE_DITHER_MASK_FOR_ALPHABLENDED_SHADOWS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING UNITY_ENABLE_DETAIL_NORMALMAP SHADER_API_DESKTOP UNITY_COLORSPACE_GAMMA UNITY_LIGHT_PROBE_PROXY_VOLUME UNITY_LIGHTMAP_FULL_HDR ok=1
+Cmd: preprocess
+  insize=1994 outsize=569 ok=1
+Cmd: preprocess
+  insize=1994 outsize=569 ok=1
+Cmd: preprocess
+  insize=1998 outsize=569 ok=1
+Cmd: compileSnippet
+  api=4 type=0 insize=1867 outsize=798 kw=UNITY_PASS_FORWARDBASE pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_USE_DITHER_MASK_FOR_ALPHABLENDED_SHADOWS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING UNITY_ENABLE_DETAIL_NORMALMAP SHADER_API_DESKTOP UNITY_COLORSPACE_GAMMA UNITY_LIGHT_PROBE_PROXY_VOLUME UNITY_LIGHTMAP_FULL_HDR ok=1
+Cmd: compileSnippet
+  api=4 type=1 insize=1867 outsize=1174 kw=UNITY_PASS_FORWARDBASE pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_USE_DITHER_MASK_FOR_ALPHABLENDED_SHADOWS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING UNITY_ENABLE_DETAIL_NORMALMAP SHADER_API_DESKTOP UNITY_COLORSPACE_GAMMA UNITY_LIGHT_PROBE_PROXY_VOLUME UNITY_LIGHTMAP_FULL_HDR ok=1
