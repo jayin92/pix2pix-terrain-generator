@@ -5,6 +5,7 @@ public class Display3d : MonoBehaviour {
     public MeshRenderer meshRenderer;
     public Material forRealColor, forGeneratedColor;
 
+
 	public void Display(float [,] heightmap,Color[,] colormap)
     {
 
@@ -66,10 +67,10 @@ public class Display3d : MonoBehaviour {
             texture.SetPixels(colormap_);
             texture.Apply();
             meshRenderer = GetComponent<MeshRenderer>();
-            var tempMaterial =forRealColor;
+            var tempMaterial =new Material( forRealColor);
             texture.wrapMode = TextureWrapMode.Clamp;
             texture.filterMode = FilterMode.Point;
-            tempMaterial.mainTexture = texture;
+            tempMaterial.SetTexture("_Texture", texture);
             meshRenderer.material = tempMaterial;
         }
         else

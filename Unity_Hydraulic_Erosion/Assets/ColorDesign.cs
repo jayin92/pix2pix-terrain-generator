@@ -26,8 +26,5 @@ public class ColorDesign : MonoBehaviour
         texture.Apply();
         texture.wrapMode = TextureWrapMode.Clamp;
         targetMaterial.SetTexture("_Gradient", texture);
-
     }
-
-
 }

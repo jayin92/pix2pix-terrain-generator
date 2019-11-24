@@ -11,7 +11,7 @@ Shader "Unlit/s1"
 	}
 		SubShader
 	{
-		Tags { "LightMode" = "ForwardBase" }
+		
 
 		Pass
 		{
@@ -50,6 +50,7 @@ Shader "Unlit/s1"
 			fixed4 frag(v2f i) : SV_Target
 			{
 				fixed3 albedo = tex2D(_Gradient,fixed2(i.wpos.y*_YScale,i.wnorm.y)).rgb;
+			
 				fixed3 ambient = UNITY_LIGHTMODEL_AMBIENT.xyz;
 				fixed3 worldNormal = normalize(i.wnorm);
 				fixed3 worldLightDir = normalize(_WorldSpaceLightPos0.xyz);
@@ -57,8 +58,8 @@ Shader "Unlit/s1"
 				fixed3 reflectDir = normalize(reflect(-worldLightDir, worldNormal));
 				fixed3 viewDir = normalize(_WorldSpaceCameraPos.xyz - i.wpos.xyz);
 				fixed3 specular = _LightColor0.rgb * _Specular.rgb * pow(saturate(dot(reflectDir, viewDir)), _Gloss* tex2D(_Gradient, fixed2(i.wpos.y * _YScale, i.wpos.y * _YScale)).a  );
-
-                return fixed4((ambient+diffuse+specular)*albedo,1.0);
+				
+                return fixed4(albedo,1.0);
             }
             ENDCG
         }
