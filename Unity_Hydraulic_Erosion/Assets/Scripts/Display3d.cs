@@ -1,16 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Display3d : MonoBehaviour {
-    public float height=10;
-    public float sea = 1;
     public MeshFilter meshFilter;
     public MeshRenderer meshRenderer;
-    public Gradient gradient;
- 
-    
- 
+    public Material forRealColor, forGeneratedColor;
+
 
 	public void Display(float [,] heightmap,Color[,] colormap)
     {
@@ -23,7 +17,7 @@ public class Display3d : MonoBehaviour {
         {
             for(int y = 0; y < h; y++)
             {
-                vertices[x + y * w] = new Vector3(x, heightmap[x, y]* height, y);
+                vertices[x + y * w] = new Vector3(x, heightmap[x, y], y);
             }
         }
         mesh.vertices = vertices;
@@ -58,26 +52,32 @@ public class Display3d : MonoBehaviour {
         mesh.uv = uvs;
         mesh.RecalculateNormals();
         meshFilter.mesh = mesh;
-
-        Color[] colormap_ = new Color[w * h];
-        for (int x = 0; x < w; x++)
+        if (colormap != null)
         {
-            for (int y = 0; y < h; y++)
+            Color[] colormap_ = new Color[w * h];
+            for (int x = 0; x < w; x++)
             {
-                colormap_[x + y * w] = colormap[x, y];
+                for (int y = 0; y < h; y++)
+                {
+                    colormap_[x + y * w] = colormap[x, y];
+                }
             }
+
+            Texture2D texture = new Texture2D(w, h);
+            texture.SetPixels(colormap_);
+            texture.Apply();
+            meshRenderer = GetComponent<MeshRenderer>();
+            var tempMaterial =new Material( forRealColor);
+            texture.wrapMode = TextureWrapMode.Clamp;
+            texture.filterMode = FilterMode.Point;
+            tempMaterial.SetTexture("_Texture", texture);
+            meshRenderer.material = tempMaterial;
         }
-        
-        Texture2D texture = new Texture2D(w, h);
-        texture.SetPixels(colormap_);
-        texture.Apply();
-        meshRenderer = GetComponent<MeshRenderer>();
-        var tempMaterial = new Material(meshRenderer.sharedMaterial);
-        texture.wrapMode = TextureWrapMode.Clamp;
-        texture.filterMode = FilterMode.Point;
-        tempMaterial.mainTexture = texture;
-        
-        meshRenderer.sharedMaterial = tempMaterial;
+        else
+        {
+            meshRenderer = GetComponent<MeshRenderer>();
+            meshRenderer.material = forGeneratedColor;
+        }
     }
 }
 
