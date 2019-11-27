@@ -7,9 +7,26 @@ public class Display3d : MonoBehaviour
     public Material forRealColor, forGeneratedColor, water;
 
 
+    public void DrawTerrain(float[,] heightmap)
+    {
+        GetComponent<MeshRenderer>().material = forGeneratedColor;
+        SetMesh(heightmap);
+    }
+
+    public void DrawTerrainWithRealColor(float[,] heightmap, Color[,] colormap)
+    {
+        SetMesh(heightmap);
+        SetColor(colormap);
+    }
+
+    public void DrawWater(float[,] heightmap)
+    {
+        GetComponent<MeshRenderer>().material = water;
+        SetMesh(heightmap);
+    }
+
     public void SetColor(Color[,] colormap)
     {
-
         int w = colormap.GetLength(0), h = colormap.GetLength(1);
         Color[] colormap_ = new Color[w * h];
         for (int x = 0; x < w; x++)
@@ -33,7 +50,7 @@ public class Display3d : MonoBehaviour
 
 
 
-    private void SetMesh(float[,] heightmap)
+    public void SetMesh(float[,] heightmap)
     {
         Mesh mesh = new Mesh();
         int w = heightmap.GetLength(0), h = heightmap.GetLength(1);
@@ -78,6 +95,6 @@ public class Display3d : MonoBehaviour
         mesh.uv = uvs;
         mesh.RecalculateNormals();
         meshFilter.mesh = mesh;
-        GetComponent<MeshRenderer>().material = forGeneratedColor;
+        
     }
 }

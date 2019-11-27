@@ -11,6 +11,8 @@ public class ctrl : MonoBehaviour {
     public Color[,] colorMap=null;
     public Texture2D texure_h,texure_c;
     public int chunkSize=100;
+    public bool water;
+
 
     public int w, h;
     [System.Serializable]
@@ -96,7 +98,7 @@ public class ctrl : MonoBehaviour {
         waterMap = new float[w, h];
         Display3D();
     }
-    public bool water;
+
 
     public void Display3D()
     {
@@ -112,15 +114,15 @@ public class ctrl : MonoBehaviour {
                 for (int j = 0; j < chunk_n[1]; j++)
                 {
                     float[,] ChunkHeight = new float[Mathf.Min(chunkSize + 1, w - i * chunkSize), Mathf.Min(chunkSize + 1, h - j * chunkSize)];
-                    for (int x =  0; x < ChunkHeight.GetLength(0); x++)
+                    for (int x = 0; x < ChunkHeight.GetLength(0); x++)
                     {
                         for (int y = 0; y < ChunkHeight.GetLength(1); y++)
                         {
                             ChunkHeight[x, y] = heightMap[x + i * chunkSize, y + j * chunkSize];
                         }
                     }
-                    GameObject newChunk = Instantiate(chunkPrefab, transform.position+ new Vector3(i * chunkSize, 0, j * chunkSize), new Quaternion(0, 0, 0, 1), chunkParent.transform);
-                    newChunk.GetComponent<Display3d>().Display(ChunkHeight,null);
+                    GameObject newChunk = Instantiate(chunkPrefab, transform.position + new Vector3(i * chunkSize, 0, j * chunkSize), new Quaternion(0, 0, 0, 1), chunkParent.transform);
+                    newChunk.GetComponent<Display3d>().DrawTerrain(ChunkHeight);
                 }
         else
             for (int i = 0; i < chunk_n[0]; i++)
@@ -137,7 +139,22 @@ public class ctrl : MonoBehaviour {
                         }
                     }
                     GameObject newChunk = Instantiate(chunkPrefab, transform.position + new Vector3(i * chunkSize, 0, j * chunkSize), new Quaternion(0, 0, 0, 1), chunkParent.transform);
-                    newChunk.GetComponent<Display3d>().Display(ChunkHeight, ChunkColor);
+                    newChunk.GetComponent<Display3d>().DrawTerrainWithRealColor(ChunkHeight,ChunkColor);
+                }
+        if (water)
+            for (int i = 0; i < chunk_n[0]; i++)
+                for (int j = 0; j < chunk_n[1]; j++)
+                {
+                    float[,] ChunkWater = new float[Mathf.Min(chunkSize + 1, w - i * chunkSize), Mathf.Min(chunkSize + 1, h - j * chunkSize)];
+                    for (int x = 0; x < ChunkWater.GetLength(0); x++)
+                    {
+                        for (int y = 0; y < ChunkWater.GetLength(1); y++)
+                        {
+                            ChunkWater[x, y] = waterMap[x + i * chunkSize, y + j * chunkSize]+ heightMap[x + i * chunkSize, y + j * chunkSize];
+                        }
+                    }
+                    GameObject newChunk = Instantiate(chunkPrefab, transform.position + new Vector3(i * chunkSize, 0, j * chunkSize), new Quaternion(0, 0, 0, 1), chunkParent.transform);
+                    newChunk.GetComponent<Display3d>().DrawWater(ChunkWater);
                 }
     }
     public void ToImage()

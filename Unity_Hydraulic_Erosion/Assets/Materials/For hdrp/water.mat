@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: water
-  m_Shader: {fileID: -6465566751694194690, guid: 128d1e1ec75f6af4dbc9a177c9f559f1,
+  m_Shader: {fileID: -6465566751694194690, guid: f26cb09f43e626c47a89c953f2e21bf4,
     type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
@@ -64,6 +64,9 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
+    - Vector1_8217BC73: 0.63
+    - Vector1_AF455F4D: 0
+    - Vector1_C9CBC6CA: 1
     - _AlphaCutoff: 0.5
     - _AlphaCutoffEnable: 0
     - _AlphaDstBlend: 0
@@ -113,7 +116,8 @@ Material:
     - _ZTestTransparent: 4
     - _ZWrite: 1
     m_Colors:
-    - Color_30591CAA: {r: 0.0667497, g: 0.6527798, b: 0.9433962, a: 0}
+    - Color_30591CAA: {r: 0, g: 1, b: 0.22478104, a: 1}
+    - Color_46EAB88C: {r: 0, g: 0.7356219, b: 1, a: 0}
     - _Color: {r: 0.11035956, g: 0.47281063, b: 0.754717, a: 0.5372549}
     - _Diffuse: {r: 1, g: 1, b: 1, a: 1}
     - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
