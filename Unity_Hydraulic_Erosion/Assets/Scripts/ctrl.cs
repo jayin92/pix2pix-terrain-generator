@@ -153,7 +153,7 @@ public class ctrl : MonoBehaviour {
                             ChunkWater[x, y] = waterMap[x + i * chunkSize, y + j * chunkSize]+ heightMap[x + i * chunkSize, y + j * chunkSize];
                         }
                     }
-                    GameObject newChunk = Instantiate(chunkPrefab, transform.position + new Vector3(i * chunkSize, 0, j * chunkSize), new Quaternion(0, 0, 0, 1), chunkParent.transform);
+                    GameObject newChunk = Instantiate(chunkPrefab, transform.position + new Vector3(i * chunkSize, .01f, j * chunkSize), new Quaternion(0, 0, 0, 1), chunkParent.transform);
                     newChunk.GetComponent<Display3d>().DrawWater(ChunkWater);
                 }
     }
