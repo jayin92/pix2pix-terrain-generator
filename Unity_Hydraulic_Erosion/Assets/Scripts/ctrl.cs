@@ -72,8 +72,6 @@ public class ctrl : MonoBehaviour {
             }
         }
     }
-
-
     public void display2d()
     {     
         d2.Display(heightMap);
@@ -157,34 +155,35 @@ public class ctrl : MonoBehaviour {
                     newChunk.GetComponent<Display3d>().DrawWater(ChunkWater);
                 }
     }
+
+
     public void ToImage()
     {
-		int w = terrain.terrainData.heightmapWidth;
-		int h = terrain.terrainData.heightmapHeight;
-		Texture2D heightMap = new Texture2D(w, h);
-		float[,] hm = terrain.terrainData.GetHeights(0, 0, w, h);		
+        w = heightMap.GetLength(0);
+        h = heightMap.GetLength(1);
+        Texture2D o = new Texture2D(w, h);	
 		Color[] img = new Color[w*h];
-		float min = hm[0, 0];
-		float max = hm[0, 0];
+		float min = heightMap[0, 0];
+		float max = heightMap[0, 0];
 		for(int i=0;i<w;i++){
 			for(int j=0;j<h;j++){
-				if(hm[i, j] > max) max = hm[i, j]; 
-				if(hm[i, j] < min) min = hm[i, j];
+				if(heightMap[i, j] > max) max = heightMap[i, j]; 
+				if(heightMap[i, j] < min) min = heightMap[i, j];
 			}
 		}
-
 		for(int i=0;i<w;i++){
 			for(int j=0;j<h;j++){
-				img[i+j*h] = new Color(hm[i, j] / max, hm[i, j] / max, hm[i, j] / max);
+				img[i+j*h] = new Color(heightMap[i, j] / max, heightMap[i, j] / max, heightMap[i, j] / max);
 			}
 		}
-		heightMap.SetPixels(img);
-        heightMap.Apply();
-        string name = terrain.name;
-		FileStream fs = new FileStream(@"/home/jayinnn/scifair/heightmap/unity/" + name + ".png", FileMode.Create);
-		fs.Write(heightMap.EncodeToPNG(), 0, heightMap.EncodeToPNG().Length);
+		o.SetPixels(img);
+        o.Apply();
+		FileStream fs = new FileStream(@".\toGAN\fromCS.png", FileMode.Create);
+        byte[] png = o.EncodeToPNG();
+        fs.Write(png, 0, png.Length);
         fs.Close();
-		
-	}
 
+        System.Diagnostics.Process.Start("test.bat");
+
+    }
 }

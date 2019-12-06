@@ -32,6 +32,6 @@ if __name__ == "__main__":
             print(file, "is not an image file")
     print("---Complete & Running test.py---")
     os.chdir("../pytorch-CycleGAN-and-pix2pix")
-    os.system("python test.py --dataroot ../scifair/heightmap/tmp --name {} --num_test {} --direction AtoB --model pix2pix".format(name, count))
+    os.system("python test.py --dataroot ../scifair/heightmap/tmp --gpu_ids -1 --name {} --num_test {} --direction AtoB --model pix2pix".format(name, count))
     print("---Copying results---")
     os.system("cp -r results/{}/test_latest/ ../scifair/heightmap/tmp".format(name))
