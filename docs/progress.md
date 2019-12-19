@@ -15,9 +15,9 @@ tags: 專題
 - 利用Google Maps API抓下來的高度圖訓練上述之模型
     -  台灣模糊高度圖轉清晰高度圖 (利用`cv2.medianBlur()`模糊圖片)
 
-    | real_A | fake_B | real_B |
-    | -------- | -------- | -------- |
-    | ![](https://i.imgur.com/H7Mk3LS.png) | ![](https://i.imgur.com/WYPfmVv.png)| ![](https://i.imgur.com/GqYxPrt.png)|
+    | real_A                               | fake_B                               | real_B                               |
+    | ------------------------------------ | ------------------------------------ | ------------------------------------ |
+    | ![](https://i.imgur.com/H7Mk3LS.png) | ![](https://i.imgur.com/WYPfmVv.png) | ![](https://i.imgur.com/GqYxPrt.png)|
     
     - 中國模糊高度圖轉清晰高度圖 (利用`cv2.medianBlur()`模糊圖片)
     
@@ -114,3 +114,22 @@ tags: 專題
     - 利用Compute Shader進行GPU的平行運算
 - 河流
     - 效果依舊沒有很好
+
+## 第十一週 (11/13 ~ 11/19)
+- Unity
+    - 發現水會持續增加，部分區域的甚至出現水柱
+- 河流
+    - 利用二次貝茲曲線繪製河流
+
+## 第十二周 (11/20 ~ 11/26)
+- Unity
+    - 發現因為陣列值重複存取所以導致水柱，已修復完成
+    - 將河流加上shader
+- 河流
+    - 因為Unity部分已經完成，所以河流之用途不大
+
+## 第十三周 (11/27 ~ 12/3)
+第二次段考周
+
+
+## 第十四周 (12/4 ~ 12/10)
