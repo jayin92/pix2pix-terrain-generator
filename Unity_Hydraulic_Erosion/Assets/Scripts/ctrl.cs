@@ -1,7 +1,10 @@
 ﻿using UnityEngine;
 using System.IO;
-
+using UnityEditor;
+[ExecuteInEditMode]
 public class ctrl : MonoBehaviour {
+
+
     public Display2d d2;
     public GameObject chunkPrefab;
     public Terrain terrain;
@@ -31,7 +34,7 @@ public class ctrl : MonoBehaviour {
     };
     public DisplayMode displayMode;
 
-    public void GeneratePerlinNoise()
+public void GeneratePerlinNoise()
     {
         heightMap = HeightMapGenerator.Perlin(w, h,perlin.pos,perlin.rot,perlin.scale);
         waterMap = new float[w, h];
@@ -85,6 +88,7 @@ public class ctrl : MonoBehaviour {
         colorMap = new Color[texure_h.width / res, texure_h.height / res];
         w = heightMap.GetLength(0);
         h = heightMap.GetLength(1);
+        
         for (int i = 0; i < w; i++)
         {
             for (int j = 0; j < h; j++)
@@ -96,7 +100,6 @@ public class ctrl : MonoBehaviour {
         waterMap = new float[w, h];
         Display3D();
     }
-
 
     public void Display3D()
     {
@@ -185,5 +188,12 @@ public class ctrl : MonoBehaviour {
 
         System.Diagnostics.Process.Start("test.bat");
 
+    }
+    public void Update()
+    {
+        if (Input.GetKey(KeyCode.G))
+        {
+            GeneratePerlinNoise(); 
+        }
     }
 }

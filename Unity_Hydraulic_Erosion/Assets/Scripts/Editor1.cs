@@ -5,9 +5,9 @@ using UnityEditor;
 
 [CustomEditor(typeof(ctrl))]
 public class Editor1 : Editor {
+
     public override void OnInspectorGUI()
     {
-        
         ctrl controller = (ctrl)target;
         DrawDefaultInspector();
         if (GUILayout.Button("2d"))
