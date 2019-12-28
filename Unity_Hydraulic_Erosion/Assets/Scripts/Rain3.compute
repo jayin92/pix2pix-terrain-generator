@@ -7,7 +7,6 @@
 #pragma kernel Deposit
 
 #define gs 32
-#define gxb(x,y) b[x+1,y]-b[x,y]
 
 RWStructuredBuffer<float> b;
 RWStructuredBuffer<float> b1;
@@ -117,13 +116,11 @@ void Erode(uint3 id : SV_DispatchThreadID )
     {
         db = b1[i + 1] - b1[i];
         dd = d1[i + 1] - d1[i];
-        n = max(0, (f[i][0] - f[i + 1][1]) * (f[i][0] - f[i + 1][1]) * max(0, 1 - (d1[i] + d1[i + 1 ])*KH) * deltaT * KS);
+        n = max(0, (f[i][0] - f[i + 1][1]) * (f[i][0] - f[i + 1][1]) * max(0, 1.0 - (d1[i] + d1[i + 1 ])*KH) * deltaT * KS);
         if (b[i]>b[i+1])
             e[i][0] = n;
         else
             e[i+1][1] = n;
-        
-        
     }
      
     db = b1[i + w] - b1[i];

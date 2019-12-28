@@ -5,9 +5,9 @@ using UnityEditor;
 
 [CustomEditor(typeof(ctrl))]
 public class Editor1 : Editor {
+
     public override void OnInspectorGUI()
     {
-        
         ctrl controller = (ctrl)target;
         DrawDefaultInspector();
         if (GUILayout.Button("2d"))
@@ -28,6 +28,14 @@ public class Editor1 : Editor {
         }
         if(GUILayout.Button("to gray image")){
             controller.ToImage();
+        }
+        if (GUILayout.Button("run GAN"))
+        {
+            controller.runGAN();
+        }
+        if (GUILayout.Button("GenerateRamdomHeightMap"))
+        {
+            controller.GenerateRamdomHeightMap();
         }
     }
 }

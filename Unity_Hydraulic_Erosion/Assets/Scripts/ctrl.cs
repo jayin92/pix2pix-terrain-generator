@@ -1,7 +1,10 @@
 ﻿using UnityEngine;
 using System.IO;
-
+using UnityEditor;
+[ExecuteInEditMode]
 public class ctrl : MonoBehaviour {
+
+
     public Display2d d2;
     public GameObject chunkPrefab;
     public Terrain terrain;
@@ -12,6 +15,7 @@ public class ctrl : MonoBehaviour {
     public Texture2D texure_h,texure_c;
     public int chunkSize=100;
     public bool water;
+    public Rain3 rain;
 
 
     public int w, h;
@@ -31,7 +35,7 @@ public class ctrl : MonoBehaviour {
     };
     public DisplayMode displayMode;
 
-    public void GeneratePerlinNoise()
+public void GeneratePerlinNoise()
     {
         heightMap = HeightMapGenerator.Perlin(w, h,perlin.pos,perlin.rot,perlin.scale);
         waterMap = new float[w, h];
@@ -85,6 +89,7 @@ public class ctrl : MonoBehaviour {
         colorMap = new Color[texure_h.width / res, texure_h.height / res];
         w = heightMap.GetLength(0);
         h = heightMap.GetLength(1);
+        
         for (int i = 0; i < w; i++)
         {
             for (int j = 0; j < h; j++)
@@ -96,7 +101,6 @@ public class ctrl : MonoBehaviour {
         waterMap = new float[w, h];
         Display3D();
     }
-
 
     public void Display3D()
     {
@@ -154,9 +158,10 @@ public class ctrl : MonoBehaviour {
                     GameObject newChunk = Instantiate(chunkPrefab, transform.position + new Vector3(i * chunkSize, .01f, j * chunkSize), new Quaternion(0, 0, 0, 1), chunkParent.transform);
                     newChunk.GetComponent<Display3d>().DrawWater(ChunkWater);
                 }
+        display2d();
     }
 
-
+    public int t = 0;
     public void ToImage()
     {
         w = heightMap.GetLength(0);
@@ -178,12 +183,40 @@ public class ctrl : MonoBehaviour {
 		}
 		o.SetPixels(img);
         o.Apply();
-		FileStream fs = new FileStream(@".\toGAN\fromCS.png", FileMode.Create);
+		FileStream fs = new FileStream(@".\toGAN\fromCS"+t+++".png", FileMode.Create);
         byte[] png = o.EncodeToPNG();
         fs.Write(png, 0, png.Length);
         fs.Close();
-
+    }
+    public void runGAN()
+    {
         System.Diagnostics.Process.Start("test.bat");
+    }
 
+    public void GenerateRamdomHeightMap()
+    {
+        for (rain.KS = 0.005f; rain.KS < 0.015f; rain.KS += 0.002f)
+        {
+            for (rain.drag = 0f; rain.drag < 0.005f; rain.drag += 0.001f)
+            {
+                for (rain.A = 5; rain.A < 30; rain.A += 3)
+                {
+                    perlin.pos = new Vector2(Random.Range(0, 10000), Random.Range(0, 10000));
+                    GeneratePerlinNoise();
+                    rain.Int();
+                    rain.Rain();
+                    ToImage(); 
+                }
+            }
+        }
+    }
+
+
+    public void Update()
+    {
+        if (Input.GetKey(KeyCode.G))
+        {
+            GeneratePerlinNoise(); 
+        }
     }
 }
