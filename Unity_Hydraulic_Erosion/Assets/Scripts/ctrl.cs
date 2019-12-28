@@ -201,7 +201,7 @@ public void GeneratePerlinNoise()
             {
                 for (rain.A = 5; rain.A < 30; rain.A += 3)
                 {
-                    perlin.pos = new Vector2(Random.Range(0, 1000), Random.Range(0, 1000));
+                    perlin.pos = new Vector2(Random.Range(0, 10000), Random.Range(0, 10000));
                     GeneratePerlinNoise();
                     rain.Int();
                     rain.Rain();
