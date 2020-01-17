@@ -1,0 +1,67 @@
+import os
+import torch
+from options.test_options import TestOptions
+from data import create_dataset
+from data.base_dataset import get_transform, BaseDataset, get_params
+from data.image_folder import make_dataset
+from models import create_model
+from util.visualizer import save_images
+from util import html, util
+from PIL import Image
+
+from flask import Flask, request, send_file
+app = Flask(__name__)
+
+
+opt = TestOptions().parse()  # get test options
+# hard-code some parameters for test
+opt.num_threads = 0   # test code only supports num_threads = 1
+opt.batch_size = 1    # test code only supports batch_size = 1
+opt.serial_batches = True  # disable data shuffling; comment this line if results on randomly chosen images are needed.
+opt.no_flip = True    # no flip; comment this line if results on flipped images are needed.
+opt.display_id = -1   # no visdom display; the test code saves the results to a HTML file.
+
+opt.name = "China256"
+opt.gpu_id = -1
+opt.model = "test"
+input_nc = opt.output_nc if opt.direction == 'BtoA' else opt.input_nc
+model = create_model(opt)      # create a model given opt.model and other options
+model.setup(opt)               # regular setup: load and print networks; create schedulers
+model.eval()
+transform = get_transform(opt, grayscale=(input_nc == 1))
+
+class Dataset(torch.utils.data.Dataset):
+    def __init__(self, file):
+        super(Dataset, self).__init__()
+        self._data = [file]
+    
+    def __getitem__(self, index):
+        image = self._data[index]
+        A = transform(image)
+
+        return {'A': A, 'A_paths': ""}
+
+    def __len__(self):
+            return len(self._data)
+ 
+@app.route("/", methods=["POST"])
+def generate():
+    if request.method == "POST":
+        file = request.files["file"]
+        A_img = Image.open(file).convert("RGB")
+        dataset = Dataset(A_img)
+        data_loader = torch.utils.data.DataLoader(
+            dataset,
+            batch_size=opt.batch_size,
+            shuffle=not opt.serial_batches,
+            num_workers=int(opt.num_threads))
+        
+        for index, data in enumerate(data_loader):
+            model.set_input(data)
+            model.test()
+            visuals = model.get_current_visuals()
+            for label, im_data in visuals.items():
+                im = util.tensor2im(im_data)
+                util.save_image(im, "tmp/generate.png")
+            
+        return send_file("tmp/generate.png", mimetype="image/png")
