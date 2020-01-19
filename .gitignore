@@ -7,3 +7,16 @@ descriminator/wandb
 descriminator/datasets
 web/checkpoints/China256/latest_net_D.pth
 web/checkpoints/China256/latest_net_G.pth
+web/tmp/generate.png
+.installed.cfg
+bin
+develop-eggs
+dist
+downloads
+eggs
+parts
+src/*.egg-info
+lib
+lib64
+__pycache__/
+*.py[cod]
