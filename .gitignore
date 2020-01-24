@@ -21,3 +21,4 @@ lib64
 __pycache__/
 *.py[cod]
 threejs
+web/static/gen
