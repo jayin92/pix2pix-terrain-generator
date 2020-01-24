@@ -35,7 +35,6 @@
                     phase: test                          
                preprocess: resize_and_crop               
               results_dir: ./results/                    
-                      run: run                           	[default: None]
            serial_batches: False                         
                    suffix:                               
                   verbose: False                         

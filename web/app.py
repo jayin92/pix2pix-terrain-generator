@@ -1,5 +1,8 @@
 import os
 import torch
+import json
+import random
+import string
 from options.test_options import TestOptions
 from data import create_dataset
 from data.base_dataset import get_transform, BaseDataset, get_params
@@ -9,7 +12,7 @@ from util.visualizer import save_images
 from util import html, util
 from PIL import Image
 
-from flask import Flask, request, send_file
+from flask import Flask, request, send_file, redirect, render_template, Response
 app = Flask(__name__)
 
 
@@ -43,9 +46,14 @@ class Dataset(torch.utils.data.Dataset):
 
     def __len__(self):
             return len(self._data)
+    
+@app.route("/", methods=["GET"])
+def index():
+    return render_template("home.html")
  
-@app.route("/", methods=["POST"])
+@app.route("/generate", methods=["POST"])
 def generate():
+    print(request)
     if request.method == "POST":
         file = request.files["file"]
         A_img = Image.open(file).convert("RGB")
@@ -62,6 +70,13 @@ def generate():
             visuals = model.get_current_visuals()
             for label, im_data in visuals.items():
                 im = util.tensor2im(im_data)
-                util.save_image(im, "tmp/generate.png")
-            
-        return send_file("tmp/generate.png", mimetype="image/png")
+                img_name = ''.join(random.choice(string.ascii_lowercase) for i in range(6))
+                util.save_image(im, "static/gen/{}.png".format(img_name))
+        rep = {
+            'file_name': img_name
+        }
+        return Response(json.dumps(rep), mimetype="application/json")
+
+
+if __name__ == "__main__":
+    app.run(debug=True, port=8080)
