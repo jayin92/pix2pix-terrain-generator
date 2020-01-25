@@ -72,6 +72,7 @@
     <p class="lead">Tool for generate terrain</p>
   </main>
   <div class="container">
+    <div id="alertHolder"></div>
     <!-- <div class="row align-items-center">
           <div class="col-md-auto">
               <img src="{{ url_for('static', filename='input.png') }}" class="figure-img rounded">
@@ -135,12 +136,13 @@
           processData: false,
           success: function (data) {
             console.log(data);
+            document.getElementById("alertHolder").innerHTML = '<div class="alert alert-success fade show" role="alert">Generate successfully. <a href="/static/gen/' + data['file_name'] + '.png"> Direct Link</a><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>';
             document.getElementById("output").src = "/static/gen/" + data['file_name'] + ".png";
           }
         });
       }));
     });
-
+    
 
     function addBtn() {
       document.getElementById('btnHolder').innerHTML = '<input type="submit" value="Generate" class="btn btn-primary">'
