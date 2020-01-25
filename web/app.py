@@ -33,6 +33,13 @@ model.setup(opt)               # regular setup: load and print networks; create 
 model.eval()
 transform = get_transform(opt, grayscale=(input_nc == 1))
 
+def delete_img():
+    folder = os.path.join("static", "gen")
+    images = os.listdir(folder)
+    if len(images) >= 20:
+        for image in images[:10]:
+            os.remove(os.path.join(folder, image))
+
 class Dataset(torch.utils.data.Dataset):
     def __init__(self, file):
         super(Dataset, self).__init__()
@@ -49,11 +56,13 @@ class Dataset(torch.utils.data.Dataset):
     
 @app.route("/", methods=["GET"])
 def index():
-    return render_template("home.html")
+    delete_img()
+    return render_template("index.html")
  
 @app.route("/generate", methods=["POST"])
 def generate():
     print(request)
+    delete_img()
     if request.method == "POST":
         file = request.files["file"]
         A_img = Image.open(file).convert("RGB")
