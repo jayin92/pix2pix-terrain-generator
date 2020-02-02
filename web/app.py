@@ -25,7 +25,7 @@ opt.no_flip = True    # no flip; comment this line if results on flipped images 
 opt.display_id = -1   # no visdom display; the test code saves the results to a HTML file.
 
 opt.name = "China256"
-opt.gpu_ids = "-1"
+opt.gpu_ids = "-1" # comment this line if you want to use GPU instead
 opt.model = "test"
 input_nc = opt.output_nc if opt.direction == 'BtoA' else opt.input_nc
 model = create_model(opt)      # create a model given opt.model and other options

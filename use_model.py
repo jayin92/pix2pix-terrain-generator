@@ -2,6 +2,9 @@ import os
 import cv2
 import numpy as np
 import argparse
+from shutil import rmtree, copytree
+import pathlib
+
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
@@ -13,8 +16,8 @@ if __name__ == "__main__":
     dataroot = args.dataroot
     count = 0
     print("---Remove all images in /tmp/test---")
-    os.system("rm -rf {}".format(os.path.join("heightmap", "tmp", "test")))
-    os.system("mkdir {}".format(os.path.join("heightmap", "tmp", "test")))
+    rmtree(os.path.join("heightmap", "tmp", "test"), ignore_errors=True)
+    os.makedirs(os.path.join("heightmap", "tmp", "test"))
     print("---Images stick with a black image---")
     for file in os.listdir(dataroot):
         try:
@@ -34,4 +37,4 @@ if __name__ == "__main__":
     os.chdir("../pytorch-CycleGAN-and-pix2pix")
     os.system("python test.py --dataroot ../scifair/heightmap/tmp --gpu_ids -1 --name {} --num_test {} --direction AtoB --model pix2pix".format(name, count))
     print("---Copying results---")
-    os.system("cp -r results/{}/test_latest/ ../scifair/heightmap/tmp".format(name))
+    copytree(os.path.join("results", name, "test_latest"),  "../scifair/heightmap/tmp")
