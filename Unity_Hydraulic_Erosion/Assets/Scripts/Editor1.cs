@@ -26,16 +26,26 @@ public class Editor1 : Editor {
         {
             controller.Terrain();
         }
-        if(GUILayout.Button("to gray image")){
-            controller.ToImage();
+        if(GUILayout.Button("save as PNG")){
+            controller.SaveAsPNG(controller.heightMap);
         }
         if (GUILayout.Button("run GAN"))
         {
             controller.runGAN();
         }
+
+        if (GUILayout.Button("run GAN on server"))
+        {
+            controller.RunGANOnServer();
+        }
+        /*
         if (GUILayout.Button("GenerateRamdomHeightMap"))
         {
             controller.GenerateRamdomHeightMap();
+        }*/
+        if (GUILayout.Button("ReadPngFromFile"))
+        {
+            controller.ReadPngFromFile();
         }
     }
 }
@@ -49,7 +59,7 @@ public class Editor2 : Editor
         DrawDefaultInspector();
         if (GUILayout.Button("Int"))
         {
-            rain3.Int();
+            rain3.Init();
         }
         if (GUILayout.Button("Rain"))
         {

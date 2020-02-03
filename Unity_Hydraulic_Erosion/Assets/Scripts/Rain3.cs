@@ -12,7 +12,7 @@ public class Rain3 : MonoBehaviour
     public int w = 256, h = 256;
     Vector4[] f_data;
     int[] kernelId = new int[6];
-    public void Int()
+    public void Init()
     {
         kernelId = new int[6];
         if (HeightMap != null)

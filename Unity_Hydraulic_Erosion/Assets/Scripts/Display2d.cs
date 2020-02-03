@@ -32,7 +32,7 @@ public class Display2d : MonoBehaviour {
         Texture2D texture = new Texture2D(w, h);
         texture.SetPixels(colorMap);
         texture.Apply();
-        textureRenderer.sharedMaterial.mainTexture = texture;
+        textureRenderer.material.mainTexture = texture;
         textureRenderer.transform.localScale = new Vector3(w*0.1f, 1, h*0.1f);
     }
 }

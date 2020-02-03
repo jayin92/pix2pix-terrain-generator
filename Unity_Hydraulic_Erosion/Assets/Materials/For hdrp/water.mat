@@ -23,6 +23,10 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - _BaseMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _BumpMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -64,21 +68,29 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - Vector1_11F27D43: 0.235
-    - Vector1_4397164E: 0.915
-    - Vector1_71858E70: 57
-    - Vector1_8217BC73: 0.908
-    - Vector1_9BE6339E: 0.02
+    - Vector1_11F27D43: 0.241
+    - Vector1_18B0557C: 0.197
+    - Vector1_4397164E: 0.89
+    - Vector1_71858E70: 30
+    - Vector1_794FD479: 0.431
+    - Vector1_8217BC73: 0.117
+    - Vector1_82AD315F: 0.478
+    - Vector1_9B211F2: 0.545
+    - Vector1_9BE6339E: 3.88
     - Vector1_AF455F4D: 0
-    - Vector1_C9CBC6CA: 0.301
-    - Vector1_FF01E30D: 331.7
+    - Vector1_C9CBC6CA: 0.526
+    - Vector1_E87B5E88: 0.598
+    - Vector1_FF01E30D: 2
+    - _AlphaClip: 0
     - _AlphaCutoff: 0.5
     - _AlphaCutoffEnable: 0
     - _AlphaDstBlend: 0
     - _AlphaScale: 1
     - _AlphaSrcBlend: 1
+    - _Blend: 0
     - _BlendMode: 0
     - _BumpScale: 1
+    - _Cull: 2
     - _CullMode: 2
     - _CullModeForward: 2
     - _Cutoff: 0.5
@@ -94,9 +106,11 @@ Material:
     - _Mode: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.02
+    - _QueueOffset: 0
     - _ReceivesSSR: 1
     - _RenderQueueType: 1
     - _RequireSplitLighting: 0
+    - _SampleGI: 0
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
@@ -110,6 +124,7 @@ Material:
     - _StencilWriteMaskDistortionVec: 64
     - _StencilWriteMaskGBuffer: 51
     - _StencilWriteMaskMV: 176
+    - _Surface: 0
     - _SurfaceType: 0
     - _TransparentBackfaceEnable: 0
     - _TransparentCullMode: 2
@@ -122,9 +137,11 @@ Material:
     - _ZWrite: 1
     m_Colors:
     - Color_30591CAA: {r: 0, g: 1, b: 0.22478104, a: 1}
-    - Color_46EAB88C: {r: 0, g: 0.60258484, b: 1, a: 0.79607844}
+    - Color_46EAB88C: {r: 0, g: 0.23920691, b: 0.32075468, a: 0.80784315}
+    - Color_51A7C4AD: {r: 0.066749655, g: 0.6527798, b: 0.9433962, a: 0.33333334}
     - Vector2_CEC95FAE: {r: 1, g: 1, b: 0, a: 0}
     - Vector2_ECD184A2: {r: -1, g: 1, b: 0, a: 0}
+    - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 0.11035956, g: 0.47281063, b: 0.754717, a: 0.5372549}
     - _Diffuse: {r: 1, g: 1, b: 1, a: 1}
     - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}

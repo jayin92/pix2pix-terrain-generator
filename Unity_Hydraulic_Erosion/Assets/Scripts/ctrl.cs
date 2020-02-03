@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using System.IO;
-using UnityEditor;
+using System.Net.Http;
 [ExecuteInEditMode]
 public class ctrl : MonoBehaviour {
 
@@ -12,7 +12,7 @@ public class ctrl : MonoBehaviour {
     public float[,] heightMap;
     public float[,] waterMap;
     public Color[,] colorMap=null;
-    public Texture2D texure_h,texure_c;
+    public Texture2D texture_h,texture_c;
     public int chunkSize=100;
     public bool water;
     public Rain3 rain;
@@ -51,7 +51,7 @@ public void GeneratePerlinNoise()
 
     public void Terrain()
     {
-        float [,] heightMap_ = terrain.terrainData.GetHeights(0, 0, terrain.terrainData.heightmapWidth, terrain.terrainData.heightmapHeight);
+        float [,] heightMap_ = terrain.terrainData.GetHeights(0, 0, terrain.terrainData.heightmapResolution, terrain.terrainData.heightmapResolution);
         
         w = heightMap_.GetLength(0);
         h = heightMap_.GetLength(1);
@@ -85,8 +85,8 @@ public void GeneratePerlinNoise()
     GameObject chunkParent;
     public void ReadPng()
     {
-        heightMap = new float[texure_h.width / res, texure_h.height / res];
-        colorMap = new Color[texure_h.width / res, texure_h.height / res];
+        heightMap = new float[texture_h.width / res, texture_h.height / res];
+        colorMap = new Color[texture_h.width / res, texture_h.height / res];
         w = heightMap.GetLength(0);
         h = heightMap.GetLength(1);
         
@@ -94,10 +94,20 @@ public void GeneratePerlinNoise()
         {
             for (int j = 0; j < h; j++)
             {
-                heightMap[i, j] = texure_h.GetPixel(i * res, j * res).r*perlin.yScale;
-                colorMap[i, j] = texure_c.GetPixel(i * res, j * res);
+                heightMap[i, j] = texture_h.GetPixel(i * res, j * res).r*perlin.yScale;
+                colorMap[i, j] = texture_c.GetPixel(i * res, j * res);
             }
         }
+        waterMap = new float[w, h];
+        Display3D();
+    }
+    public void ReadPngFromFile()
+    {
+        FileStream fs = new FileStream(@".\fromGAN\fromGAN.png",FileMode.Open);
+        byte[] png = new byte[fs.Length];
+        fs.Read(png, 0, (int)fs.Length);
+        fs.Dispose();
+        heightMap = PNGToMap(png,perlin.yScale);
         waterMap = new float[w, h];
         Display3D();
     }
@@ -155,39 +165,78 @@ public void GeneratePerlinNoise()
                             ChunkWater[x, y] = waterMap[x + i * chunkSize, y + j * chunkSize]+ heightMap[x + i * chunkSize, y + j * chunkSize];
                         }
                     }
-                    GameObject newChunk = Instantiate(chunkPrefab, transform.position + new Vector3(i * chunkSize, .01f, j * chunkSize), new Quaternion(0, 0, 0, 1), chunkParent.transform);
+                    GameObject newChunk = Instantiate(chunkPrefab, transform.position + new Vector3(i * chunkSize,0, j * chunkSize), new Quaternion(0, 0, 0, 1), chunkParent.transform);
                     newChunk.GetComponent<Display3d>().DrawWater(ChunkWater);
                 }
         display2d();
     }
 
     public int t = 0;
-    public void ToImage()
+    public void SaveAsPNG(float[,] map)
     {
-        w = heightMap.GetLength(0);
-        h = heightMap.GetLength(1);
-        Texture2D o = new Texture2D(w, h);	
-		Color[] img = new Color[w*h];
-		float min = heightMap[0, 0];
-		float max = heightMap[0, 0];
-		for(int i=0;i<w;i++){
-			for(int j=0;j<h;j++){
-				if(heightMap[i, j] > max) max = heightMap[i, j]; 
-				if(heightMap[i, j] < min) min = heightMap[i, j];
-			}
-		}
-		for(int i=0;i<w;i++){
-			for(int j=0;j<h;j++){
-				img[i+j*h] = new Color(heightMap[i, j] / max, heightMap[i, j] / max, heightMap[i, j] / max);
-			}
-		}
-		o.SetPixels(img);
-        o.Apply();
+        
 		FileStream fs = new FileStream(@".\toGAN\fromCS"+t+++".png", FileMode.Create);
-        byte[] png = o.EncodeToPNG();
+        byte[] png = MapToPng(map);
         fs.Write(png, 0, png.Length);
         fs.Close();
     }
+    byte[] MapToPng(float[,] map)
+    {
+        w = map.GetLength(0);
+        h = map.GetLength(1);
+        Texture2D o = new Texture2D(w, h);
+        Color[] img = new Color[w * h];
+        float min = map[0, 0];
+        float max = map[0, 0];
+        for (int i = 0; i < w; i++)
+        {
+            for (int j = 0; j < h; j++)
+            {
+                if (map[i, j] > max) max = map[i, j];
+                if (map[i, j] < min) min = map[i, j];
+            }
+        }
+        for (int i = 0; i < w; i++)
+        {
+            for (int j = 0; j < h; j++)
+            {
+                img[i + j * h] = new Color(map[i, j] / max, map[i, j] / max, map[i, j] / max);
+            }
+        }
+        o.SetPixels(img);
+        o.Apply();
+        return o.EncodeToPNG();
+    }
+    float[,] PNGToMap(byte[] png,float scale)//uses global variables w and h
+    {
+        float[,] o = new float[w, h];
+        Texture2D texture = new Texture2D(w, h);
+        texture.LoadImage(png);
+        for (int i = 0; i < w; i++)
+        {
+            for (int j = 0; j < h; j++)
+            {
+                o[i, j] = texture.GetPixel(i , j).r *scale;
+            }
+        }
+        return o;
+    }
+
+    Color[,] PNGToColorMap(byte[] png)//uses global variables w and h
+    {
+        Color[,] o = new Color[w, h];
+        Texture2D texture = new Texture2D(w, h);
+        texture.LoadImage(png);
+        for (int i = 0; i < w; i++)
+        {
+            for (int j = 0; j < h; j++)
+            {
+                o[i, j] = texture_h.GetPixel(i, j);
+            }
+        }
+        return o;
+    }
+
     public void runGAN()
     {
         System.Diagnostics.Process.Start("test.bat");
@@ -203,14 +252,66 @@ public void GeneratePerlinNoise()
                 {
                     perlin.pos = new Vector2(Random.Range(0, 10000), Random.Range(0, 10000));
                     GeneratePerlinNoise();
-                    rain.Int();
+                    rain.Init();
                     rain.Rain();
-                    ToImage(); 
+                    SaveAsPNG(heightMap); 
                 }
             }
         }
     }
 
+    public string postUrl;
+    public string getUrl;
+    [System.Serializable]
+    class ResponseData
+    {
+        public string file_name = "";
+    }
+    public async void RunGANOnServer()
+    {
+        byte[] postData = MapToPng(heightMap);
+        /*
+        WebRequest request = WebRequest.Create(serverLocation);
+        request.Method = "POST";
+        
+        request.ContentType = "image/png";
+        request.ContentLength = postData.Length;
+        request.Timeout = 10000;
+        Stream stream = request.GetRequestStream();
+        stream.Write(postData, 0, postData.Length);
+        stream.Close();
+
+        WebResponse response = request.GetResponse();
+        print(((HttpWebResponse)response).StatusDescription);
+        byte[] responseData;
+        using (stream = response.GetResponseStream())
+        {
+            responseData = new byte[stream.Length];
+            stream.Read(responseData, 0, (int)stream.Length);
+            w = h = 256;
+            heightMap =PNGToMap(responseData,perlin.yScale);
+        }
+        waterMap = new float[w, h];
+        Display3D();
+        */
+
+        HttpClient client = new HttpClient();// { BaseAddress = new System.Uri(url) };
+        string response;
+        using (var content = new MultipartFormDataContent())
+        {
+            content.Add(new StreamContent(new MemoryStream(postData)),"file","file");
+            var postResult =await client.PostAsync(postUrl, content);
+            response = await postResult.Content.ReadAsStringAsync();
+        }
+        ResponseData responseData = JsonUtility.FromJson<ResponseData>(response);
+        byte[] getData = await client.GetByteArrayAsync(getUrl+responseData.file_name+".png");
+        w = 256;
+        h = 256;
+        heightMap = PNGToMap(getData, perlin.yScale);
+        waterMap = new float[w, h];
+        Display3D();
+        
+    }
 
     public void Update()
     {
