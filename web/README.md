@@ -8,12 +8,12 @@
 [http://localhost:8888/](http://localhost:8888/)
 
 - Generate fake image:
-`curl -F "file=@/path/to/image/input.png" http://localhost:8888/generate`
+    `curl -F "file=@/path/to/image/input.png" http://localhost:8888/generate`
 
-+ API will return a json response which looks like this:
-```json
-rep = {
-    'file_name': img_name (a random string)
-}
-```
-+ You can get generated image by going to [http://localhost:8888/static/gen/{img_name}.png](http://localhost:8888/static/gen/{img_name}.png)
+    + API will return a json response which looks like this:
+    ```json
+    {
+        'file_name': <img_name>
+    }
+    ```
+    + You can get generated image by going to [http://localhost:8888/static/gen/{img_name}.png](http://localhost:8888/static/gen/{img_name}.png)
