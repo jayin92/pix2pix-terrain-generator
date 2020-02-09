@@ -3,7 +3,6 @@ import cv2
 import numpy as np
 import argparse
 from shutil import rmtree, copytree
-import pathlib
 
 
 if __name__ == "__main__":
