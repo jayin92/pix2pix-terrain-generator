@@ -25,7 +25,7 @@ opt.no_flip = True    # no flip; comment this line if results on flipped images 
 opt.display_id = -1   # no visdom display; the test code saves the results to a HTML file.
 
 opt.name = "China256"
-opt.gpu_ids = "-1" # comment this line if you want to use GPU instead
+# opt.gpu_ids = '0' # comment this line if you want to use CPU instead
 opt.model = "test"
 input_nc = opt.output_nc if opt.direction == 'BtoA' else opt.input_nc
 model = create_model(opt)      # create a model given opt.model and other options
@@ -56,6 +56,11 @@ class Dataset(torch.utils.data.Dataset):
     
 @app.route("/", methods=["GET"])
 def index():
+    path = os.path.join("static", "gen")
+    try:
+        os.makedirs(path)
+    except:
+        print("folder exists")
     delete_img()
     return render_template("index.html")
  
