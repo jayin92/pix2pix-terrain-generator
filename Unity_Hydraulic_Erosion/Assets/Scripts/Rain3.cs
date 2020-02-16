@@ -109,7 +109,7 @@ public class Rain3 : MonoBehaviour
                 c.waterMap[x, y] = Flat[x + y * w];
             }
         }
-        c.Display3D();
+        c.Display();
     }
     public void setParams()
     {

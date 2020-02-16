@@ -10,10 +10,6 @@ public class Editor1 : Editor {
     {
         ctrl controller = (ctrl)target;
         DrawDefaultInspector();
-        if (GUILayout.Button("2d"))
-        {
-            controller.display2d();
-        }
         if (GUILayout.Button("load png"))
         {
             controller.ReadPng();
@@ -29,20 +25,10 @@ public class Editor1 : Editor {
         if(GUILayout.Button("save as PNG")){
             controller.SaveAsPNG(controller.heightMap);
         }
-        if (GUILayout.Button("run GAN"))
-        {
-            controller.runGAN();
-        }
-
         if (GUILayout.Button("run GAN on server"))
         {
             controller.RunGANOnServer();
         }
-        /*
-        if (GUILayout.Button("GenerateRamdomHeightMap"))
-        {
-            controller.GenerateRamdomHeightMap();
-        }*/
         if (GUILayout.Button("ReadPngFromFile"))
         {
             controller.ReadPngFromFile();
