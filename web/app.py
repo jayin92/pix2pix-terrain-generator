@@ -63,6 +63,8 @@ def index():
 def generate():
     print(request)
     delete_img()
+    path = os.path.join("static", "gen")
+    os.makedirs(path)
     if request.method == "POST":
         file = request.files["file"]
         A_img = Image.open(file).convert("RGB")
@@ -79,8 +81,8 @@ def generate():
             visuals = model.get_current_visuals()
             for label, im_data in visuals.items():
                 im = util.tensor2im(im_data)
-                img_name = ''.join(random.choice(string.ascii_lowercase) for i in range(6))
-                util.save_image(im, "static/gen/{}.png".format(img_name))
+                img_name = ''.join(random.choice(string.ascii_lowercase) for i in range(6))                
+                util.save_image(im, os.path.join(path, "{}.png".format(img_name)))
         rep = {
             'file_name': img_name
         }
