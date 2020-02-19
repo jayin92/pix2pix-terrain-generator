@@ -3,6 +3,7 @@ import torch
 import json
 import random
 import string
+import pathlib
 from options.test_options import TestOptions
 from data import create_dataset
 from data.base_dataset import get_transform, BaseDataset, get_params
@@ -25,7 +26,7 @@ opt.no_flip = True    # no flip; comment this line if results on flipped images 
 opt.display_id = -1   # no visdom display; the test code saves the results to a HTML file.
 
 opt.name = "China256"
-opt.gpu_ids = "-1" # comment this line if you want to use GPU instead
+# opt.gpu_ids = "-1" # comment this line if you want to use GPU instead
 opt.model = "test"
 input_nc = opt.output_nc if opt.direction == 'BtoA' else opt.input_nc
 model = create_model(opt)      # create a model given opt.model and other options
@@ -64,7 +65,7 @@ def generate():
     print(request)
     delete_img()
     path = os.path.join("static", "gen")
-    os.makedirs(path)
+    pathlib.Path('staic/gen').mkdir(parents=True, exist_ok=True)
     if request.method == "POST":
         file = request.files["file"]
         A_img = Image.open(file).convert("RGB")
@@ -90,4 +91,4 @@ def generate():
 
 
 if __name__ == "__main__":
-    app.run(debug=True, port=8888)
+    app.run(debug=True, host="0.0.0.0", port=8888)
