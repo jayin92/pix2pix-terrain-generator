@@ -73,14 +73,14 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - _AlphaClip: 0
-    - _AtmosphereThickness: 1.78
+    - _AtmosphereThickness: 1
     - _Blend: 0
     - _BumpScale: 1
     - _Cull: 2
     - _Cutoff: 0.5
     - _DstBlend: 0
     - _EnvironmentReflections: 1
-    - _Exposure: 1.07
+    - _Exposure: 1
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
@@ -93,8 +93,8 @@ Material:
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _SunDisk: 2
-    - _SunSize: 0.053
-    - _SunSizeConvergence: 1.75
+    - _SunSize: 0.026
+    - _SunSizeConvergence: 1.84
     - _Surface: 0
     - _WorkflowMode: 1
     - _ZWrite: 1

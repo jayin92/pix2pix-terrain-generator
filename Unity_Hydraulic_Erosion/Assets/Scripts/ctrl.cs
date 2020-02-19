@@ -1,10 +1,9 @@
 ﻿using UnityEngine;
 using System.IO;
 using System.Net.Http;
-[ExecuteInEditMode]
+
 public class ctrl : MonoBehaviour {
-
-
+    GameObject chunkParent;
     public Display2d d2;
     public GameObject chunkPrefab;
     public Terrain terrain;
@@ -16,8 +15,7 @@ public class ctrl : MonoBehaviour {
     public int chunkSize=100;
     public bool water;
     public Rain3 rain;
-
-
+    
     public int w, h;
     [System.Serializable]
     public class PerlinNoiseInfo
@@ -35,7 +33,12 @@ public class ctrl : MonoBehaviour {
     };
     public DisplayMode displayMode;
 
-public void GeneratePerlinNoise()
+    public void Scale()
+    {
+
+    }
+
+    public void GeneratePerlinNoise()
     {
         heightMap = HeightMapGenerator.Perlin(w, h,perlin.pos,perlin.rot,perlin.scale);
         waterMap = new float[w, h];
@@ -46,11 +49,11 @@ public void GeneratePerlinNoise()
                 heightMap[x, y] = Mathf.Max(0, perlin.heightCurve.Evaluate(heightMap[x, y]) * perlin.yScale/perlin.scale) ;
             }
         }
-        Display3D();
+        Display();
     }
-
     public void Terrain()
     {
+        
         float [,] heightMap_ = terrain.terrainData.GetHeights(0, 0, terrain.terrainData.heightmapResolution, terrain.terrainData.heightmapResolution);
         
         w = heightMap_.GetLength(0);
@@ -65,7 +68,7 @@ public void GeneratePerlinNoise()
                 heightMap[x, y] =heightMap_[y,x] *perlin.yScale;
             }
         }
-        Display3D();
+        Display();
 
         Color[] colormap_ = new Color[w * h];
         for (int x = 0; x < w; x++)
@@ -76,17 +79,10 @@ public void GeneratePerlinNoise()
             }
         }
     }
-    public void display2d()
-    {     
-        d2.Display(heightMap);
-    }
-
-    public int res = 4;
-    GameObject chunkParent;
     public void ReadPng()
     {
-        heightMap = new float[texture_h.width / res, texture_h.height / res];
-        colorMap = new Color[texture_h.width / res, texture_h.height / res];
+        heightMap = new float[texture_h.width , texture_h.height ];
+        colorMap = new Color[texture_h.width , texture_h.height ];
         w = heightMap.GetLength(0);
         h = heightMap.GetLength(1);
         
@@ -94,12 +90,12 @@ public void GeneratePerlinNoise()
         {
             for (int j = 0; j < h; j++)
             {
-                heightMap[i, j] = texture_h.GetPixel(i * res, j * res).r*perlin.yScale;
-                colorMap[i, j] = texture_c.GetPixel(i * res, j * res);
+                heightMap[i, j] = texture_h.GetPixel(i , j ).r*perlin.yScale;
+                colorMap[i, j] = texture_c.GetPixel(i , j );
             }
         }
         waterMap = new float[w, h];
-        Display3D();
+        Display();
     }
     public void ReadPngFromFile()
     {
@@ -109,10 +105,9 @@ public void GeneratePerlinNoise()
         fs.Dispose();
         heightMap = PNGToMap(png,perlin.yScale);
         waterMap = new float[w, h];
-        Display3D();
+        Display();
     }
-
-    public void Display3D()
+    public void Display()
     {
         if (chunkParent != null)
             DestroyImmediate(chunkParent);
@@ -168,7 +163,7 @@ public void GeneratePerlinNoise()
                     GameObject newChunk = Instantiate(chunkPrefab, transform.position + new Vector3(i * chunkSize,0, j * chunkSize), new Quaternion(0, 0, 0, 1), chunkParent.transform);
                     newChunk.GetComponent<Display3d>().DrawWater(ChunkWater);
                 }
-        display2d();
+        d2.Display(heightMap);
     }
 
     public int t = 0;
@@ -221,7 +216,6 @@ public void GeneratePerlinNoise()
         }
         return o;
     }
-
     Color[,] PNGToColorMap(byte[] png)//uses global variables w and h
     {
         Color[,] o = new Color[w, h];
@@ -237,29 +231,6 @@ public void GeneratePerlinNoise()
         return o;
     }
 
-    public void runGAN()
-    {
-        System.Diagnostics.Process.Start("test.bat");
-    }
-
-    public void GenerateRamdomHeightMap()
-    {
-        for (rain.KS = 0.005f; rain.KS < 0.015f; rain.KS += 0.002f)
-        {
-            for (rain.drag = 0f; rain.drag < 0.005f; rain.drag += 0.001f)
-            {
-                for (rain.A = 5; rain.A < 30; rain.A += 3)
-                {
-                    perlin.pos = new Vector2(Random.Range(0, 10000), Random.Range(0, 10000));
-                    GeneratePerlinNoise();
-                    rain.Init();
-                    rain.Rain();
-                    SaveAsPNG(heightMap); 
-                }
-            }
-        }
-    }
-
     public string postUrl;
     public string getUrl;
     [System.Serializable]
@@ -270,32 +241,7 @@ public void GeneratePerlinNoise()
     public async void RunGANOnServer()
     {
         byte[] postData = MapToPng(heightMap);
-        /*
-        WebRequest request = WebRequest.Create(serverLocation);
-        request.Method = "POST";
-        
-        request.ContentType = "image/png";
-        request.ContentLength = postData.Length;
-        request.Timeout = 10000;
-        Stream stream = request.GetRequestStream();
-        stream.Write(postData, 0, postData.Length);
-        stream.Close();
-
-        WebResponse response = request.GetResponse();
-        print(((HttpWebResponse)response).StatusDescription);
-        byte[] responseData;
-        using (stream = response.GetResponseStream())
-        {
-            responseData = new byte[stream.Length];
-            stream.Read(responseData, 0, (int)stream.Length);
-            w = h = 256;
-            heightMap =PNGToMap(responseData,perlin.yScale);
-        }
-        waterMap = new float[w, h];
-        Display3D();
-        */
-
-        HttpClient client = new HttpClient();// { BaseAddress = new System.Uri(url) };
+        HttpClient client = new HttpClient();
         string response;
         using (var content = new MultipartFormDataContent())
         {
@@ -309,10 +255,8 @@ public void GeneratePerlinNoise()
         h = 256;
         heightMap = PNGToMap(getData, perlin.yScale);
         waterMap = new float[w, h];
-        Display3D();
-        
+        Display();
     }
-
     public void Update()
     {
         if (Input.GetKey(KeyCode.G))
