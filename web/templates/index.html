@@ -106,12 +106,14 @@
       <div id="btnHolder"></div>
     </form>
     <br>
+    <canvas data-processing-sources="{{ url_for('static', filename='draw.pde') }}"></canvas>
   </div>
   <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
   <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <!-- <script src="{{ url_for('static', filename='processing.js') }}"></script> -->
   <!-- <script id="rendered-js" src="{{ url_for('static', filename='app.js') }}"></script> -->
   <script src="{{ url_for('static', filename='app.js') }}"></script>
 </body>
