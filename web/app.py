@@ -16,6 +16,8 @@ from PIL import Image
 from flask import Flask, request, send_file, redirect, render_template, Response
 app = Flask(__name__)
 
+import util.split_merge as spl
+import numpy as np
 
 opt = TestOptions().parse()  # get test options
 # hard-code some parameters for test
@@ -44,7 +46,7 @@ def delete_img():
 class Dataset(torch.utils.data.Dataset):
     def __init__(self, file):
         super(Dataset, self).__init__()
-        self._data = [file]
+        self._data = file
     
     def __getitem__(self, index):
         image = self._data[index]
@@ -74,21 +76,28 @@ def generate():
     if request.method == "POST":
         file = request.files["file"]
         A_img = Image.open(file).convert("RGB")
-        dataset = Dataset(A_img)
+        spl.size=256
+        spl.overlay=128
+        dataset = Dataset(spl.split(A_img))
         data_loader = torch.utils.data.DataLoader(
             dataset,
             batch_size=opt.batch_size,
             shuffle=not opt.serial_batches,
             num_workers=int(opt.num_threads))
-        
+
+        im=[]
         for index, data in enumerate(data_loader):
             model.set_input(data)
             model.test()
             visuals = model.get_current_visuals()
             for label, im_data in visuals.items():
-                im = util.tensor2im(im_data)
-                img_name = ''.join(random.choice(string.ascii_lowercase) for i in range(6))                
-                util.save_image(im, os.path.join(path, "{}.png".format(img_name)))
+                if label=='fake':
+                    im.append(util.tensor2im(im_data))
+        result_array=spl.merge(im)
+        result_image=Image.fromarray(result_array,"RGB")
+        img_name = ''.join(random.choice(string.ascii_lowercase) for i in range(6))                
+        result_image.save(os.path.join(path, "{}.png".format(img_name)))
+        #util.save_image(np.array([result_image,result_image,result_image]), os.path.join(path, "{}.png".format(img_name)))
         rep = {
             'file_name': img_name
         }

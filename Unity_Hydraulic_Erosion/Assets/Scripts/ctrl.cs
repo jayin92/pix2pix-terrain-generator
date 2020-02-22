@@ -97,13 +97,13 @@ public class ctrl : MonoBehaviour {
         waterMap = new float[w, h];
         Display();
     }
-    public void ReadPngFromFile()
+    public void ReadPngFromDisk()
     {
         FileStream fs = new FileStream(@".\fromGAN\fromGAN.png",FileMode.Open);
         byte[] png = new byte[fs.Length];
         fs.Read(png, 0, (int)fs.Length);
         fs.Dispose();
-        heightMap = PNGToMap(png,perlin.yScale);
+        heightMap = PNGToMap(png,0,perlin.yScale);
         waterMap = new float[w, h];
         Display();
     }
@@ -171,16 +171,15 @@ public class ctrl : MonoBehaviour {
     {
         
 		FileStream fs = new FileStream(@".\toGAN\fromCS"+t+++".png", FileMode.Create);
-        byte[] png = MapToPng(map);
+        float[]minmax=MinMax(map);
+        byte[] png = MapToPng(map,minmax[0],minmax[1]);
         fs.Write(png, 0, png.Length);
         fs.Close();
     }
-    byte[] MapToPng(float[,] map)
+    float[] MinMax(float[,] map)
     {
         w = map.GetLength(0);
         h = map.GetLength(1);
-        Texture2D o = new Texture2D(w, h);
-        Color[] img = new Color[w * h];
         float min = map[0, 0];
         float max = map[0, 0];
         for (int i = 0; i < w; i++)
@@ -191,29 +190,59 @@ public class ctrl : MonoBehaviour {
                 if (map[i, j] < min) min = map[i, j];
             }
         }
-        for (int i = 0; i < w; i++)
-        {
-            for (int j = 0; j < h; j++)
+        return new float[2] { min, max };
+    }
+    byte[] MapToPng(float[,] map,float min,float max,string mode="GRAY")
+    {
+        w = map.GetLength(0);
+        h = map.GetLength(1);
+        Texture2D o = new Texture2D(w, h);
+        Color[] img = new Color[w * h];
+        if(mode=="GRAY")
+            for (int i = 0; i < w; i++)
             {
-                img[i + j * h] = new Color(map[i, j] / max, map[i, j] / max, map[i, j] / max);
+                for (int j = 0; j < h; j++)
+                {
+                    float v =( map[i, j] - min) / (max - min);
+                    img[i + j * h] = new Color(v,v,v);
+                }
             }
-        }
+        else if (mode == "RGB")
+            for (int i = 0; i < w; i++)
+            {
+                for (int j = 0; j < h; j++)
+                {
+                    float v=(map[i, j] - min) / (max - min);
+                    img[i + j * h] = new Color(v,(v*256)%1,(v*65536)%1);
+                }
+            }
         o.SetPixels(img);
         o.Apply();
         return o.EncodeToPNG();
     }
-    float[,] PNGToMap(byte[] png,float scale)//uses global variables w and h
+    float[,] PNGToMap(byte[] png,float min, float max,string mode = "GRAY")//uses global variables w and h
     {
         float[,] o = new float[w, h];
         Texture2D texture = new Texture2D(w, h);
         texture.LoadImage(png);
-        for (int i = 0; i < w; i++)
-        {
-            for (int j = 0; j < h; j++)
+        if (mode == "GRAY")
+            for (int i = 0; i < w; i++)
             {
-                o[i, j] = texture.GetPixel(i , j).r *scale;
+                for (int j = 0; j < h; j++)
+                {
+                    Color p = texture.GetPixel(i, j);
+                    o[i, j] = p.r*(max-min)+min;
+                }
             }
-        }
+        else if (mode == "RGB")
+            for (int i = 0; i < w; i++)
+            {
+                for (int j = 0; j < h; j++)
+                {
+                    Color p = texture.GetPixel(i, j);
+                    o[i, j] =( p.r + p.g / 256 + p.b / 65536) * (max - min) + min;
+                }
+            }
         return o;
     }
     Color[,] PNGToColorMap(byte[] png)//uses global variables w and h
@@ -240,7 +269,8 @@ public class ctrl : MonoBehaviour {
     }
     public async void RunGANOnServer()
     {
-        byte[] postData = MapToPng(heightMap);
+        float[] minmax = MinMax(heightMap);
+        byte[] postData = MapToPng(heightMap, minmax[0], minmax[1],mode:"RGB");
         HttpClient client = new HttpClient();
         string response;
         using (var content = new MultipartFormDataContent())
@@ -251,9 +281,7 @@ public class ctrl : MonoBehaviour {
         }
         ResponseData responseData = JsonUtility.FromJson<ResponseData>(response);
         byte[] getData = await client.GetByteArrayAsync(getUrl+responseData.file_name+".png");
-        w = 256;
-        h = 256;
-        heightMap = PNGToMap(getData, perlin.yScale);
+        heightMap = PNGToMap(getData,minmax[0],minmax[1],mode:"RGB");
         waterMap = new float[w, h];
         Display();
     }

@@ -31,7 +31,7 @@ public class Editor1 : Editor {
         }
         if (GUILayout.Button("ReadPngFromFile"))
         {
-            controller.ReadPngFromFile();
+            controller.ReadPngFromDisk();
         }
     }
 }
