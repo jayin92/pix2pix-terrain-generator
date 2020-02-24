@@ -4,6 +4,10 @@ import json
 import random
 import string
 import pathlib
+import base64
+import re
+
+from io import BytesIO
 from options.test_options import TestOptions
 from data import create_dataset
 from data.base_dataset import get_transform, BaseDataset, get_params
@@ -69,15 +73,18 @@ def index():
  
 @app.route("/generate", methods=["POST"])
 def generate():
-    print(request)
     delete_img()
     path = os.path.join("static", "gen")
     pathlib.Path('staic/gen').mkdir(parents=True, exist_ok=True)
     if request.method == "POST":
-        file = request.files["file"]
+        res = request.json
+        spl.size = 256
+        spl.overlay = int(res["overlay"])
+        file = res["file"]
+        file = re.sub('^data:image/.+;base64,', '', file)
+        file = base64.b64decode(file)
+        file = BytesIO(file)
         A_img = Image.open(file).convert("RGB")
-        spl.size=256
-        spl.overlay=128
         dataset = Dataset(spl.split(A_img))
         data_loader = torch.utils.data.DataLoader(
             dataset,
@@ -86,7 +93,7 @@ def generate():
             num_workers=int(opt.num_threads))
 
         im=[]
-        for index, data in enumerate(data_loader):
+        for index, data in enumerate(data_loader):  
             model.set_input(data)
             model.test()
             visuals = model.get_current_visuals()

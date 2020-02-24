@@ -93,6 +93,12 @@
           <button type="button" class="browse btn btn-primary">Browse...</button>
         </div>
       </div>
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="basic-addon1">Overlay Size</span>
+        </div>
+        <input type="text" class="form-control" id="overlay" placeholder="number between 1 and 256" aria-describedby="basic-addon1" value=128>
+      </div>
       <div class="input-group my-3">
         <div class="row allign-items-center">
           <div class="col-md-auto">
@@ -106,16 +112,16 @@
       <div id="btnHolder"></div>
     </form>
     <br>
-    <canvas data-processing-sources="{{ url_for('static', filename='draw.pde') }}"></canvas>
+    <!-- <canvas data-processing-sources="{{ url_for('static', filename='draw.pde') }}"></canvas> -->
   </div>
   <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
   <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-  <!-- <script src="{{ url_for('static', filename='processing.js') }}"></script> -->
-  <!-- <script id="rendered-js" src="{{ url_for('static', filename='app.js') }}"></script> -->
   <script src="{{ url_for('static', filename='app.js') }}"></script>
+  <!-- <script src="{{ url_for('static', filename='processing.js') }}"></script> -->
+  <!-- <script src="{{ url_for('static', filename='app.js') }}"></script> -->
 </body>
 
 </html>

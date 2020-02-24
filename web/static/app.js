@@ -1,3 +1,5 @@
+var dataJSON = {}
+
 function getBase64(file) {
   var reader = new FileReader();
   reader.readAsDataURL(file);
@@ -8,14 +10,18 @@ function getBase64(file) {
     console.log('Error: ', error);
   };
 }
+
 $(document).ready(function (e) {
   $('#image-form').on('submit', (function (e) {
     e.preventDefault();
+    dataJSON["overlay"] = document.getElementById("overlay").value;
+    dataJSON["file"] = document.getElementById("input").src;
     $.ajax({
       url: '/generate',
       type: 'POST',
-      data: new FormData(this),
-      contentType: false,
+      dataType: "json",
+      data: JSON.stringify(dataJSON),
+      contentType: "application/json",
       cache: false,
       processData: false,
       success: function (data) {
@@ -27,10 +33,10 @@ $(document).ready(function (e) {
   }));
 });
 
-
 function addBtn() {
   document.getElementById('btnHolder').innerHTML = '<input type="submit" value="Generate" class="btn btn-primary">'
 }
+
 $(document).on("click", ".browse", function () {
   var file = $(this).parents().find(".file");
   file.trigger("click");
@@ -48,4 +54,4 @@ $('input[type="file"]').change(function (e) {
   };
   // read the image file as a data URL.
   reader.readAsDataURL(this.files[0]);
-});
+}); 
