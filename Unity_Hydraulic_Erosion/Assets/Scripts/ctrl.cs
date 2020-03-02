@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.IO;
 using System.Net.Http;
+using System;
 
 public class ctrl : MonoBehaviour {
     GameObject chunkParent;
@@ -267,18 +268,29 @@ public class ctrl : MonoBehaviour {
     {
         public string file_name = "";
     }
+    class PostData
+    {
+        public int overlay = 128;
+        public string file;
+        public PostData(int overlay, string file)
+        {
+            this.overlay = overlay;
+            this.file = file;
+        }
+    }
     public async void RunGANOnServer()
     {
         float[] minmax = MinMax(heightMap);
-        byte[] postData = MapToPng(heightMap, minmax[0], minmax[1],mode:"RGB");
+        string pngBase64 = Convert.ToBase64String(MapToPng(heightMap, minmax[0], minmax[1],mode:"RGB"));
         HttpClient client = new HttpClient();
+        client.Timeout = TimeSpan.FromSeconds(10    );
         string response;
-        using (var content = new MultipartFormDataContent())
+        using (var content = new StringContent(JsonUtility.ToJson(new PostData(128,pngBase64)), System.Text.Encoding.UTF8, "application/json"))
         {
-            content.Add(new StreamContent(new MemoryStream(postData)),"file","file");
             var postResult =await client.PostAsync(postUrl, content);
             response = await postResult.Content.ReadAsStringAsync();
         }
+        print("response:"+response);
         ResponseData responseData = JsonUtility.FromJson<ResponseData>(response);
         byte[] getData = await client.GetByteArrayAsync(getUrl+responseData.file_name+".png");
         heightMap = PNGToMap(getData,minmax[0],minmax[1],mode:"RGB");
