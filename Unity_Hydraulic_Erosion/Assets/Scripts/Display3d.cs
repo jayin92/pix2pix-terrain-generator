@@ -5,7 +5,7 @@ public class Display3d : MonoBehaviour
     public MeshFilter meshFilter;
     public MeshRenderer meshRenderer;
     public Material forRealColor, forGeneratedColor, water;
-
+    public MeshCollider meshCollider;
 
     public void DrawTerrain(float[,] heightmap)
     {
@@ -95,6 +95,6 @@ public class Display3d : MonoBehaviour
         mesh.uv = uvs;
         mesh.RecalculateNormals();
         meshFilter.mesh = mesh;
-        
+        meshCollider.sharedMesh = mesh;
     }
 }

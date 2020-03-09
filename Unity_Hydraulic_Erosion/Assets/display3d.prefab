@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 114761657752027200}
   - component: {fileID: 33514854757767150}
   - component: {fileID: 23195657363671238}
+  - component: {fileID: 8999242579540668620}
   m_Layer: 0
   m_Name: display3d
   m_TagString: Untagged
@@ -50,6 +51,7 @@ MonoBehaviour:
   forRealColor: {fileID: 2100000, guid: 5c7f339e7cb225845b9d89db199274a3, type: 2}
   forGeneratedColor: {fileID: 2100000, guid: ae6ee51817a26c44e99149ebc7cbc677, type: 2}
   water: {fileID: 2100000, guid: c92af2f5af21da54f899d4f08f357cba, type: 2}
+  meshCollider: {fileID: 8999242579540668620}
 --- !u!33 &33514854757767150
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -72,6 +74,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
@@ -96,3 +99,17 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &8999242579540668620
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1203675289335088}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 0}

@@ -3,7 +3,8 @@ using System.IO;
 using System.Net.Http;
 using System;
 
-public class ctrl : MonoBehaviour {
+public class ctrl : MonoBehaviour
+{
     GameObject chunkParent;
     public Display2d d2;
     public GameObject chunkPrefab;
@@ -11,17 +12,17 @@ public class ctrl : MonoBehaviour {
 
     public float[,] heightMap;
     public float[,] waterMap;
-    public Color[,] colorMap=null;
-    public Texture2D texture_h,texture_c;
-    public int chunkSize=100;
+    public Color[,] colorMap = null;
+    public Texture2D texture_h, texture_c;
+    public int chunkSize = 100;
     public bool water;
     public Rain3 rain;
-    
+
     public int w, h;
     [System.Serializable]
     public class PerlinNoiseInfo
     {
-        public float yScale,rot;
+        public float yScale, rot;
         public Vector2 pos;
         public float scale = 0.2f;
         public AnimationCurve heightCurve;
@@ -30,43 +31,46 @@ public class ctrl : MonoBehaviour {
 
     public enum DisplayMode
     {
-        RealColor,TextureColor
+        RealColor, TextureColor
     };
     public DisplayMode displayMode;
 
-    public void Scale()
+    public void Clear()
     {
+        waterMap = new float[w, h];
+        heightMap = new float[w, h];
+        Display();
 
     }
 
     public void GeneratePerlinNoise()
     {
-        heightMap = HeightMapGenerator.Perlin(w, h,perlin.pos,perlin.rot,perlin.scale);
+        heightMap = HeightMapGenerator.Perlin(w, h, perlin.pos, perlin.rot, perlin.scale);
         waterMap = new float[w, h];
         for (int x = 0; x < w; x++)
         {
-            for (int y = 0; y <h; y++)
+            for (int y = 0; y < h; y++)
             {
-                heightMap[x, y] = Mathf.Max(0, perlin.heightCurve.Evaluate(heightMap[x, y]) * perlin.yScale/perlin.scale) ;
+                heightMap[x, y] = Mathf.Max(0, perlin.heightCurve.Evaluate(heightMap[x, y]) * perlin.yScale / perlin.scale);
             }
         }
         Display();
     }
     public void Terrain()
     {
-        
-        float [,] heightMap_ = terrain.terrainData.GetHeights(0, 0, terrain.terrainData.heightmapResolution, terrain.terrainData.heightmapResolution);
-        
+
+        float[,] heightMap_ = terrain.terrainData.GetHeights(0, 0, terrain.terrainData.heightmapResolution, terrain.terrainData.heightmapResolution);
+
         w = heightMap_.GetLength(0);
         h = heightMap_.GetLength(1);
-        heightMap = new float[w,h];
-        waterMap = new float[w, h];  
+        heightMap = new float[w, h];
+        waterMap = new float[w, h];
         colorMap = new Color[heightMap_.GetLength(0), heightMap_.GetLength(1)];
         for (int x = 0; x < w; x++)
         {
             for (int y = 0; y < h; y++)
             {
-                heightMap[x, y] =heightMap_[y,x] *perlin.yScale;
+                heightMap[x, y] = heightMap_[y, x] * perlin.yScale;
             }
         }
         Display();
@@ -76,23 +80,23 @@ public class ctrl : MonoBehaviour {
         {
             for (int y = 0; y < h; y++)
             {
-                colormap_[x + y * w] =new Color(heightMap[x,y]*256, heightMap[x, y] * 256, heightMap[x, y] * 256);
+                colormap_[x + y * w] = new Color(heightMap[x, y] * 256, heightMap[x, y] * 256, heightMap[x, y] * 256);
             }
         }
     }
     public void ReadPng()
     {
-        heightMap = new float[texture_h.width , texture_h.height ];
-        colorMap = new Color[texture_h.width , texture_h.height ];
+        heightMap = new float[texture_h.width, texture_h.height];
+        colorMap = new Color[texture_h.width, texture_h.height];
         w = heightMap.GetLength(0);
         h = heightMap.GetLength(1);
-        
+
         for (int i = 0; i < w; i++)
         {
             for (int j = 0; j < h; j++)
             {
-                heightMap[i, j] = texture_h.GetPixel(i , j ).r*perlin.yScale;
-                colorMap[i, j] = texture_c.GetPixel(i , j );
+                heightMap[i, j] = texture_h.GetPixel(i, j).r * perlin.yScale;
+                colorMap[i, j] = texture_c.GetPixel(i, j);
             }
         }
         waterMap = new float[w, h];
@@ -100,11 +104,11 @@ public class ctrl : MonoBehaviour {
     }
     public void ReadPngFromDisk()
     {
-        FileStream fs = new FileStream(@".\fromGAN\fromGAN.png",FileMode.Open);
+        FileStream fs = new FileStream(@".\fromGAN\fromGAN.png", FileMode.Open);
         byte[] png = new byte[fs.Length];
         fs.Read(png, 0, (int)fs.Length);
         fs.Dispose();
-        heightMap = PNGToMap(png,0,perlin.yScale);
+        heightMap = PNGToMap(png, 0, perlin.yScale);
         waterMap = new float[w, h];
         Display();
     }
@@ -147,7 +151,7 @@ public class ctrl : MonoBehaviour {
                         }
                     }
                     GameObject newChunk = Instantiate(chunkPrefab, transform.position + new Vector3(i * chunkSize, 0, j * chunkSize), new Quaternion(0, 0, 0, 1), chunkParent.transform);
-                    newChunk.GetComponent<Display3d>().DrawTerrainWithRealColor(ChunkHeight,ChunkColor);
+                    newChunk.GetComponent<Display3d>().DrawTerrainWithRealColor(ChunkHeight, ChunkColor);
                 }
         if (water)
             for (int i = 0; i < chunk_n[0]; i++)
@@ -158,10 +162,10 @@ public class ctrl : MonoBehaviour {
                     {
                         for (int y = 0; y < ChunkWater.GetLength(1); y++)
                         {
-                            ChunkWater[x, y] = waterMap[x + i * chunkSize, y + j * chunkSize]+ heightMap[x + i * chunkSize, y + j * chunkSize];
+                            ChunkWater[x, y] = waterMap[x + i * chunkSize, y + j * chunkSize] + heightMap[x + i * chunkSize, y + j * chunkSize];
                         }
                     }
-                    GameObject newChunk = Instantiate(chunkPrefab, transform.position + new Vector3(i * chunkSize,0, j * chunkSize), new Quaternion(0, 0, 0, 1), chunkParent.transform);
+                    GameObject newChunk = Instantiate(chunkPrefab, transform.position + new Vector3(i * chunkSize, 0, j * chunkSize), new Quaternion(0, 0, 0, 1), chunkParent.transform);
                     newChunk.GetComponent<Display3d>().DrawWater(ChunkWater);
                 }
         d2.Display(heightMap);
@@ -170,10 +174,10 @@ public class ctrl : MonoBehaviour {
     public int t = 0;
     public void SaveAsPNG(float[,] map)
     {
-        
-		FileStream fs = new FileStream(@".\toGAN\fromCS"+t+++".png", FileMode.Create);
-        float[]minmax=MinMax(map);
-        byte[] png = MapToPng(map,minmax[0],minmax[1]);
+
+        FileStream fs = new FileStream(@".\toGAN\fromCS" + t++ + ".png", FileMode.Create);
+        float[] minmax = MinMax(map);
+        byte[] png = MapToPng(map, minmax[0], minmax[1]);
         fs.Write(png, 0, png.Length);
         fs.Close();
     }
@@ -193,19 +197,19 @@ public class ctrl : MonoBehaviour {
         }
         return new float[2] { min, max };
     }
-    byte[] MapToPng(float[,] map,float min,float max,string mode="GRAY")
+    byte[] MapToPng(float[,] map, float min, float max, string mode = "GRAY")
     {
         w = map.GetLength(0);
         h = map.GetLength(1);
         Texture2D o = new Texture2D(w, h);
         Color[] img = new Color[w * h];
-        if(mode=="GRAY")
+        if (mode == "GRAY")
             for (int i = 0; i < w; i++)
             {
                 for (int j = 0; j < h; j++)
                 {
-                    float v =( map[i, j] - min) / (max - min);
-                    img[i + j * h] = new Color(v,v,v);
+                    float v = (map[i, j] - min) / (max - min);
+                    img[i + j * h] = new Color(v, v, v);
                 }
             }
         else if (mode == "RGB")
@@ -213,15 +217,15 @@ public class ctrl : MonoBehaviour {
             {
                 for (int j = 0; j < h; j++)
                 {
-                    float v=(map[i, j] - min) / (max - min);
-                    img[i + j * h] = new Color(v,(v*256)%1,(v*65536)%1);
+                    float v = (map[i, j] - min) / (max - min);
+                    img[i + j * h] = new Color(v, (v * 256) % 1, (v * 65536) % 1);
                 }
             }
         o.SetPixels(img);
         o.Apply();
         return o.EncodeToPNG();
     }
-    float[,] PNGToMap(byte[] png,float min, float max,string mode = "GRAY")//uses global variables w and h
+    float[,] PNGToMap(byte[] png, float min, float max, string mode = "GRAY")//uses global variables w and h
     {
         float[,] o = new float[w, h];
         Texture2D texture = new Texture2D(w, h);
@@ -232,7 +236,7 @@ public class ctrl : MonoBehaviour {
                 for (int j = 0; j < h; j++)
                 {
                     Color p = texture.GetPixel(i, j);
-                    o[i, j] = p.r*(max-min)+min;
+                    o[i, j] = p.r * (max - min) + min;
                 }
             }
         else if (mode == "RGB")
@@ -241,7 +245,7 @@ public class ctrl : MonoBehaviour {
                 for (int j = 0; j < h; j++)
                 {
                     Color p = texture.GetPixel(i, j);
-                    o[i, j] =( p.r + p.g / 256 + p.b / 65536) * (max - min) + min;
+                    o[i, j] = (p.r + p.g / 256 + p.b / 65536) * (max - min) + min;
                 }
             }
         return o;
@@ -281,27 +285,48 @@ public class ctrl : MonoBehaviour {
     public async void RunGANOnServer()
     {
         float[] minmax = MinMax(heightMap);
-        string pngBase64 = Convert.ToBase64String(MapToPng(heightMap, minmax[0], minmax[1],mode:"RGB"));
+        string pngBase64 = Convert.ToBase64String(MapToPng(heightMap, minmax[0], minmax[1], mode: "RGB"));
         HttpClient client = new HttpClient();
-        client.Timeout = TimeSpan.FromSeconds(10    );
+        client.Timeout = TimeSpan.FromSeconds(10);
         string response;
-        using (var content = new StringContent(JsonUtility.ToJson(new PostData(128,pngBase64)), System.Text.Encoding.UTF8, "application/json"))
+        using (var content = new StringContent(JsonUtility.ToJson(new PostData(128, pngBase64)), System.Text.Encoding.UTF8, "application/json"))
         {
-            var postResult =await client.PostAsync(postUrl, content);
+            var postResult = await client.PostAsync(postUrl, content);
             response = await postResult.Content.ReadAsStringAsync();
         }
-        print("response:"+response);
+        print("response:" + response);
         ResponseData responseData = JsonUtility.FromJson<ResponseData>(response);
-        byte[] getData = await client.GetByteArrayAsync(getUrl+responseData.file_name+".png");
-        heightMap = PNGToMap(getData,minmax[0],minmax[1],mode:"RGB");
+        byte[] getData = await client.GetByteArrayAsync(getUrl + responseData.file_name + ".png");
+        heightMap = PNGToMap(getData, minmax[0], minmax[1], mode: "RGB");
         waterMap = new float[w, h];
         Display();
     }
+    float smoothness = .03f;
     public void Update()
     {
-        if (Input.GetKey(KeyCode.G))
+        int x, z;
+        if (Input.GetMouseButton(0))
         {
-            GeneratePerlinNoise(); 
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            if (Physics.Raycast(ray, out RaycastHit hit))
+            {
+                x = (int)hit.point.x;
+                z = (int)hit.point.z;
+                for(int i = x - 20; i < x+20; i++)
+                {
+                    for (int j = z - 20; j < z+20; j++)
+                    {
+                        if(i<w&&i>=0&&j<h&&j>=0)
+                            heightMap[i,j] += Mathf.Exp(-smoothness*((i-x)* (i - x)+ (j - z) * (j - z)));
+                    }
+                }
+                
+            }
         }
+        if (Input.GetMouseButtonUp(0))
+        {
+            Display();
+        }
+
     }
 }
