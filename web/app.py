@@ -82,7 +82,6 @@ def generate():
     pathlib.Path('staic/gen').mkdir(parents=True, exist_ok=True)
     if request.method == "POST":
         res = request.json
-        print(res)
         spl.size = 256
         spl.overlay = int(res["overlay"])
         file = res["file"]

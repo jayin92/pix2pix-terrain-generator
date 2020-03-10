@@ -8,7 +8,10 @@ public class ColorDesign : MonoBehaviour
     public Gradient colorOverNormal;
     public AnimationCurve normalAffect;
     public Material targetMaterial;
-
+    public void Start()
+    {
+        generate();
+    }
     public void generate()
     {
         int w = 256;
