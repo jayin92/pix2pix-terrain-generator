@@ -122,7 +122,6 @@ scene.add(axes);
 var geometry = new THREE.PlaneGeometry(7500, 7500, img_width - 1, img_height - 1);
 // geometry.rotateX(- Math.PI / 2);
 
-console.log(image_data);
 var size = img_width * img_height;
 var terrain_data = new Uint32Array(size);
 var idx = 0;
@@ -145,8 +144,6 @@ for (var i = 0, l = geometry.vertices.length; i < l; i++) {
     geometry.vertices[i].z = terrain_data[i] * 10;
 
 }
-console.log(terrain_data);
-console.log(geometry.vertices);
 var texture = new THREE.CanvasTexture(generateTexture(terrain_data, img_width, img_height));
 texture.wrapS = THREE.ClampToEdgeWrapping;
 texture.wrapT = THREE.ClampToEdgeWrapping;

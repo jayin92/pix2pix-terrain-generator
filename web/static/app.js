@@ -4,10 +4,8 @@ function getBase64(file) {
   var reader = new FileReader();
   reader.readAsDataURL(file);
   reader.onload = function () {
-    console.log(reader.result);
   };
   reader.onerror = function (error) {
-    console.log('Error: ', error);
   };
 }
 
@@ -29,7 +27,6 @@ $(document).ready(function (e) {
       cache: false,
       processData: false,
       success: function (data) {
-        console.log(data);
         var script = document.createElement("script");
         document.getElementById("alertHolder").innerHTML = '<div class="alert alert-success fade show" role="alert">Generate successfully. <a href="/static/gen/' + data['file_name'] + '.png"> Direct Link</a><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>';
         document.getElementById("output").src = "/static/gen/" + data['file_name'] + ".png";
