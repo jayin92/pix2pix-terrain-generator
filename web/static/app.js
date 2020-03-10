@@ -29,7 +29,6 @@ $(document).ready(function (e) {
         var script = document.createElement("script");
         document.getElementById("alertHolder").innerHTML = '<div class="alert alert-success fade show" role="alert">Generate successfully. <a href="/static/gen/' + data['file_name'] + '.png"> Direct Link</a><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>';
         document.getElementById("output").src = "/static/gen/" + data['file_name'] + ".png";
-        document.getElementById("image_id").innerHTML = data['file_name'];        
         script.src = "/static/bundle.js";
         document.documentElement.appendChild(script);
       }
