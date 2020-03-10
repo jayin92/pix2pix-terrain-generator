@@ -14,6 +14,10 @@ function getBase64(file) {
 $(document).ready(function (e) {
   $('#image-form').on('submit', (function (e) {
     e.preventDefault();
+    if(document.getElementById("three") != null){
+      document.getElementById("three").remove();
+    }
+    $('canvas').remove();
     dataJSON["overlay"] = document.getElementById("overlay").value;
     dataJSON["file"] = document.getElementById("input").src;
     $.ajax({
@@ -30,6 +34,7 @@ $(document).ready(function (e) {
         document.getElementById("alertHolder").innerHTML = '<div class="alert alert-success fade show" role="alert">Generate successfully. <a href="/static/gen/' + data['file_name'] + '.png"> Direct Link</a><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>';
         document.getElementById("output").src = "/static/gen/" + data['file_name'] + ".png";
         script.src = "/static/bundle.js";
+        script.setAttribute("id", "three");
         document.documentElement.appendChild(script);
       }
     });
@@ -47,6 +52,7 @@ $(document).on("click", ".browse", function () {
 
 $('input[type="file"]').change(function (e) {
   addBtn();
+  
   var fileName = e.target.files[0].name;
   $("#file").val(fileName);
 
