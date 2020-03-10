@@ -24,3 +24,4 @@ __pycache__/
 *.py[cod]
 threejs
 web/static/gen
+config.ini

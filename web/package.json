@@ -20,6 +20,11 @@
     "webpack-cli": "^3.3.11"
   },
   "dependencies": {
-    "dat.gui": "^0.7.6"
+    "dat.gui": "^0.7.6",
+    "fs": "0.0.1-security",
+    "get-pixels": "^3.3.2",
+    "pngjs": "^3.4.0",
+    "three-orbitcontrols": "^2.110.3",
+    "three-trackballcontrols": "0.0.8"
   }
 }

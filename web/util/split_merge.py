@@ -45,8 +45,8 @@ def merge(a):
                     if y>stride and j<num_imgs[1]-1:
                         factor*=interpolation((size-y)/overlay)
                     value=a[i+j*num_imgs[0]][y][x][0]*factor
-                    result[y0+y][x0+x][0]+=value/65536
-                    result[y0+y][x0+x][1]+=(value%65536)/256
+                    result[y0+y][x0+x][0]+=value//65536
+                    result[y0+y][x0+x][1]+=(value%65536)//256
                     result[y0+y][x0+x][2]+=(value%256)
     return result.astype(np.uint8)
 

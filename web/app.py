@@ -6,6 +6,7 @@ import string
 import pathlib
 import base64
 import re
+import configparser
 
 from io import BytesIO
 from options.test_options import TestOptions
@@ -22,6 +23,9 @@ app = Flask(__name__)
 
 import util.split_merge as spl
 import numpy as np
+
+config = configparser.ConfigParser()
+config.read("config.ini")
 
 opt = TestOptions().parse()  # get test options
 # hard-code some parameters for test
@@ -109,8 +113,9 @@ def generate():
         rep = {
             'file_name': img_name
         }
+
         return Response(json.dumps(rep), mimetype="application/json")
 
 
 if __name__ == "__main__":
-    app.run(debug=True, host="0.0.0.0", port=8889)
+    app.run(debug=True, host=config["webserver"]["host"], port=int(config["webserver"]["port"]))
