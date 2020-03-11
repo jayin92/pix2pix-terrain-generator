@@ -2,13 +2,9 @@ var r = 75;
 var p;
 var k = 0.001;
 
-function inrect(x, y) {
-    return x >= 0 && y >= 0 && x < width && y < height;
-}
 
-function setup(size=512) {
-    clear();
-    var canvas = createCanvas(size, size);
+function setup() {    
+    var canvas = createCanvas(256, 256);
     background(0);
     canvas.parent('p5-holder');
     p = new Float64Array(width * height);
@@ -32,7 +28,18 @@ function draw() {
     updatePixels();
 }
 
+function resize(size){
+    resizeCanvas(size, size);
+    clear();
+    background(0);
+    p = new Float64Array(width * height);
+}
+
 function mouseWheel(e) {
     if (e.delta > 0) { k /= 1.1; }
     else { k *= 1.1; }
+}
+
+function inrect(x, y) {
+    return x >= 0 && y >= 0 && x < width && y < height;
 }

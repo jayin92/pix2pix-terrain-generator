@@ -88,8 +88,8 @@
       </div>
     </div> -->
     <form method="post" enctype="multipart/form-data" id="image-form" action="http://localhost:8080/generate"
-      name="image-form">
-      <input type="file" name="file" class="file" accept="image/*">
+    name="image-form">
+    <input type="file" name="file" class="file" accept="image/*">
       <div class="input-group my-3">
         <input type="text" class="form-control" disabled placeholder="Upload Image" id="file">
         <div class="input-group-append">
@@ -101,7 +101,7 @@
           <span class="input-group-text" id="basic-addon1">Overlay Size</span>
         </div>
         <input type="text" class="form-control" id="overlay" placeholder="number between 1 and 256"
-          aria-describedby="basic-addon1" value=128>
+        aria-describedby="basic-addon1" value=128>
       </div>
       <div class="input-group my-3">
         <div class="row allign-items-center">
@@ -111,14 +111,11 @@
                 <div class="input-group"><span class="input-group-text" id="size">Canvas Size</span></div>
                 <button type="button" class="btn btn-secondary" id="256">256</button>
                 <button type="button" class="btn btn-secondary" id="512">512</button>
-                <button type="button" class="btn btn-secondary" id="768">768</button>
-                <button type="button" class="btn btn-secondary" id="1024">1024</button>
+                <!-- <button type="button" class="btn btn-secondary" id="768">768</button> -->
+                <!-- <button type="button" class="btn btn-secondary" id="1024">1024</button> -->
               </div>
             </div>
-            <p id="p5-holder">
-              <!-- <script src="/static/u.js"></script> -->
-              <!-- <canvas id="c" width="256" height="256" data-processing-sources="{{ url_for('static', filename='u.pde') }}"></canvas> -->
-            </p>
+            <div id="p5-holder"></div> 
             <div>
               <img id="input" class="rounded">
               <img id="output" class="rounded">

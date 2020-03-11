@@ -16,7 +16,7 @@ $(document).ready(function (e) {
       document.getElementById("three").remove();
     }
     dataJSON["overlay"] = document.getElementById("overlay").value;
-    var cas = document.getElementById("c");
+    var cas = document.getElementById("defaultCanvas0");
     if (cas != null) {
       dataJSON["file"] = cas.toDataURL("image/png", 1);
       document.getElementById("input").remove();
@@ -63,8 +63,7 @@ $('input[type="file"]').change(function (e) {
   reader.onload = function (e) {
     // get loaded data and render thumbnail.
     document.getElementById("input").src = e.target.result;
-    document.getElementById("c").remove();
-    document.getElementById("canvas_size").remove();
+    document.getElementById("defaultCanvas0").remove();
   };
   // read the image file as a data URL.
   reader.readAsDataURL(this.files[0]);
@@ -75,21 +74,21 @@ $('input[type="file"]').change(function (e) {
 // var ctx = el.getContext('2d');
 
 $("#256").click(function () {
-  setup(256);
+  resize(256);
 });
 
 $("#512").click(function () {
-  setup(512);
+  resize(512);
 
 });
 
 $("#768").click(function () {
-  setup(768);
+  resize(768);
 
 });
 
 $("#1024").click(function () {
-  setup(1024);
+  resize(1024);
 });
 
 // ctx.lineWidth = 1;
