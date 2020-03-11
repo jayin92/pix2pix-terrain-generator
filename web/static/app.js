@@ -71,84 +71,84 @@ $('input[type="file"]').change(function (e) {
 });
 
 
-var el = document.getElementById('c');
-var ctx = el.getContext('2d');
+// var el = document.getElementById('c');
+// var ctx = el.getContext('2d');
 
-$("#256").click(function () {
-  document.getElementById("c").width = 256;
-  document.getElementById("c").height = 256;
-  el = document.getElementById('c');
-  ctx = el.getContext('2d');
-  ctx.lineWidth = 1;
-  ctx.lineJoin = ctx.lineCap = 'round';
-  ctx.strokeStyle = 'rgb(100, 100, 100)';
-  ctx.shadowBlur = 10;
-  ctx.shadowColor = 'rgb(100, 100, 100)';
-});
-$("#512").click(function () {
-  document.getElementById("c").width = 512;
-  document.getElementById("c").height = 512;
-  el = document.getElementById('c');
-  ctx = el.getContext('2d');
-  ctx.lineWidth = 1;
-  ctx.lineJoin = ctx.lineCap = 'round';
-  ctx.strokeStyle = 'rgb(100, 100, 100)';
-  ctx.shadowBlur = 10;
-  ctx.shadowColor = 'rgb(100, 100, 100)';
-});
-$("#768").click(function () {
-  document.getElementById("c").width = 768;
-  document.getElementById("c").height = 768;
-  el = document.getElementById('c');
-  ctx = el.getContext('2d');
-  ctx.lineWidth = 1;
-  ctx.lineJoin = ctx.lineCap = 'round';
-  ctx.strokeStyle = 'rgb(100, 100, 100)';
-  ctx.shadowBlur = 10;
-  ctx.shadowColor = 'rgb(100, 100, 100)';
-});
-$("#1024").click(function () {
-  document.getElementById("c").width = 1024;
-  document.getElementById("c").height = 1024;
-  el = document.getElementById('c');
-  ctx = el.getContext('2d');
-  ctx.lineWidth = 1;
-  ctx.lineJoin = ctx.lineCap = 'round';
-  ctx.strokeStyle = 'rgb(100, 100, 100)';
-  ctx.shadowBlur = 10;
-  ctx.shadowColor = 'rgb(100, 100, 100)';
-});
+// $("#256").click(function () {
+//   document.getElementById("c").width = 256;
+//   document.getElementById("c").height = 256;
+//   el = document.getElementById('c');
+//   ctx = el.getContext('2d');
+//   ctx.lineWidth = 1;
+//   ctx.lineJoin = ctx.lineCap = 'round';
+//   ctx.strokeStyle = 'rgb(100, 100, 100)';
+//   ctx.shadowBlur = 10;
+//   ctx.shadowColor = 'rgb(100, 100, 100)';
+// });
+// $("#512").click(function () {
+//   document.getElementById("c").width = 512;
+//   document.getElementById("c").height = 512;
+//   el = document.getElementById('c');
+//   ctx = el.getContext('2d');
+//   ctx.lineWidth = 1;
+//   ctx.lineJoin = ctx.lineCap = 'round';
+//   ctx.strokeStyle = 'rgb(100, 100, 100)';
+//   ctx.shadowBlur = 10;
+//   ctx.shadowColor = 'rgb(100, 100, 100)';
+// });
+// $("#768").click(function () {
+//   document.getElementById("c").width = 768;
+//   document.getElementById("c").height = 768;
+//   el = document.getElementById('c');
+//   ctx = el.getContext('2d');
+//   ctx.lineWidth = 1;
+//   ctx.lineJoin = ctx.lineCap = 'round';
+//   ctx.strokeStyle = 'rgb(100, 100, 100)';
+//   ctx.shadowBlur = 10;
+//   ctx.shadowColor = 'rgb(100, 100, 100)';
+// });
+// $("#1024").click(function () {
+//   document.getElementById("c").width = 1024;
+//   document.getElementById("c").height = 1024;
+//   el = document.getElementById('c');
+//   ctx = el.getContext('2d');
+//   ctx.lineWidth = 1;
+//   ctx.lineJoin = ctx.lineCap = 'round';
+//   ctx.strokeStyle = 'rgb(100, 100, 100)';
+//   ctx.shadowBlur = 10;
+//   ctx.shadowColor = 'rgb(100, 100, 100)';
+// });
 
-ctx.lineWidth = 1;
-ctx.lineJoin = ctx.lineCap = 'round';
-ctx.strokeStyle = 'rgb(100, 100, 100)';
-ctx.shadowBlur = 10;
-ctx.shadowColor = 'rgb(100, 100, 100)';
+// ctx.lineWidth = 1;
+// ctx.lineJoin = ctx.lineCap = 'round';
+// ctx.strokeStyle = 'rgb(100, 100, 100)';
+// ctx.shadowBlur = 10;
+// ctx.shadowColor = 'rgb(100, 100, 100)';
 
-var isDrawing, points = [];
+// var isDrawing, points = [];
 
-el.onmousedown = function (e) {
-  var rect = el.getBoundingClientRect();
-  isDrawing = true;
-  points.push({ x: e.clientX - rect.left, y: e.clientY - rect.top });
-};
+// el.onmousedown = function (e) {
+//   var rect = el.getBoundingClientRect();
+//   isDrawing = true;
+//   points.push({ x: e.clientX - rect.left, y: e.clientY - rect.top });
+// };
 
-el.onmousemove = function (e) {
-  if (!isDrawing) return;
-  var rect = el.getBoundingClientRect();
+// el.onmousemove = function (e) {
+//   if (!isDrawing) return;
+//   var rect = el.getBoundingClientRect();
 
-  // ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
-  points.push({ x: e.clientX - rect.left, y: e.clientY - rect.top });
+//   // ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+//   points.push({ x: e.clientX - rect.left, y: e.clientY - rect.top });
 
-  ctx.beginPath();
-  ctx.moveTo(points[0].x, points[0].y);
-  for (var i = 1; i < points.length; i++) {
-    ctx.lineTo(points[i].x, points[i].y);
-  }
-  ctx.stroke();
-};
+//   ctx.beginPath();
+//   ctx.moveTo(points[0].x, points[0].y);
+//   for (var i = 1; i < points.length; i++) {
+//     ctx.lineTo(points[i].x, points[i].y);
+//   }
+//   ctx.stroke();
+// };
 
-el.onmouseup = function () {
-  isDrawing = false;
-  points.length = 0;
-};
+// el.onmouseup = function () {
+//   isDrawing = false;
+//   points.length = 0;
+// };
