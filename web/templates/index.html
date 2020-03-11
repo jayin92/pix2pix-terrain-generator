@@ -20,11 +20,12 @@
       window.parent.postMessage("resize", "*");
     }
   </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.0.0/p5.min.js"></script>
-    <script src="{{ url_for('static', filename = 'u.js') }}"></script>
+  <script src="{{ url_for('static', filename = 'u.js') }}"></script>
+
+    
 </head>
 
-<body translate="no">
+<body>
   <a href="https://github.com/jayin92/scifair/" class="github-corner" aria-label="View source on GitHub"><svg width="80"
     height="80" viewBox="0 0 250 250"
       style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true">
@@ -114,10 +115,10 @@
                 <button type="button" class="btn btn-secondary" id="1024">1024</button>
               </div>
             </div>
-            <div id="p5-holder">
+            <p id="p5-holder">
               <!-- <script src="/static/u.js"></script> -->
               <!-- <canvas id="c" width="256" height="256" data-processing-sources="{{ url_for('static', filename='u.pde') }}"></canvas> -->
-            </div>
+            </p>
             <div>
               <img id="input" class="rounded">
               <img id="output" class="rounded">
@@ -135,13 +136,10 @@
   <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.0.0/p5.min.js"></script>
   <!-- <script src="{{ url_for('static', filename='bundle.js') }}"></script>   -->
   <script src="{{ url_for('static', filename='app.js') }}"></script>
 
-
-  <!-- <script src="{{ url_for('static', filename='processing.js') }}"></script> -->
-  <!-- <script src="{{ url_for('static', filename='app.js') }}"></script> -->
 </body>
 
 </html>

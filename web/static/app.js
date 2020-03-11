@@ -74,50 +74,23 @@ $('input[type="file"]').change(function (e) {
 // var el = document.getElementById('c');
 // var ctx = el.getContext('2d');
 
-// $("#256").click(function () {
-//   document.getElementById("c").width = 256;
-//   document.getElementById("c").height = 256;
-//   el = document.getElementById('c');
-//   ctx = el.getContext('2d');
-//   ctx.lineWidth = 1;
-//   ctx.lineJoin = ctx.lineCap = 'round';
-//   ctx.strokeStyle = 'rgb(100, 100, 100)';
-//   ctx.shadowBlur = 10;
-//   ctx.shadowColor = 'rgb(100, 100, 100)';
-// });
-// $("#512").click(function () {
-//   document.getElementById("c").width = 512;
-//   document.getElementById("c").height = 512;
-//   el = document.getElementById('c');
-//   ctx = el.getContext('2d');
-//   ctx.lineWidth = 1;
-//   ctx.lineJoin = ctx.lineCap = 'round';
-//   ctx.strokeStyle = 'rgb(100, 100, 100)';
-//   ctx.shadowBlur = 10;
-//   ctx.shadowColor = 'rgb(100, 100, 100)';
-// });
-// $("#768").click(function () {
-//   document.getElementById("c").width = 768;
-//   document.getElementById("c").height = 768;
-//   el = document.getElementById('c');
-//   ctx = el.getContext('2d');
-//   ctx.lineWidth = 1;
-//   ctx.lineJoin = ctx.lineCap = 'round';
-//   ctx.strokeStyle = 'rgb(100, 100, 100)';
-//   ctx.shadowBlur = 10;
-//   ctx.shadowColor = 'rgb(100, 100, 100)';
-// });
-// $("#1024").click(function () {
-//   document.getElementById("c").width = 1024;
-//   document.getElementById("c").height = 1024;
-//   el = document.getElementById('c');
-//   ctx = el.getContext('2d');
-//   ctx.lineWidth = 1;
-//   ctx.lineJoin = ctx.lineCap = 'round';
-//   ctx.strokeStyle = 'rgb(100, 100, 100)';
-//   ctx.shadowBlur = 10;
-//   ctx.shadowColor = 'rgb(100, 100, 100)';
-// });
+$("#256").click(function () {
+  setup(256);
+});
+
+$("#512").click(function () {
+  setup(512);
+
+});
+
+$("#768").click(function () {
+  setup(768);
+
+});
+
+$("#1024").click(function () {
+  setup(1024);
+});
 
 // ctx.lineWidth = 1;
 // ctx.lineJoin = ctx.lineCap = 'round';
