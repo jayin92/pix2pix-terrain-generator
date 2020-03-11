@@ -2,3 +2,11 @@
     visibility: hidden;
     position: absolute;
   }
+
+  canvas { border: 1px solid #ccc } 
+  #canvas_container
+    {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    }

@@ -117,7 +117,7 @@ renderer.setClearColor(0xffffff, 1);
 container.appendChild(renderer.domElement);
 
 var axes = new THREE.AxesHelper(10000);
-scene.add(axes);
+// scene.add(axes);
 
 var geometry = new THREE.PlaneGeometry(7500, 7500, img_width - 1, img_height - 1);
 // geometry.rotateX(- Math.PI / 2);

@@ -12,12 +12,17 @@ function getBase64(file) {
 $(document).ready(function (e) {
   $('#image-form').on('submit', (function (e) {
     e.preventDefault();
-    if(document.getElementById("three") != null){
+    if (document.getElementById("three") != null) {
       document.getElementById("three").remove();
     }
-    $('canvas').remove();
     dataJSON["overlay"] = document.getElementById("overlay").value;
-    dataJSON["file"] = document.getElementById("input").src;
+    var cas = document.getElementById("c");
+    if (cas != null) {
+      dataJSON["file"] = cas.toDataURL("image/png", 1);
+      document.getElementById("input").remove();
+    } else {
+      dataJSON["file"] = document.getElementById("input").src;
+    }
     $.ajax({
       url: '/generate',
       type: 'POST',
@@ -47,9 +52,10 @@ $(document).on("click", ".browse", function () {
   file.trigger("click");
 });
 
+
 $('input[type="file"]').change(function (e) {
   addBtn();
-  
+
   var fileName = e.target.files[0].name;
   $("#file").val(fileName);
 
@@ -57,7 +63,92 @@ $('input[type="file"]').change(function (e) {
   reader.onload = function (e) {
     // get loaded data and render thumbnail.
     document.getElementById("input").src = e.target.result;
+    document.getElementById("c").remove();
+    document.getElementById("canvas_size").remove();
   };
   // read the image file as a data URL.
   reader.readAsDataURL(this.files[0]);
-}); 
+});
+
+
+var el = document.getElementById('c');
+var ctx = el.getContext('2d');
+
+$("#256").click(function () {
+  document.getElementById("c").width = 256;
+  document.getElementById("c").height = 256;
+  el = document.getElementById('c');
+  ctx = el.getContext('2d');
+  ctx.lineWidth = 1;
+  ctx.lineJoin = ctx.lineCap = 'round';
+  ctx.strokeStyle = 'rgb(100, 100, 100)';
+  ctx.shadowBlur = 10;
+  ctx.shadowColor = 'rgb(100, 100, 100)';
+});
+$("#512").click(function () {
+  document.getElementById("c").width = 512;
+  document.getElementById("c").height = 512;
+  el = document.getElementById('c');
+  ctx = el.getContext('2d');
+  ctx.lineWidth = 1;
+  ctx.lineJoin = ctx.lineCap = 'round';
+  ctx.strokeStyle = 'rgb(100, 100, 100)';
+  ctx.shadowBlur = 10;
+  ctx.shadowColor = 'rgb(100, 100, 100)';
+});
+$("#768").click(function () {
+  document.getElementById("c").width = 768;
+  document.getElementById("c").height = 768;
+  el = document.getElementById('c');
+  ctx = el.getContext('2d');
+  ctx.lineWidth = 1;
+  ctx.lineJoin = ctx.lineCap = 'round';
+  ctx.strokeStyle = 'rgb(100, 100, 100)';
+  ctx.shadowBlur = 10;
+  ctx.shadowColor = 'rgb(100, 100, 100)';
+});
+$("#1024").click(function () {
+  document.getElementById("c").width = 1024;
+  document.getElementById("c").height = 1024;
+  el = document.getElementById('c');
+  ctx = el.getContext('2d');
+  ctx.lineWidth = 1;
+  ctx.lineJoin = ctx.lineCap = 'round';
+  ctx.strokeStyle = 'rgb(100, 100, 100)';
+  ctx.shadowBlur = 10;
+  ctx.shadowColor = 'rgb(100, 100, 100)';
+});
+
+ctx.lineWidth = 1;
+ctx.lineJoin = ctx.lineCap = 'round';
+ctx.strokeStyle = 'rgb(100, 100, 100)';
+ctx.shadowBlur = 10;
+ctx.shadowColor = 'rgb(100, 100, 100)';
+
+var isDrawing, points = [];
+
+el.onmousedown = function (e) {
+  var rect = el.getBoundingClientRect();
+  isDrawing = true;
+  points.push({ x: e.clientX - rect.left, y: e.clientY - rect.top });
+};
+
+el.onmousemove = function (e) {
+  if (!isDrawing) return;
+  var rect = el.getBoundingClientRect();
+
+  // ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+  points.push({ x: e.clientX - rect.left, y: e.clientY - rect.top });
+
+  ctx.beginPath();
+  ctx.moveTo(points[0].x, points[0].y);
+  for (var i = 1; i < points.length; i++) {
+    ctx.lineTo(points[i].x, points[i].y);
+  }
+  ctx.stroke();
+};
+
+el.onmouseup = function () {
+  isDrawing = false;
+  points.length = 0;
+};

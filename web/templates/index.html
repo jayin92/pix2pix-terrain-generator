@@ -74,16 +74,16 @@
   <div class="container" id="container">
     <div id="alertHolder"></div>
     <!-- <div class="row align-items-center">
-          <div class="col-md-auto">
-              <img src="{{ url_for('static', filename='input.png') }}" class="figure-img rounded">
-          </div>
-          <div class="col-md-auto">
-            <button type="button" class="btn btn-primary btn-lg">➡️ Generate ➡️</button>
-          </div>
-          <div class="col-md-auto">
-              <img src="{{ url_for('static', filename='output.png')  }}" class="figure-img rounded">
-          </div>
-        </div> -->
+      <div class="col-md-auto">
+        <img src="{{ url_for('static', filename='input.png') }}" class="figure-img rounded">
+      </div>
+      <div class="col-md-auto">
+        <button type="button" class="btn btn-primary btn-lg">➡️ Generate ➡️</button>
+      </div>
+      <div class="col-md-auto">
+        <img src="{{ url_for('static', filename='output.png')  }}" class="figure-img rounded">
+      </div>
+    </div> -->
     <form method="post" enctype="multipart/form-data" id="image-form" action="http://localhost:8080/generate"
       name="image-form">
       <input type="file" name="file" class="file" accept="image/*">
@@ -97,19 +97,32 @@
         <div class="input-group-prepend">
           <span class="input-group-text" id="basic-addon1">Overlay Size</span>
         </div>
-        <input type="text" class="form-control" id="overlay" placeholder="number between 1 and 256" aria-describedby="basic-addon1" value=128>
+        <input type="text" class="form-control" id="overlay" placeholder="number between 1 and 256"
+          aria-describedby="basic-addon1" value=128>
       </div>
       <div class="input-group my-3">
         <div class="row allign-items-center">
           <div class="col-md-auto">
-            <img id="input" class="rounded">
-          </div>
-          <div class="col-md-auto">
-            <img id="output" class="rounded">
+            <div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups" id="canvas_size">
+              <div class="btn-group mr-2" role="group" aria-label="First group">
+                <div class="input-group"><span class="input-group-text" id="size">Canvas Size</span></div>
+                <button type="button" class="btn btn-secondary" id="256">256</button>
+                <button type="button" class="btn btn-secondary" id="512">512</button>
+                <button type="button" class="btn btn-secondary" id="768">768</button>
+                <button type="button" class="btn btn-secondary" id="1024">1024</button>
+              </div>
+            </div>
+            <div>
+              <canvas id="c" width="256" height="256"></canvas>
+            </div>
+            <div>
+              <img id="input" class="rounded">
+              <img id="output" class="rounded">
+            </div>
           </div>
         </div>
       </div>
-      <div id="btnHolder"></div>
+      <div id="btnHolder"><input type="submit" value="Generate" class="btn btn-primary"></div>
     </form>
     <br>
     <!-- <canvas data-processing-sources="{{ url_for('static', filename='draw.pde') }}"></canvas> -->
