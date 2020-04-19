@@ -1,5 +1,6 @@
 .vscode
 .ipynb_checkpoints
+.vs
 heightmap/tmp/test
 Unity_Hydraulic_Erosion/Library
 Unity_Hydraulic_Erosion/Temp
@@ -25,3 +26,5 @@ __pycache__/
 threejs
 web/static/gen
 config.ini
+
+*.pth
