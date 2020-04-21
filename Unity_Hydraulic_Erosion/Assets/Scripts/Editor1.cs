@@ -18,6 +18,10 @@ public class Editor1 : Editor {
         {
             controller.GeneratePerlinNoise();
         }
+        if (GUILayout.Button("flat"))
+        {
+            controller.Flat();
+        }
         if (GUILayout.Button("terrain"))
         {
             controller.Terrain();
@@ -25,9 +29,13 @@ public class Editor1 : Editor {
         if(GUILayout.Button("save as PNG")){
             controller.SaveAsPNG(controller.heightMap);
         }
-        if (GUILayout.Button("run GAN on server"))
+        if (GUILayout.Button("HeightmapGAN"))
         {
-            controller.RunGANOnServer();
+            controller.HeightmapGAN();
+        }
+        if (GUILayout.Button("SatelliteGAN"))
+        {
+            controller.SatelliteGAN();
         }
         if (GUILayout.Button("ReadPngFromFile"))
         {
@@ -43,7 +51,7 @@ public class Editor2 : Editor
     {
         Rain3 rain3 = (Rain3)target;
         DrawDefaultInspector();
-        if (GUILayout.Button("Int"))
+        if (GUILayout.Button("Init"))
         {
             rain3.Init();
         }

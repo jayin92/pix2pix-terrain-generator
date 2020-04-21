@@ -1,10 +1,10 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
+using UnityEngine.UI;
 using UnityEngine;
 
 public class Display2d : MonoBehaviour {
     public Renderer textureRenderer;
-    
+    public RawImage image;
 
     
     public void Display(float[,] noiseMap)
@@ -34,5 +34,6 @@ public class Display2d : MonoBehaviour {
         texture.Apply();
         textureRenderer.material.mainTexture = texture;
         textureRenderer.transform.localScale = new Vector3(w*0.1f, 1, h*0.1f);
+        image.texture = texture;
     }
 }

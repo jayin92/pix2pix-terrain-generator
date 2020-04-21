@@ -6,6 +6,7 @@ public static class HeightMapGenerator{
     public static float[,] Perlin(int w,int h,Vector2 pos,float rot,float scale)
     {
         float[,] map = new float[w, h];
+
         for (float f = 1; f <=4.0f/scale ; f *=2)
         {
             for (int x = 0; x < w; x++)

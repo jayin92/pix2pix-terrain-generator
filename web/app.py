@@ -117,4 +117,4 @@ def generate():
 
 
 if __name__ == "__main__":
-    app.run(debug=True, host=config["webserver"]["host"], port=int(config["webserver"]["port"]))
+    app.run(debug=True, port=5001)

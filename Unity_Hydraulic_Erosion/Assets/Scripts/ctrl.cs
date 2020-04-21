@@ -56,6 +56,12 @@ public class ctrl : MonoBehaviour
         }
         Display();
     }
+    public void Flat()
+    {
+        heightMap = new float[w, h];
+        waterMap = new float[w, h];
+        Display();
+    }
     public void Terrain()
     {
 
@@ -282,7 +288,8 @@ public class ctrl : MonoBehaviour
             this.file = file;
         }
     }
-    public async void RunGANOnServer()
+    public float ganScale = 0.5f;
+    public async void HeightmapGAN()
     {
         float[] minmax = MinMax(heightMap);
         string pngBase64 = Convert.ToBase64String(MapToPng(heightMap, minmax[0], minmax[1], mode: "RGB"));
@@ -297,35 +304,85 @@ public class ctrl : MonoBehaviour
         print("response:" + response);
         ResponseData responseData = JsonUtility.FromJson<ResponseData>(response);
         byte[] getData = await client.GetByteArrayAsync(getUrl + responseData.file_name + ".png");
-        heightMap = PNGToMap(getData, minmax[0], minmax[1], mode: "RGB");
+        heightMap = PNGToMap(getData, minmax[0], (minmax[1]- minmax[0])* ganScale+ minmax[0], mode: "RGB");
         waterMap = new float[w, h];
         Display();
     }
-    float smoothness = .03f;
+
+    public string postUrl_sat;
+    public string getUrl_sat;
+    public async void SatelliteGAN()
+    {
+        float[] minmax = MinMax(heightMap);
+        string pngBase64 = Convert.ToBase64String(MapToPng(heightMap, minmax[0], minmax[1], mode: "RGB"));
+        HttpClient client = new HttpClient();
+        client.Timeout = TimeSpan.FromSeconds(10);
+        string response;
+        using (var content = new StringContent(JsonUtility.ToJson(new PostData(128, pngBase64)), System.Text.Encoding.UTF8, "application/json"))
+        {
+            var postResult = await client.PostAsync(postUrl_sat, content);
+            response = await postResult.Content.ReadAsStringAsync();
+        }
+        print("response:" + response);
+        ResponseData responseData = JsonUtility.FromJson<ResponseData>(response);
+        byte[] getData = await client.GetByteArrayAsync(getUrl_sat + responseData.file_name + ".png");
+        texture_c = new Texture2D(w, h);
+        texture_c.LoadImage(getData);
+        colorMap = new Color[w, h];
+        for (int i = 0; i < w; i++)
+        {
+            for (int j = 0; j < h; j++)
+            {
+                colorMap[i, j] = texture_c.GetPixel(i, j);
+            }
+        }
+        Display();
+    }
+
+    private void Start()
+    {
+        Flat();
+    }
+
+    public float smoothness = .03f;
+    public int updateDeltaFrame = 3;
+    public float drawWeight = 0.2f;
+    public GameObject pointer;
+    int frames;
     public void Update()
     {
-        int x, z;
-        if (Input.GetMouseButton(0))
+        int x, z; Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        if (Physics.Raycast(ray, out RaycastHit hit))
         {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            if (Physics.Raycast(ray, out RaycastHit hit))
+            
+            pointer.transform.position = hit.point;
+            pointer.transform.localScale =Vector3.one/Mathf.Sqrt( smoothness)*2;
+            smoothness *= Mathf.Pow(1.1f,-Input.mouseScrollDelta.y);
+            if (Input.GetMouseButton(0))
             {
                 x = (int)hit.point.x;
                 z = (int)hit.point.z;
-                for(int i = x - 20; i < x+20; i++)
+                for (int i = x - 50; i < x + 50; i++)
                 {
-                    for (int j = z - 20; j < z+20; j++)
+                    for (int j = z - 50; j < z + 50; j++)
                     {
-                        if(i<w&&i>=0&&j<h&&j>=0)
-                            heightMap[i,j] += Mathf.Exp(-smoothness*((i-x)* (i - x)+ (j - z) * (j - z)));
+                        if (i < w && i >= 0 && j < h && j >= 0)
+                            heightMap[i, j] = Mathf.Max(0, heightMap[i, j] + Mathf.Exp(-smoothness * ((i - x) * (i - x) + (j - z) * (j - z))) * (Input.GetKey(KeyCode.LeftShift)|| Input.GetKey(KeyCode.RightShift) ? -1 : 1) * drawWeight);
                     }
                 }
-                
+                frames++;
+            }
+            
+            if (frames >= updateDeltaFrame)
+            {
+                Display();
+                frames = 0;
             }
         }
         if (Input.GetMouseButtonUp(0))
         {
             Display();
+            frames = 0;
         }
 
     }
