@@ -1,0 +1,9 @@
+wget https://github.com/jayin92/scifair-datasets/releases/download/v1.0/heightmap.zip
+wget https://github.com/jayin92/scifair-datasets/releases/download/v1.0/perlin_for_test.zip
+wget https://github.com/jayin92/scifair-datasets/releases/download/v1.0/perlin_image.zip
+wget https://github.com/jayin92/scifair-datasets/releases/download/v1.0/simple_poly.zip
+
+unzip heightmap.zip 
+unzip perlin_for_test.zip
+unzip perlin_image.zip
+unzip simple_poly.zip
