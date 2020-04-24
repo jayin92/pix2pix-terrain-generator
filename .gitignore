@@ -28,3 +28,8 @@ web/static/gen
 config.ini
 
 *.pth
+
+heightmap
+perlin_image
+perlin_for_test
+simple_poly
