@@ -16,6 +16,3 @@
 
 ## 進度
 [專題進度](https://github.com/jayin92/scifair/blob/master/docs/progress.md)
-
-## 資料集
-[專題各Datasets及Results名稱](https://github.com/jayin92/scifair/blob/master/docs/name.md)
