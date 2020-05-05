@@ -57,7 +57,7 @@ $(document).ready(function (e) {
         document.getElementById("alertHolder").innerHTML = '<div class="alert alert-success fade show" role="alert">Generate successfully. <a href="/static/gen/' + data['file_name'] + '.png"> Direct Link</a><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>';
         var output = document.createElement("img");
         output.setAttribute("id", "output");
-        document.getElementById("p5-holder").appendChild(output);
+        document.getElementById("img-holder").appendChild(output);
         document.getElementById("output").src = "/static/gen/" + data['file_name'] + ".png";
         output.onload = function() {
           getHeightFromPNG();
