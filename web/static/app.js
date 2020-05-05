@@ -9,6 +9,24 @@ function getBase64(file) {
   };
 }
 
+function getHeightFromPNG() {
+  var img = document.getElementById("output");
+  var canvas = document.createElement("canvas");
+  console.log(img.width, img.height);
+  console.log(img.width == 0);
+  console.log(img.width === 0);
+  if(img.width === 0){
+      console.log("test");
+      wait(1000);
+      var img = document.getElementById("output");
+  }
+  img_width = canvas.width = img.width;
+  img_height = canvas.height = img.height;
+  canvas.getContext('2d').drawImage(img, 0, 0, img.width, img.height);
+  image_data = canvas.getContext('2d').getImageData(0, 0, img.width, img.height).data;
+}
+
+
 $(document).ready(function (e) {
   $('#image-form').on('submit', (function (e) {
     e.preventDefault();
@@ -44,6 +62,7 @@ $(document).ready(function (e) {
         document.getElementById("output").src = "/static/gen/" + data['file_name'] + ".png";
         output.onload = function() {
           getHeightFromPNG();
+          main();
         };
       }
     });
