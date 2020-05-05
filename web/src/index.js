@@ -17,6 +17,14 @@ function wait(ms) {
 function getHeightFromPNG() {
     var img = document.getElementById("output");
     var canvas = document.createElement("canvas");
+    console.log(img.width, img.height);
+    console.log(img.width == 0);
+    console.log(img.width === 0);
+    if(img.width === 0){
+        console.log("test");
+        wait(1000);
+        var img = document.getElementById("output");
+    }
     img_width = canvas.width = img.width;
     img_height = canvas.height = img.height;
     canvas.getContext('2d').drawImage(img, 0, 0, img.width, img.height);
@@ -92,79 +100,82 @@ function generateTexture(data, width, height) {
 
 
 // var data = generateHeight(terrain_width, terrain_height);
-getHeightFromPNG();
+// getHeightFromPNG();
 
-var container = document.getElementById('container');
-var width = $(container).width();
-var height = 500;
+function main(){
 
-var scene = new THREE.Scene();
+    var container = document.getElementById('container');
+    var width = $(container).width();
+    var height = 500;
 
-var spotLight = new THREE.SpotLight(0xffffff);
-spotLight.position.set(0, 0, 10);
-spotLight.angle = 3.14 / 4;
-spotLight.castShadow = true;
+    var scene = new THREE.Scene();
 
-spotLight.shadow.mapSize.width = 10240;
-spotLight.shadow.mapSize.height = 10240;
+    var spotLight = new THREE.SpotLight(0xffffff);
+    spotLight.position.set(0, 0, 10);
+    spotLight.angle = 3.14 / 4;
+    spotLight.castShadow = true;
 
-scene.add(spotLight);
+    spotLight.shadow.mapSize.width = 10240;
+    spotLight.shadow.mapSize.height = 10240;
+
+    scene.add(spotLight);
 
 
-var renderer = new THREE.WebGLRenderer();
-renderer.setSize(width, height);
-renderer.setClearColor(0xffffff, 1);
-container.appendChild(renderer.domElement);
+    var renderer = new THREE.WebGLRenderer();
+    renderer.setSize(width, height);
+    renderer.setClearColor(0xffffff, 1);
+    container.appendChild(renderer.domElement);
 
-var axes = new THREE.AxesHelper(10000);
-// scene.add(axes);
+    var axes = new THREE.AxesHelper(10000);
+    // scene.add(axes);
 
-var geometry = new THREE.PlaneGeometry(7500, 7500, img_width - 1, img_height - 1);
-// geometry.rotateX(- Math.PI / 2);
+    var geometry = new THREE.PlaneGeometry(7500, 7500, img_width - 1, img_height - 1);
+    // geometry.rotateX(- Math.PI / 2);
 
-var size = img_width * img_height;
-var terrain_data = new Uint32Array(size);
-var idx = 0;
-var i = 0;
-for (var y = 0; y < img_height; y++) {
-    for (var x = 0; x < img_width; x++) {
-        // terrain_data[i] = 65536 * image_data[idx] + 256 * image_data[idx+1] + image_data[idx+3];
-        terrain_data[i] = image_data[idx]
-        idx += 4;
-        i ++;
+    var size = img_width * img_height;
+    var terrain_data = new Uint32Array(size);
+    var idx = 0;
+    var i = 0;
+    for (var y = 0; y < img_height; y++) {
+        for (var x = 0; x < img_width; x++) {
+            // terrain_data[i] = 65536 * image_data[idx] + 256 * image_data[idx+1] + image_data[idx+3];
+            terrain_data[i] = image_data[idx]
+            idx += 4;
+            i ++;
+        }
     }
+
+    var camera = new THREE.PerspectiveCamera(60, width / height, 1, 20000);
+    camera.position.y = terrain_data[img_width / 2 + img_height / 2 * img_width] * 10 + 500;
+
+    for (var i = 0, l = geometry.vertices.length; i < l; i++) {
+        // vertices[j] = 0;
+        // vertices[j + 2] = 0;
+        geometry.vertices[i].z = terrain_data[i] * 10;
+
+    }
+    var texture = new THREE.CanvasTexture(generateTexture(terrain_data, img_width, img_height));
+    texture.wrapS = THREE.ClampToEdgeWrapping;
+    texture.wrapT = THREE.ClampToEdgeWrapping;
+
+    var material = new THREE.MeshPhongMaterial({
+        color: 0xdddddd, 
+        wireframe: true
+    });
+
+    var mesh = new THREE.Mesh(geometry, new THREE.MeshBasicMaterial({ map: texture }));
+    // var mesh = new THREE.Mesh(geometry, material);
+    scene.add(mesh);
+
+    var controls = new OrbitControls(camera, renderer.domElement);
+
+
+
+    var animate = function () {
+        requestAnimationFrame(animate);
+        controls.update();
+        renderer.render(scene, camera);
+    };
+
+    animate();
 }
-
-var camera = new THREE.PerspectiveCamera(60, width / height, 1, 20000);
-camera.position.y = terrain_data[img_width / 2 + img_height / 2 * img_width] * 10 + 500;
-
-for (var i = 0, l = geometry.vertices.length; i < l; i++) {
-    // vertices[j] = 0;
-    // vertices[j + 2] = 0;
-    geometry.vertices[i].z = terrain_data[i] * 10;
-
-}
-var texture = new THREE.CanvasTexture(generateTexture(terrain_data, img_width, img_height));
-texture.wrapS = THREE.ClampToEdgeWrapping;
-texture.wrapT = THREE.ClampToEdgeWrapping;
-
-var material = new THREE.MeshPhongMaterial({
-    color: 0xdddddd, 
-    wireframe: true
-  });
-
-var mesh = new THREE.Mesh(geometry, new THREE.MeshBasicMaterial({ map: texture }));
-// var mesh = new THREE.Mesh(geometry, material);
-scene.add(mesh);
-
-var controls = new OrbitControls(camera, renderer.domElement);
-
-
-
-var animate = function () {
-    requestAnimationFrame(animate);
-    controls.update();
-    renderer.render(scene, camera);
-};
-
-animate();
