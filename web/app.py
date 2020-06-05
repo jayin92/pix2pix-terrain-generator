@@ -35,7 +35,7 @@ opt.serial_batches = True  # disable data shuffling; comment this line if result
 opt.no_flip = True    # no flip; comment this line if results on flipped images are needed.
 opt.display_id = -1   # no visdom display; the test code saves the results to a HTML file.
 
-opt.name = "China256"
+opt.name = "test0605"
 # opt.gpu_ids = '0' # comment this line if you want to use CPU instead
 opt.model = "test"
 input_nc = opt.output_nc if opt.direction == 'BtoA' else opt.input_nc

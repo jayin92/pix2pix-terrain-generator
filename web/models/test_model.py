@@ -23,7 +23,7 @@ class TestModel(BaseModel):
         You need to specify the network using the option '--model_suffix'.
         """
         assert not is_train, 'TestModel cannot be used during training time'
-        parser.set_defaults(norm='batch', netG='unet_256')
+        parser.set_defaults(norm='batch', netG='unet_128')
         parser.set_defaults(dataroot="/home/jayinnn/scifair/heightmap/China256/A")
         parser.set_defaults(dataset_mode='single')
         parser.add_argument('--model_suffix', type=str, default='', help='In checkpoints_dir, [epoch]_net_G[model_suffix].pth will be loaded as the generator.')

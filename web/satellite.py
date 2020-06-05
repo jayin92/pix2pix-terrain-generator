@@ -30,9 +30,9 @@ config.read("config.ini")
 
 opt = TestOptions().parse()  # get test options
 # hard-code some parameters for test
-opt.name = "china_aerial_BtoA"
+opt.name = "china_aerial_extra"
 opt.model = "test"
-opt.direction = "BtoA"
+opt.direction = "AtoB"
 opt.num_threads = 0   # test code only supports num_threads = 1
 opt.batch_size = 1    # test code only supports batch_size = 1
 opt.serial_batches = True  # disable data shuffling; comment this line if results on randomly chosen images are needed.
@@ -169,4 +169,4 @@ def satellite():
 
 
 if __name__ == "__main__":
-    app.run(debug=True, host=config["webserver"]["host"], port=5001)
+    app.run(debug=True, host=config["webserver"]["host"], port=8888)
