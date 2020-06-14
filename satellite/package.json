@@ -1,0 +1,31 @@
+{
+  "name": "terrain",
+  "version": "1.0.0",
+  "description": "## Usage - Start flask web service: `python app.py`",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "watch": "webpack --mode development --watch",
+    "start": "webpack --mode development",
+    "deploy": "webpack --mode production",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "jayinnn",
+  "license": "ISC",
+  "devDependencies": {
+    "three": "^0.113.2",
+    "webpack": "^4.41.6",
+    "webpack-cli": "^3.3.11"
+  },
+  "dependencies": {
+    "dat.gui": "^0.7.6",
+    "fs": "0.0.1-security",
+    "get-pixels": "^3.3.2",
+    "minimist": "^1.2.5",
+    "pngjs": "^3.4.0",
+    "three-orbitcontrols": "^2.110.3",
+    "three-trackballcontrols": "0.0.8"
+  }
+}

@@ -37,3 +37,9 @@ simple_poly
 vgg
 discriminator/datasets
 
+*.zip
+datasets
+
+*.png
+Untitled*Folder
+tmp.*

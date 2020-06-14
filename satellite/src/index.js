@@ -60,10 +60,10 @@ $(document).ready(function (e) {
         document.getElementById("img-holder").appendChild(output);
         document.getElementById("output").src = "/static/gen/" + data['file_name'] + ".png";
         console.log(data['dis']);
-        output.onload = function() {
-          getHeightFromPNG();
-          main(data['min'], data['dis']);
-        };
+        // output.onload = function() {
+        //   getHeightFromPNG();
+        //   main(data['min'], data['dis']);
+        // };
       }
     });
   }));
