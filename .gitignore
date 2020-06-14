@@ -28,6 +28,7 @@ web/static/gen
 config.ini
 
 *.pth
+*.zip
 
 heightmap
 perlin_image
