@@ -25,6 +25,10 @@ function getHeightFromPNG() {
   image_data = canvas.getContext('2d').getImageData(0, 0, img.width, img.height).data;
 }
 
+function removeBtn(){
+  document.getElementById('btnHolder').innerHTML = ''
+
+}
 
 $(document).ready(function (e) {
   $('#image-form').on('submit', (function (e) {
@@ -61,6 +65,8 @@ $(document).ready(function (e) {
         document.getElementById("output").src = "/static/gen/" + data['file_name'] + ".png";
         console.log(data['dis']);
         output.onload = function() {
+          $('#p5').remove();
+          removeBtn();
           getHeightFromPNG();
           main(data['min'], data['dis']);
         };
@@ -72,6 +78,7 @@ $(document).ready(function (e) {
 function addBtn() {
   document.getElementById('btnHolder').innerHTML = '<input type="submit" value="Generate" class="btn btn-primary">'
 }
+
 
 $(document).on("click", ".browse", function () {
   var file = $(this).parents().find(".file");
@@ -242,9 +249,10 @@ function main(min, all_dis){
             i ++; 
         }
     }
-
     var camera = new THREE.PerspectiveCamera(60, width / height, 1, 20000);
-    camera.position.y = terrain_data[img_width / 2 + img_height / 2 * img_width] * 10 + 500;
+    camera.position.x = -53.407762378629265;
+    camera.position.y = -6339.258598061884;
+    camera.position.z = 4249.830974750902;
 
     for (var i = 0, l = geometry.vertices.length; i < l; i++) {
         // vertices[j] = 0;
