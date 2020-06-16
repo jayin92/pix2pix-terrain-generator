@@ -20,7 +20,11 @@ from util import html, util
 from PIL import Image
 
 from flask import Flask, request, send_file, redirect, render_template, Response
+from flask_cors import CORS, cross_origin
+# from flask_socketio import SocketIO
 app = Flask(__name__)
+cors = CORS(app)
+app.config['CORS_HEADERS'] = 'Content-Type'
 
 import util.split_merge as spl
 import numpy as np
@@ -78,6 +82,7 @@ def index():
     return render_template("index.html")
  
 @app.route("/generate", methods=["POST"])
+@cross_origin()
 def generate():
     delete_img()
     path = os.path.join("static", "gen")
