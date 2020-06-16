@@ -3,7 +3,7 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import { ImprovedNoise } from 'three/examples/jsm/math/ImprovedNoise';
 
 var getPixels = require("get-pixels");
-
+var output_base64 = "";
 
 var dataJSON = {}
 
@@ -25,7 +25,7 @@ function getHeightFromPNG() {
   image_data = canvas.getContext('2d').getImageData(0, 0, img.width, img.height).data;
 }
 
-function removeBtn(){
+function removeBtn() {
   document.getElementById('btnHolder').innerHTML = ''
 
 }
@@ -64,9 +64,11 @@ $(document).ready(function (e) {
         document.getElementById("img-holder").appendChild(output);
         document.getElementById("output").src = "/static/gen/" + data['file_name'] + ".png";
         console.log(data['dis']);
-        output.onload = function() {
+        output_base64 = data['base64'];
+        output.onload = function () {
           $('#p5').remove();
           removeBtn();
+          addBtn();
           getHeightFromPNG();
           main(data['min'], data['dis']);
         };
@@ -76,7 +78,7 @@ $(document).ready(function (e) {
 });
 
 function addBtn() {
-  document.getElementById('btnHolder').innerHTML = '<input type="submit" value="Generate" class="btn btn-primary">'
+  document.getElementById('TexturebtnHolder').innerHTML = '<input type="submit" value="Generate Texture" class="btn btn-primary">'
 }
 
 
@@ -97,6 +99,8 @@ $('input[type="file"]').change(function (e) {
     // get loaded data and render thumbnail.
     document.getElementById("input").src = e.target.result;
     document.getElementById("defaultCanvas0").remove();
+    document.getElementById('TexturebtnHolder').innerHTML = ''
+
   };
   // read the image file as a data URL.
   reader.readAsDataURL(this.files[0]);
@@ -126,162 +130,200 @@ $("#1024").click(function () {
 
 var image_data, img_width, img_height;
 
-function wait(ms) {
-    var deferred = $.Deferred();
-    setTimeout(deferred.resolve, ms);
+// function wait(ms) {
+//     var deferred = $.Deferred();
+//     setTimeout(deferred.resolve, ms);
 
-   // We just need to return the promise not the whole deferred.
-   return deferred.promise();
-}
+//    // We just need to return the promise not the whole deferred.
+//    return deferred.promise();
+// }
+
+
+
+$(document).ready(function (f) {
+  $('#texture-form').on('submit', (function (f) {
+    f.preventDefault();
+    dataJSON = {};
+    dataJSON["overlay"] = document.getElementById("overlay").value;
+    dataJSON["file"] = output_base64;
+    console.log(dataJSON);
+    $.ajax({
+      type: 'POST',
+      url: 'http://140.115.51.160:32188/generate',
+      dataType: "json",
+      data: JSON.stringify(dataJSON),
+      contentType: "application/json",
+      cache: false,
+      processData: false,
+      success: function (data) {
+        // var script = document.createElement("script");
+        // script.src = "/static/bundle.js";
+        // scri t.setAttribute("id", "three");
+        // document.documentElement.appendChild(script);
+        console.log(data);
+        document.getElementById("alertHolder").innerHTML = '<div class="alert alert-success fade show" role="alert">Texture generate successfully. <a href="http://140.115.51.160:32188/static/gen/' + data['file_name'] + '.png"> Direct Link</a><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>';
+        var output = document.createElement("img");
+        output.setAttribute("id", "texture");
+        document.getElementById("img-holder").appendChild(output);
+        document.getElementById("texture").src = "http://140.115.51.160:32188/static/gen/" + data['file_name'] + ".png";
+        output.onload = function () {
+          document.getElementById('TexturebtnHolder').innerHTML = ''
+
+        };
+      }
+    });
+  }));
+});
+
 
 function generateTexture(data, width, height) {
-    
-    var canvas, canvasScaled, context, image, imageData, vector3, sun, shade;
-    
-    vector3 = new THREE.Vector3(0, 0, 0);
-    
-    sun = new THREE.Vector3(1, 1, 1);
-    sun.normalize();
-    
-    canvas = document.createElement('canvas');
-    canvas.width = width;
-    canvas.height = height;
-    
-    context = canvas.getContext('2d');
-    context.fillStyle = '#000';
-    context.fillRect(0, 0, width, height);
-    
-    image = context.getImageData(0, 0, canvas.width, canvas.height);
-    imageData = image.data;
-    
-    for (var i = 0, j = 0, l = imageData.length; i < l; i += 4, j++) {
-        
-        vector3.x = data[j - 2] - data[j + 2];
-        vector3.y = 2;
-        vector3.z = data[j - width * 2] - data[j + width * 2];
-        vector3.normalize();
-        
-        shade = vector3.dot(sun);
-        
-        imageData[i] = (96 + shade * 128) * (0.5 + data[j] * 0.007);
-        imageData[i + 1] = (32 + shade * 96) * (0.5 + data[j] * 0.007);
-        imageData[i + 2] = (shade * 96) * (0.5 + data[j] * 0.007);
-        
-    }
-    
-    context.putImageData(image, 0, 0);
-    
-    // Scaled 4x
-    
-    canvasScaled = document.createElement('canvas');
-    canvasScaled.width = width * 4;
-    canvasScaled.height = height * 4;
-    
-    context = canvasScaled.getContext('2d');
-    context.scale(4, 4);
-    context.drawImage(canvas, 0, 0);
-    
-    image = context.getImageData(0, 0, canvasScaled.width, canvasScaled.height);
-    imageData = image.data;
-    
-    for (var i = 0, l = imageData.length; i < l; i += 4) {
-        
-        var v = ~ ~(Math.random() * 5);
-        
-        imageData[i] += v;
-        imageData[i + 1] += v;
-        imageData[i + 2] += v;
-        
-    }
-    
-    context.putImageData(image, 0, 0);
-    
-    return canvasScaled;
-    
+
+  var canvas, canvasScaled, context, image, imageData, vector3, sun, shade;
+
+  vector3 = new THREE.Vector3(0, 0, 0);
+
+  sun = new THREE.Vector3(1, 1, 1);
+  sun.normalize();
+
+  canvas = document.createElement('canvas');
+  canvas.width = width;
+  canvas.height = height;
+
+  context = canvas.getContext('2d');
+  context.fillStyle = '#000';
+  context.fillRect(0, 0, width, height);
+
+  image = context.getImageData(0, 0, canvas.width, canvas.height);
+  imageData = image.data;
+
+  for (var i = 0, j = 0, l = imageData.length; i < l; i += 4, j++) {
+
+    vector3.x = data[j - 2] - data[j + 2];
+    vector3.y = 2;
+    vector3.z = data[j - width * 2] - data[j + width * 2];
+    vector3.normalize();
+
+    shade = vector3.dot(sun);
+
+    imageData[i] = (96 + shade * 128) * (0.5 + data[j] * 0.007);
+    imageData[i + 1] = (32 + shade * 96) * (0.5 + data[j] * 0.007);
+    imageData[i + 2] = (shade * 96) * (0.5 + data[j] * 0.007);
+
+  }
+
+  context.putImageData(image, 0, 0);
+
+  // Scaled 4x
+
+  canvasScaled = document.createElement('canvas');
+  canvasScaled.width = width * 4;
+  canvasScaled.height = height * 4;
+
+  context = canvasScaled.getContext('2d');
+  context.scale(4, 4);
+  context.drawImage(canvas, 0, 0);
+
+  image = context.getImageData(0, 0, canvasScaled.width, canvasScaled.height);
+  imageData = image.data;
+
+  for (var i = 0, l = imageData.length; i < l; i += 4) {
+
+    var v = ~ ~(Math.random() * 5);
+
+    imageData[i] += v;
+    imageData[i + 1] += v;
+    imageData[i + 2] += v;
+
+  }
+
+  context.putImageData(image, 0, 0);
+
+  return canvasScaled;
+
 }
 
 
 // var data = generateHeight(terrain_width, terrain_height);
 // getHeightFromPNG();
 
-function main(min, all_dis){
+function main(min, all_dis) {
 
-    var container = document.getElementById('container');
-    var width = $(container).width();
-    var height = 500;
+  var container = document.getElementById('container');
+  var width = $(container).width();
+  var height = 500;
 
-    var scene = new THREE.Scene();
+  var scene = new THREE.Scene();
 
-    var spotLight = new THREE.SpotLight(0xffffff);
-    spotLight.position.set(0, 0, 10);
-    spotLight.angle = 3.14 / 4;
-    spotLight.castShadow = true;
+  var spotLight = new THREE.SpotLight(0xffffff);
+  spotLight.position.set(0, 0, 10);
+  spotLight.angle = 3.14 / 4;
+  spotLight.castShadow = true;
 
-    spotLight.shadow.mapSize.width = 10240;
-    spotLight.shadow.mapSize.height = 10240;
+  spotLight.shadow.mapSize.width = 10240;
+  spotLight.shadow.mapSize.height = 10240;
 
-    scene.add(spotLight);
+  scene.add(spotLight);
 
 
-    var renderer = new THREE.WebGLRenderer();
-    renderer.setSize(width, height);
-    renderer.setClearColor(0xffffff, 1);
-    container.appendChild(renderer.domElement);
+  var renderer = new THREE.WebGLRenderer();
+  renderer.setSize(width, height);
+  renderer.setClearColor(0xffffff, 1);
+  container.appendChild(renderer.domElement);
 
-    var axes = new THREE.AxesHelper(10000);
-    // scene.add(axes);
+  var axes = new THREE.AxesHelper(10000);
+  // scene.add(axes);
 
-    var geometry = new THREE.PlaneGeometry(7500, 7500, img_width - 1, img_height - 1);
-    // geometry.rotateX(- Math.PI / 2);
+  var geometry = new THREE.PlaneGeometry(7500, 7500, img_width - 1, img_height - 1);
+  // geometry.rotateX(- Math.PI / 2);
 
-    var size = img_width * img_height;
-    var terrain_data = new Uint32Array(size);
-    var idx = 0;
-    var i = 0;
-    console.log(all_dis, min);
-    for (var y = 0; y < img_height; y++) {
-        for (var x = 0; x < img_width; x++) {
-            // terrain_data[i] = 65536 * image_data[idx] + 256 * image_data[idx+1] + image_data[idx+3];
-            terrain_data[i] = image_data[idx] / 2 * all_dis;
-            // console.log(image_data[idx] / 2 * all_dis + abs(255 * min));
-            // console.log(image_data[idx], terrain_data[i]);
-            idx += 4;
-            i ++; 
-        }
+  var size = img_width * img_height;
+  var terrain_data = new Uint32Array(size);
+  var idx = 0;
+  var i = 0;
+  console.log(all_dis, min);
+  for (var y = 0; y < img_height; y++) {
+    for (var x = 0; x < img_width; x++) {
+      // terrain_data[i] = 65536 * image_data[idx] + 256 * image_data[idx+1] + image_data[idx+3];
+      terrain_data[i] = image_data[idx] / 2 * all_dis;
+      // console.log(image_data[idx] / 2 * all_dis + abs(255 * min));
+      // console.log(image_data[idx], terrain_data[i]);
+      idx += 4;
+      i++;
     }
-    var camera = new THREE.PerspectiveCamera(60, width / height, 1, 20000);
-    camera.position.x = -53.407762378629265;
-    camera.position.y = -6339.258598061884;
-    camera.position.z = 4249.830974750902;
+  }
+  var camera = new THREE.PerspectiveCamera(60, width / height, 1, 20000);
+  camera.position.x = -53.407762378629265;
+  camera.position.y = -6339.258598061884;
+  camera.position.z = 4249.830974750902;
 
-    for (var i = 0, l = geometry.vertices.length; i < l; i++) {
-        // vertices[j] = 0;
-        // vertices[j + 2] = 0;
-        geometry.vertices[i].z = terrain_data[i] * 10;
+  for (var i = 0, l = geometry.vertices.length; i < l; i++) {
+    // vertices[j] = 0;
+    // vertices[j + 2] = 0;
+    geometry.vertices[i].z = terrain_data[i] * 10;
 
-    }
-    var texture = new THREE.CanvasTexture(generateTexture(terrain_data, img_width, img_height, min, all_dis));
-    texture.wrapS = THREE.ClampToEdgeWrapping;
-    texture.wrapT = THREE.ClampToEdgeWrapping;
+  }
+  var texture = new THREE.CanvasTexture(generateTexture(terrain_data, img_width, img_height, min, all_dis));
+  texture.wrapS = THREE.ClampToEdgeWrapping;
+  texture.wrapT = THREE.ClampToEdgeWrapping;
 
-    var material = new THREE.MeshPhongMaterial({
-        color: 0xdddddd, 
-        wireframe: true
-    });
+  var material = new THREE.MeshPhongMaterial({
+    color: 0xdddddd,
+    wireframe: true
+  });
 
-    var mesh = new THREE.Mesh(geometry, new THREE.MeshBasicMaterial({ map: texture }));
-    // var mesh = new THREE.Mesh(geometry, material);
-    scene.add(mesh);
+  var mesh = new THREE.Mesh(geometry, new THREE.MeshBasicMaterial({ map: texture }));
+  // var mesh = new THREE.Mesh(geometry, material);
+  scene.add(mesh);
 
-    var controls = new OrbitControls(camera, renderer.domElement);
+  var controls = new OrbitControls(camera, renderer.domElement);
 
 
 
-    var animate = function () {
-        requestAnimationFrame(animate);
-        controls.update();
-        renderer.render(scene, camera);
-    };
+  var animate = function () {
+    requestAnimationFrame(animate);
+    controls.update();
+    renderer.render(scene, camera);
+  };
 
-    animate();
+  animate();
 }

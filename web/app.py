@@ -19,6 +19,8 @@ from util import html, util
 from PIL import Image
 
 from flask import Flask, request, send_file, redirect, render_template, Response
+from flask_socketio import SocketIO
+
 app = Flask(__name__)
 
 import util.split_merge as spl
@@ -116,15 +118,20 @@ def generate():
         img_name = ''.join(random.choice(string.ascii_lowercase) for i in range(6))                
         result_image.save(os.path.join(path, "{}.png".format(img_name)))
         #util.save_image(np.array([result_image,result_image,result_image]), os.path.join(path, "{}.png".format(img_name)))
-        
+        buffered = BytesIO()
+        result_image.save(buffered, format="PNG")
+        outputBase64 = base64.b64encode(buffered.getvalue())
         rep = {
             'file_name': img_name,
             'min': str(min_),
-            'dis': str(all_dis)
+            'dis': str(all_dis),
+            'base64': str(outputBase64)[2:],
         }
         print(rep)
         return Response(json.dumps(rep), mimetype="application/json")
 
 
 if __name__ == "__main__":
+    socketio = SocketIO(app, cors_allowed_origins='*')
     app.run(debug=True, host=config["webserver"]["host"], port=int(config["webserver"]["port"]))
+
