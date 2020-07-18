@@ -21,6 +21,6 @@ In this research, we collected topographic altitude maps from Taiwan and China u
 
 ## 作者 Authors
 - 程品奕 [@a931eric](https://github.com/a931eric)
-- 李杰穎 [@jayin92](https://github.com/jayinnn)
+- 李杰穎 [@jayin92](https://github.com/jayin92)
 
 
