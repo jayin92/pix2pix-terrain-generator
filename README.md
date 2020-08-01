@@ -6,7 +6,7 @@
 In this research, we collected topographic altitude maps from Taiwan and China using the API provided by Google and satellite sky map. We use the collected images to train pix2pix cGAN (conditional Generative Adversarial Network) model, and will manually draw the Altimeter with all the details expected of a real mountain range (including sharp ridges, lines on walls, continuous river networks. By using the trained pix2pix model, we can generate a more realistic mountain range effect. In order to improve the realistic terrain generation, we added "dynamic weight layer" to the original pix2pix model. We have also developed a new version of the Pix2pix model. Finally, using these trained pix2pix models, we developed the API, Unity client and web client to enable the We have trained pix2pix models to be more practical. In addition to simplifying the process of generating realistic mountain ranges for game development, this research can also be applied to the creation of low-resolution, high-resolution mountain ranges. Altimeter maps are converted to high resolution altimeter maps, while maintaining the authenticity of the altimeter maps to facilitate the collection of topographic data.
 
 ## 論文 Paper (Chinese)
-- [報告書](https://github.com/jayin92/pix2pix-terrain-generator/paper/paper_final.pdf)
+- [報告書](https://github.com/jayin92/pix2pix-terrain-generator/blob/master/paper/paper_final.pdf)
 
 
 ## 資料集 Datasets
