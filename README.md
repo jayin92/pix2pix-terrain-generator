@@ -10,7 +10,7 @@ In this research, we collected topographic altitude maps from Taiwan and China u
 
 
 ## 資料集 Datasets
-[https://github.com/jayin92/pixpix-terrain-generator-datasets](https://github.com/jayin92/pix2pix-terrain-generator/blob/master/paper/paper_final.pdf)
+[https://github.com/jayin92/pixpix-terrain-generator-datasets](https://github.com/jayin92/pix2pix-terrain-generator-datasets)
 
 
 ## 獎項 Awards
