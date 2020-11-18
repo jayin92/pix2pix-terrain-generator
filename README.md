@@ -17,7 +17,7 @@ In this research, we collected topographic altitude maps from Taiwan and China u
 - 桃園市立武陵高中校內科展 電腦與資訊學科 第一名
 - 桃園市第六十屆科展 電腦與資訊學科 第一名
 - 中華民國第六十屆全國科展 電腦與資訊學科 第二名 (第一名從缺)
-- 旺宏科學獎 入圍決賽
+- 旺宏科學獎 旺宏獎
 
 
 ## 作者 Authors
